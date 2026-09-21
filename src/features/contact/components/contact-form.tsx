@@ -2,8 +2,10 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
+import { useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 
+import { submitContact } from "@features/contact/api/submit-contact";
 import type { ContactSourceId } from "@features/contact/constants/contact-form";
 import {
   CONTACT_EMPLOYEE_COUNT_OPTIONS,
@@ -46,6 +48,18 @@ const fieldLabelClassName =
 const controlClassName =
   "h-10 w-full rounded-lg border-kickops-gray/20 bg-white text-kickops-gray";
 
+function emptyDefaults(audienceId: ContactSourceId): TargetContactFormValues {
+  return {
+    name: "",
+    phone: "",
+    email: "",
+    company: "",
+    employeeCount: "",
+    message: "",
+    audienceId,
+  };
+}
+
 export function ContactForm({
   audienceId,
   className,
@@ -53,21 +67,24 @@ export function ContactForm({
   density = "default",
 }: ContactFormProps) {
   const compact = density === "compact";
+  const [isPending, startTransition] = useTransition();
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const form = useForm<TargetContactFormValues>({
     resolver: zodResolver(targetContactFormSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      employeeCount: "",
-      message: "",
-      audienceId,
-    },
+    defaultValues: emptyDefaults(audienceId),
   });
 
-  function onSubmit(_values: TargetContactFormValues) {
-    // No-op until contact API exists; audienceId stays in form values.
+  function onSubmit(values: TargetContactFormValues) {
+    setStatus("idle");
+    startTransition(async () => {
+      const result = await submitContact(values);
+      if (!result.ok) {
+        setStatus("error");
+        return;
+      }
+      form.reset(emptyDefaults(audienceId));
+      setStatus("success");
+    });
   }
 
   return (
@@ -276,38 +293,51 @@ export function ContactForm({
 
         <input type="hidden" {...form.register("audienceId")} />
 
+        <div aria-live="polite" className="min-h-5">
+          {status === "success" ? (
+            <p className="text-sm text-kickops-gray">{CONTACT_FORM_COPY.success}</p>
+          ) : null}
+          {status === "error" ? (
+            <p className="text-sm text-red-600">{CONTACT_FORM_COPY.error}</p>
+          ) : null}
+        </div>
+
         <Button
           type="submit"
+          disabled={isPending}
           className={cn(
             "group h-11 w-full rounded-lg border-0",
             "inline-flex items-center justify-center",
             "bg-kickops-yellow font-bold text-kickops-gray",
             "transition-colors duration-300 ease-out",
             "hover:bg-white focus-visible:bg-white active:bg-white",
+            "disabled:pointer-events-none disabled:opacity-60",
           )}
         >
-          {CONTACT_FORM_COPY.submit}
-          <span
-            aria-hidden
-            className={cn(
-              "inline-flex h-6 shrink-0 overflow-hidden text-kickops-gray",
-              "w-0 opacity-0",
-              "transition-[width,opacity,margin] duration-300 ease-out",
-              "group-hover:ml-2 group-hover:w-6 group-hover:opacity-100",
-              "group-focus-visible:ml-2 group-focus-visible:w-6 group-focus-visible:opacity-100",
-              "motion-reduce:transition-none",
-            )}
-          >
-            <ArrowRight
+          {isPending ? CONTACT_FORM_COPY.submitting : CONTACT_FORM_COPY.submit}
+          {isPending ? null : (
+            <span
+              aria-hidden
               className={cn(
-                "size-6 shrink-0",
-                "-translate-x-2 transition-transform duration-300 ease-out",
-                "group-hover:translate-x-0 group-focus-visible:translate-x-0",
-                "motion-reduce:translate-x-0",
+                "inline-flex h-6 shrink-0 overflow-hidden text-kickops-gray",
+                "w-0 opacity-0",
+                "transition-[width,opacity,margin] duration-300 ease-out",
+                "group-hover:ml-2 group-hover:w-6 group-hover:opacity-100",
+                "group-focus-visible:ml-2 group-focus-visible:w-6 group-focus-visible:opacity-100",
+                "motion-reduce:transition-none",
               )}
-              strokeWidth={2.25}
-            />
-          </span>
+            >
+              <ArrowRight
+                className={cn(
+                  "size-6 shrink-0",
+                  "-translate-x-2 transition-transform duration-300 ease-out",
+                  "group-hover:translate-x-0 group-focus-visible:translate-x-0",
+                  "motion-reduce:translate-x-0",
+                )}
+                strokeWidth={2.25}
+              />
+            </span>
+          )}
         </Button>
       </form>
     </article>

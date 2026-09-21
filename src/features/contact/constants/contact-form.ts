@@ -11,6 +11,9 @@ export const CONTACT_FORM_COPY = {
   title: "Fale com a gente",
   subtitle: "Preencha os dados abaixo e entraremos em contato.",
   submit: "Enviar",
+  submitting: "Enviando…",
+  success: "Mensagem enviada. Em breve entraremos em contato.",
+  error: "Não foi possível enviar. Tente novamente.",
   labels: {
     name: "Nome",
     phone: "Telefone",
@@ -28,6 +31,13 @@ export const CONTACT_FORM_COPY = {
     message: "Conte um pouco sobre o que você precisa",
   },
 } as const;
+
+export const CONTACT_EMAIL_SUBJECTS: Record<ContactSourceId, string> = {
+  corporate: "Kickops Academy — Corporativo",
+  tech: "Kickops Academy — Tech",
+  improvement: "Kickops Academy — Aperfeiçoamento",
+  general: "Kickops Academy — Contato",
+};
 
 export const CONTACT_EMPLOYEE_COUNT_VALUES = [
   "1-10",
