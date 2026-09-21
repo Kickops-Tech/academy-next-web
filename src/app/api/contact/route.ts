@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   }
 
   const result = await sendContactEmail(parsed.data);
-  if (!result.ok) {
+  if (result.ok === false) {
     return NextResponse.json(
       { error: result.message },
       { status: result.status },
