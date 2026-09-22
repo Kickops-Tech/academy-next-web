@@ -32,6 +32,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 | `npm run start` | Serve o build de produção |
 | `npm run lint` | ESLint |
 | `npm run lint:fix` | ESLint com correção automática |
+| `npm run lint:boundaries` | Limites duros de camada (`core` / `shadcn`) |
 
 ## Estrutura
 
@@ -40,7 +41,7 @@ src/
   app/        # rotas e composição (App Router)
   assets/     # estáticos, dados e estilos globais
   core/       # técnico compartilhado (sem regra de produto)
-  features/   # produto e domínio
+  features/   # produto e domínio (em landings: seções; feature→feature lax)
   shadcn/     # base imutável do shadcn/ui
 ```
 
@@ -50,9 +51,19 @@ Regras de ouro:
 
 - páginas e layouts em `app` ficam finos;
 - domínio vive em `features`;
+- feature→feature permitido (lax); `public.ts` opcional para API estável;
 - não editar `src/shadcn/*` (wrappers em `core/components`).
 
 ## Documentação
 
-- [AGENTS.md](AGENTS.md) — arquitetura e workflow para agentes
+- [AGENTS.md](AGENTS.md) — arquitetura, workflow e convenção de commits para agentes
 - [CONTEXT.md](CONTEXT.md) — glossário de domínio
+- `npm run lint:boundaries` — checagem das regras duras de camada
+
+### Mensagens de commit
+
+```txt
+(type): short summary in English, lowercase after the colon
+```
+
+Tipos: `(feat)`, `(fix)`, `(chore)`, `(docs)`. Detalhes em [AGENTS.md](AGENTS.md) → Commit messages.

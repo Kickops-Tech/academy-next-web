@@ -73,6 +73,12 @@ src/
 
 Código novo vai para `features`, `core` ou `assets` conforme a matriz abaixo. Não criar pastas vazias por antecipação.
 
+### O que é uma feature
+
+Em apps de produto, **feature ≈ bounded context** (capacidade de domínio com regras próprias).
+
+**Exceção documentada — landings / marketing:** feature ≈ **seção** da Landing (Hero, Target, Contents, …). Isso é válido aqui; não copie cegamente para produtos com domínio rico. Imports entre seções são esperados e permitidos com folga (abaixo).
+
 ---
 
 ## Folder responsibilities
@@ -112,13 +118,24 @@ models/
 server/
 stores/
 utils/
+public.ts   # opcional: entrada estável quando outras features consomem esta
 ```
 
 Regras:
 
 - lógica da feature fica na feature;
-- evitar importação direta entre features;
-- se duas features compartilharem algo: compor em `app`, extrair para `core`, ou duplicar temporariamente até a abstração ficar clara.
+- **feature → feature é permitido** (lax), especialmente em landings onde seções se compõem;
+- prefira não criar grafos densos: se A depende de meia dúzia de internals de B, pare e simplifique;
+- quando o consumo for intencional e recorrente, um `public.ts` fino ajuda a despluguar depois — **recomendação, não obrigação**;
+- outras saídas: compor em `app`, extrair para `core` se for técnico sem domínio, ou duplicar temporariamente.
+
+### Cross-feature (lax)
+
+Não há allowlist de “shared surfaces”. Critério prático:
+
+- import direto de outro `@features/...` ok;
+- `public.ts` é conveniência para marcar uma API estável (`contact` usa isso hoje) — consumidores podem usar `public` ou o path interno;
+- se o acoplamento doer na hora de mudar, aí sim estreite a superfície ou mova a composição para `app`.
 
 ### `src/core`
 
@@ -180,7 +197,8 @@ app
  └─ assets
 
 features
- └─ core
+ ├─ core
+ └─ features   # lax — ok entre seções; use julgamento
 
 core
  └─ (shadcn + utilidades técnicas)
@@ -189,12 +207,16 @@ shadcn
  └─ (sem depender de app / features / core de domínio)
 ```
 
-Obrigatório:
+Obrigatório (duro):
 
 - `core` não importa `app` / `features`;
-- feature não importa outra feature diretamente;
+- `shadcn` não importa `app` / `features` / `core`;
 - Client Components não importam código server-only;
 - não editar `src/shadcn/*`.
+
+Orientação (lax): feature→feature ok; `public.ts` opcional.
+
+Checagem mecânica só das regras duras: `npm run lint:boundaries`.
 
 ---
 
@@ -255,6 +277,7 @@ Nada em server pode ser importado diretamente por Client Components.
 | Página / layout / route handler | `src/app` |
 | Componente visual genérico / wrapper shadcn | `src/core/components` (ou `src/ui`) |
 | UI / hook / API / DTO / model da feature | `src/features/<feature>/…` |
+| API pública opcional de uma feature | `src/features/<feature>/public.ts` |
 | Código server-only da feature | `src/features/<feature>/server` |
 | Cliente HTTP / adapter / provider global | `src/core/lib`, `src/core/api`, `src/core/providers` |
 | Hook / util genuíno compartilhado | `src/core/hooks`, `src/core/utils` |
@@ -320,6 +343,40 @@ Não copie os catálogos completos para este arquivo; abra as skills quando prec
 - Verifique o escopo afetado antes de commitiar e reporte validações bloqueadas por tooling existente.
 - Não commitiar `.env` nem secrets.
 
+### Commit messages
+
+Formato obrigatório (igual ao histórico do repo):
+
+```txt
+(type): short summary in English, lowercase after the colon
+```
+
+Tipos em uso:
+
+| Type | Quando |
+|---|---|
+| `feat` | Nova capacidade visível ou comportamento novo |
+| `fix` | Correção de bug ou regressão |
+| `chore` | Tooling, boundaries, deps, manutenção sem feature/fix |
+| `docs` | Só documentação (`AGENTS`, `CONTEXT`, `README`, ADRs) |
+
+Regras:
+
+- um espaço após `):`;
+- summary em inglês, imperativo informal (`add`, `fix`, `document`), sem ponto final no subject;
+- subject curto (≈72 chars); body opcional em inglês, separado por linha em branco, explicando o *why*;
+- não usar Conventional Commits com `feat:` sem parênteses — o padrão daqui é `(feat): …`;
+- escopo no tipo só se o histórico já usar (`(feat):`, não `(feat/hero):`).
+
+Exemplos:
+
+```txt
+(feat): add People carousel and Formats timeline
+(fix): restore Contents column strip crop on mobile
+(chore): allow lax feature imports; keep hard layer checks
+(docs): expand CONTEXT glossary for landing sections
+```
+
 ---
 
 ## Matt Pocock skills
@@ -349,7 +406,7 @@ Notas:
 
 - Evite componentes grandes com muitas responsabilidades.
 - Prefira composição e contratos explícitos entre módulos.
-- Evite acoplamento direto entre features.
+- Evite grafos densos entre features; `public.ts` ajuda quando quiser uma entrada estável.
 - Evite modificar código gerado / base de bibliotecas (`shadcn`).
 - Prefira código simples, legível e fácil de revisar.
 - Comentários para racional, exceções e decisões não óbvias — não JSDoc mecânico.
@@ -376,13 +433,14 @@ Modo: **pragmático e preventivo**.
 
 Em código novo:
 
-- não violar limites entre camadas;
-- não importar feature dentro de feature;
+- não violar limites duros entre camadas (`core` / `shadcn`);
 - não importar server-only em Client Components;
 - não editar `src/shadcn/*`;
 - não mover para `core` sem necessidade real;
 - não criar abstrações sem uso concreto;
 - não criar estrutura de pastas vazia por antecipação.
+
+Após mudanças que toquem imports de `core` ou `shadcn`: `npm run lint:boundaries`.
 
 ---
 
@@ -390,7 +448,7 @@ Em código novo:
 
 Não execute lint, teste ou build amplos automaticamente sem necessidade.
 
-Prefira o escopo alterado. Use os scripts definidos no `package.json` do projeto (ex.: `lint`, `build`, `test` quando existirem).
+Prefira o escopo alterado. Use os scripts definidos no `package.json` do projeto (ex.: `lint`, `lint:boundaries`, `build`, `test` quando existirem).
 
 Se uma validação relevante não for feita, informe ao finalizar.
 
@@ -411,7 +469,8 @@ Se uma validação relevante não for feita, informe ao finalizar.
 - Domínio encapsulado em `features/<domínio>`?
 - `core` / `assets` usados corretamente?
 - `src/shadcn/*` intocado?
-- Nenhuma feature importou outra diretamente?
+- Feature→feature sem grafo denso desnecessário?
 - Nenhum server-only vazou para Client Components?
+- `npm run lint:boundaries` ok se imports de `core`/`shadcn` mudaram?
 - Critério de sucesso verificado ou validação faltante mencionada?
 - Diff cirúrgico (sem drive-by)?
