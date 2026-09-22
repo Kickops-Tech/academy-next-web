@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactForm } from "@features/contact/components/contact-form";
+import { ContactForm } from "@features/contact/public";
 import type { TargetAudience } from "@features/target/constants/target-audiences";
 import { TARGET_CARD_BODY } from "@features/target/constants/target-typography";
 import { cn } from "@shadcn/lib/utils";

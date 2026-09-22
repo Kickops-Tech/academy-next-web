@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactFormDrawer } from "@features/contact/components/contact-form-drawer";
+import { ContactFormDrawer } from "@features/contact/public";
 import { FormatsBlockCard } from "@features/formats/components/formats-block";
 import { FormatsBlocksCarousel } from "@features/formats/components/formats-blocks-carousel";
 import { FormatsCta } from "@features/formats/components/formats-cta";

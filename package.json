@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "lint:boundaries": "node scripts/check-boundaries.mjs"
   },
   "keywords": [],
   "author": "",
