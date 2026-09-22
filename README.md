@@ -39,10 +39,11 @@ Abra [http://localhost:3000](http://localhost:3000).
 ```txt
 src/
   app/        # rotas e composição (App Router)
-  assets/     # estáticos, dados e estilos globais
+  assets/     # import / hash (CSS, JSON, fontes locais, mídia importada)
   core/       # técnico compartilhado (sem regra de produto)
   features/   # produto e domínio (em landings: seções; feature→feature lax)
   shadcn/     # base imutável do shadcn/ui
+public/       # URL estável (/img/..., etc.)
 ```
 
 Aliases TypeScript: `@app/*`, `@assets/*`, `@core/*`, `@features/*`, `@shadcn/*`.
@@ -52,6 +53,8 @@ Regras de ouro:
 - páginas e layouts em `app` ficam finos;
 - domínio vive em `features`;
 - feature→feature permitido (lax); `public.ts` opcional para API estável;
+- `assets` = import/hash; `public/` = URL estável (sem migrar `public/img` existente por estética);
+- fontes: `next/font` sem arquivo local; `src/assets/fonts` só com import explícito;
 - não editar `src/shadcn/*` (wrappers em `core/components`).
 
 ## Documentação

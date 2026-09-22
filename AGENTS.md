@@ -65,13 +65,14 @@ Arquitetura-alvo (ajuste aliases no `tsconfig` do projeto):
 ```txt
 src/
   app/        # rotas e composição Next.js (App Router)
-  assets/     # estáticos, dados e estilos globais
+  assets/     # estáticos no grafo do bundler (import / hash)
   core/       # técnico compartilhado (sem regra de produto)
   features/   # produto e domínio
   shadcn/     # base imutável do shadcn/ui
+public/       # URL estável por path (sem fingerprint do bundler)
 ```
 
-Código novo vai para `features`, `core` ou `assets` conforme a matriz abaixo. Não criar pastas vazias por antecipação.
+Código novo vai para `features`, `core`, `assets` ou `public/` conforme a matriz abaixo. Não criar pastas vazias por antecipação.
 
 ### O que é uma feature
 
@@ -94,7 +95,7 @@ Regras:
 - arquivos finos; sem regra de negócio complexa;
 - compor telas a partir de `features`;
 - infra compartilhada em `core`;
-- UI reutilizável sem domínio em `core/components` (ou `src/ui`, se o projeto usar essa pasta).
+- UI reutilizável sem domínio em `core/components`.
 
 ### `src/features`
 
@@ -157,7 +158,7 @@ Regras:
 
 - `core` não importa `app` nem `features`;
 - não mover código para `core` só porque “parece genérico”;
-- wrappers de `shadcn` e UI sem domínio → `core/components` (ou `src/ui`).
+- wrappers de `shadcn` e UI sem domínio → `core/components`.
 
 ### `src/shadcn`
 
@@ -167,7 +168,7 @@ Base imutável do shadcn/ui.
 Nunca editar arquivos em src/shadcn/*
 ```
 
-Adaptação: (1) composição no uso → (2) wrapper em `core/components` / `ui` → (3) componente novo nessa camada.
+Adaptação: (1) composição no uso → (2) wrapper em `core/components` → (3) componente novo nessa camada.
 
 ```ts
 /**
@@ -175,16 +176,35 @@ Adaptação: (1) composição no uso → (2) wrapper em `core/components` / `ui`
  */
 ```
 
-### `src/assets`
+### `src/assets` vs `public/`
 
-Estáticos de interface e estilos globais (Tailwind / CSS):
+Critério: **import / hashing no bundler** vs **URL estável por string**.
+
+| | `src/assets` | `public/` |
+|---|---|---|
+| Uso | Arquivo entra no grafo via `import` (fingerprint, tipagem, otimização) | Servido em path fixo (`/img/...`); referência por string |
+| Exemplos | CSS/tokens, JSON importado, SVG/imagem importados, fontes locais importadas | Fotos/ícones referenciados como `"/img/..."`, arquivos que precisam de URL estável |
 
 ```txt
 src/assets/
-  data/
+  data/         # JSON / dados importados (podem apontar para paths em public/)
   styles/       # CSS global, tokens, variáveis
-  # imagens, ícones, fontes conforme necessário
+  fonts/        # só com import explícito (ex.: next/font/local)
+  # imagens / SVG importados conforme necessário
+
+public/
+  img/          # mídia com URL estável (padrão atual da Landing)
+  # favicon etc. na raiz quando não forem Metadata API em src/app
 ```
+
+Regras:
+
+- código novo: escolha pelo critério acima; **não migrar** o inventário atual de `public/img` só por estética;
+- CSS / tokens → `src/assets/styles`;
+- JSON / dados importados → `src/assets/data` (ok apontar para `/img/...` em `public/`);
+- fontes: preferir `next/font` (ex.: Google) sem arquivo local; colocar arquivos em `src/assets/fonts` **somente** com import explícito (`next/font/local` ou import direto);
+- SVG / imagem: URL estável → `public/`; import como módulo / `next/image` com import → `src/assets`;
+- favicon, `opengraph-image`, `robots`, etc. → `src/app` (Metadata / App Router) ou raiz de `public/`; não misturar isso em `assets`.
 
 ---
 
@@ -275,14 +295,19 @@ Nada em server pode ser importado diretamente por Client Components.
 | Caso | Local |
 |---|---|
 | Página / layout / route handler | `src/app` |
-| Componente visual genérico / wrapper shadcn | `src/core/components` (ou `src/ui`) |
+| Favicon / OG image / `robots` (Metadata API) | `src/app` (ou raiz de `public/` se não for Metadata) |
+| Componente visual genérico / wrapper shadcn | `src/core/components` |
 | UI / hook / API / DTO / model da feature | `src/features/<feature>/…` |
 | API pública opcional de uma feature | `src/features/<feature>/public.ts` |
 | Código server-only da feature | `src/features/<feature>/server` |
 | Cliente HTTP / adapter / provider global | `src/core/lib`, `src/core/api`, `src/core/providers` |
 | Hook / util genuíno compartilhado | `src/core/hooks`, `src/core/utils` |
 | Estilo global / tokens | `src/assets/styles` |
-| Asset estático / dados estáticos | `src/assets` |
+| JSON / dados importados | `src/assets/data` |
+| Fonte local com import explícito | `src/assets/fonts` |
+| Fonte via `next/font` sem arquivo local | (sem pasta — só config no layout) |
+| Mídia / SVG com URL estável (`"/img/..."`) | `public/` |
+| Mídia / SVG importados no bundler | `src/assets` |
 
 ---
 
@@ -457,17 +482,18 @@ Se uma validação relevante não for feita, informe ao finalizar.
 ## Before implementing
 
 - Onde este código deve viver na arquitetura-alvo?
-- Pertence a uma `feature`, a `core` ou a `assets`?
+- Pertence a uma `feature`, a `core`, a `assets` ou a `public/`?
 - Há dependência proibida ou risco server→client?
 - Preciso mesmo de uma nova abstração?
 - Premissas e critério de sucesso estão claros?
 - O glossário em `CONTEXT.md` cobre os termos em jogo?
+- Se for mídia/fonte/dado estático: critério import/hash (`assets`) vs URL estável (`public/`)?
 
 ## Before finishing
 
 - Página em `app` ficou fina?
 - Domínio encapsulado em `features/<domínio>`?
-- `core` / `assets` usados corretamente?
+- `core` / `assets` / `public/` usados corretamente?
 - `src/shadcn/*` intocado?
 - Feature→feature sem grafo denso desnecessário?
 - Nenhum server-only vazou para Client Components?
