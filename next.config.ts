@@ -3,6 +3,8 @@ import { NextConfig } from "next";
 // Attention demo (Introspecção IA workshop) lives in its own Vercel project and
 // is served under kickops.academy/attention-demo through this rewrite.
 const ATTENTION_DEMO_ORIGIN = "https://academy-vite-attention-kickops.vercel.app";
+// ELIZA and the Minimax tic-tac-toe (same workshop) live in the academy-static-demos project.
+const STATIC_DEMOS_ORIGIN = "https://academy-static-demos-kickops.vercel.app";
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -15,6 +17,22 @@ const nextConfig: NextConfig = {
         {
           source: "/attention-demo/:path*",
           destination: `${ATTENTION_DEMO_ORIGIN}/attention-demo/:path*`,
+        },
+        {
+          source: "/eliza-demo",
+          destination: `${STATIC_DEMOS_ORIGIN}/eliza-demo/`,
+        },
+        {
+          source: "/eliza-demo/:path*",
+          destination: `${STATIC_DEMOS_ORIGIN}/eliza-demo/:path*`,
+        },
+        {
+          source: "/jogo-da-velha-demo",
+          destination: `${STATIC_DEMOS_ORIGIN}/jogo-da-velha-demo/`,
+        },
+        {
+          source: "/jogo-da-velha-demo/:path*",
+          destination: `${STATIC_DEMOS_ORIGIN}/jogo-da-velha-demo/:path*`,
         },
       ],
     };
