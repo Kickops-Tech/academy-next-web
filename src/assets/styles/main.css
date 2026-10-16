@@ -181,6 +181,121 @@
   }
 }
 
+/* Rationale: atmospheric moving grid behind the Trainings Hero bust. */
+@keyframes trainings-hero-grid-drift {
+  0% {
+    background-position: 0 0;
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.52;
+  }
+  100% {
+    background-position: 72px 72px;
+    transform: scale(1.12) translate3d(1.5%, 1%, 0);
+    opacity: 0.32;
+  }
+}
+
+.trainings-hero-grid {
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(181 205 186 / 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(181 205 186 / 0.18) 1px, transparent 1px);
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 70% at 50% 42%,
+    black 0%,
+    rgb(0 0 0 / 0.82) 45%,
+    transparent 82%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 70% at 50% 42%,
+    black 0%,
+    rgb(0 0 0 / 0.82) 45%,
+    transparent 82%
+  );
+  animation: trainings-hero-grid-drift 10s linear infinite alternate;
+  will-change: transform, background-position, opacity;
+}
+
+@media (min-width: 48rem) {
+  .trainings-hero-grid {
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trainings-hero-grid {
+    animation: none;
+    opacity: 0.4;
+    transform: none;
+  }
+}
+
+/* Rationale: FE26 color system layered over the Kickops Hero atmosphere. */
+@keyframes sebrae-hero-grid-drift {
+  from {
+    background-position: 0 0;
+    transform: scale(1.1) translate3d(-1%, -1%, 0);
+  }
+  to {
+    background-position: 96px 96px;
+    transform: scale(1.1) translate3d(1%, 1%, 0);
+  }
+}
+
+@keyframes sebrae-offer-orbit {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1rem, 1rem, 0);
+  }
+}
+
+.sebrae-hero-atmosphere {
+  background:
+    radial-gradient(circle at 76% 28%, rgb(90 20 200 / 0.78), transparent 38%),
+    radial-gradient(circle at 28% 72%, rgb(255 44 99 / 0.2), transparent 28%),
+    #121212;
+}
+
+.sebrae-hero-grid {
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(215 250 0 / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(215 250 0 / 0.15) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 76% 72% at 66% 38%,
+    black 0%,
+    rgb(0 0 0 / 0.78) 48%,
+    transparent 84%
+  );
+  mask-image: radial-gradient(
+    ellipse 76% 72% at 66% 38%,
+    black 0%,
+    rgb(0 0 0 / 0.78) 48%,
+    transparent 84%
+  );
+  animation: sebrae-hero-grid-drift 12s linear infinite alternate;
+  will-change: transform, background-position;
+}
+
+.sebrae-offer-orbit {
+  animation: sebrae-offer-orbit 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sebrae-hero-grid,
+  .sebrae-offer-orbit {
+    animation: none;
+  }
+}
+
 /* Rationale: globo corporativo — lifecycle sequencial por ponto; scale no <g> interno (translate no pai). */
 @keyframes target-globe-dot-lifecycle {
   0% {

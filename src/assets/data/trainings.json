@@ -1,0 +1,341 @@
+{
+  "catalog": {
+    "eyebrow": "KICKOPS ACADEMY / TREINAMENTOS",
+    "heroTitlePrimary": "Kickops",
+    "heroTitleSecondary": "Academy",
+    "title": "Conhecimento para quem constrói o próximo agora.",
+    "description": "Treinamentos intensivos para transformar inteligência artificial, produto e novas formas de trabalho em repertório aplicável.",
+    "sectionTitle": "Escolha por onde começar",
+    "sectionDescription": "Conteúdo atual, conversas sem respostas prontas e ferramentas que continuam úteis depois do encontro.",
+    "whatsappNumber": "5511987717572",
+    "contactMessage": "Olá! Vim pelo catálogo da Kickops Academy e gostaria de conhecer melhor os treinamentos."
+  },
+  "trainings": [
+    {
+      "number": "01",
+      "slug": "introspeccao-inteligencia-artificial",
+      "title": "Introspecção: Inteligência Artificial",
+      "shortDescription": "Uma conversa essencial para lideranças que precisam entender a IA antes de decidir com ela.",
+      "description": "Um encontro para tirar a inteligência artificial do campo da abstração. Construímos uma visão comum sobre o que mudou, o que ainda é ruído e onde estão as oportunidades reais para pessoas, produtos e negócios.",
+      "category": "Fundamentos de IA",
+      "level": "Todos os níveis",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#b5cdba",
+      "visual": "brain",
+      "featured": true,
+      "audience": "Lideranças e equipes que querem desenvolver repertório para tomar decisões mais conscientes sobre IA.",
+      "outcomes": [
+        {
+          "title": "Separar sinal de ruído",
+          "description": "Compreenda conceitos essenciais sem depender de jargão ou hype."
+        },
+        {
+          "title": "Enxergar possibilidades",
+          "description": "Reconheça aplicações relevantes para o contexto da sua organização."
+        },
+        {
+          "title": "Começar com intenção",
+          "description": "Saia com perguntas melhores e próximos passos mais claros."
+        }
+      ],
+      "program": [
+        {
+          "title": "De onde viemos",
+          "description": "Os movimentos que trouxeram a IA até o momento atual."
+        },
+        {
+          "title": "O ponto de inflexão",
+          "description": "Por que a IA generativa muda a relação entre pessoas e tecnologia."
+        },
+        {
+          "title": "O agora",
+          "description": "Capacidades, limites e impactos já presentes no trabalho."
+        },
+        {
+          "title": "Horizontes possíveis",
+          "description": "Cenários e decisões para transformar conhecimento em ação."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Leve esta introspecção para o seu time.",
+        "description": "A experiência pode ser adaptada ao contexto, aos desafios e ao repertório da sua organização.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Introspecção: Inteligência Artificial."
+      }
+    },
+    {
+      "number": "02",
+      "slug": "trabalho-remoto-alta-performance",
+      "title": "Trabalho remoto de alta performance",
+      "shortDescription": "Práticas para criar autonomia, clareza e ritmo sem transformar a agenda em uma coleção de reuniões.",
+      "description": "Trabalho remoto de alta performance não é reproduzir o escritório em uma tela. É desenhar acordos, rituais e sistemas de comunicação que favoreçam foco, contexto e responsabilidade compartilhada.",
+      "category": "Novas formas de trabalho",
+      "level": "Times e lideranças",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#ffe27a",
+      "visual": "remote",
+      "featured": false,
+      "audience": "Times distribuídos, lideranças e organizações que querem trabalhar com mais fluidez, confiança e previsibilidade.",
+      "outcomes": [
+        {
+          "title": "Mais clareza",
+          "description": "Defina acordos que eliminam dúvidas sobre comunicação e decisão."
+        },
+        {
+          "title": "Menos reuniões",
+          "description": "Escolha o que deve ser síncrono e o que funciona melhor de forma assíncrona."
+        },
+        {
+          "title": "Autonomia real",
+          "description": "Crie contexto para que o time avance sem depender de vigilância."
+        }
+      ],
+      "program": [
+        {
+          "title": "Remoto por design",
+          "description": "Os princípios de um sistema de trabalho que não depende de presença."
+        },
+        {
+          "title": "Comunicação que escala",
+          "description": "Acordos, documentação e canais com propósito claro."
+        },
+        {
+          "title": "Rituais de alta performance",
+          "description": "Cadências que conectam estratégia, execução e aprendizagem."
+        },
+        {
+          "title": "Confiança e autonomia",
+          "description": "Como liderar por contexto, resultado e responsabilidade."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Redesenhe a forma como seu time trabalha.",
+        "description": "Adaptamos o treinamento à realidade, aos rituais e aos desafios da sua equipe.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Trabalho remoto de alta performance."
+      }
+    },
+    {
+      "number": "03",
+      "slug": "gestao-na-era-da-ia",
+      "title": "Gestão na era da IA",
+      "subtitle": "O Método Kickops para desenvolvimento de produtos",
+      "shortDescription": "O Método Kickops para desenvolver produtos com estratégia, velocidade e inteligência amplificada.",
+      "description": "Um treinamento para líderes de produto e tecnologia que precisam atualizar seu sistema de gestão. Conectamos estratégia, descoberta, entrega e agentes de IA em um método prático para construir produtos melhores.",
+      "category": "Gestão de produto",
+      "level": "Intermediário",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#c9b5e4",
+      "visual": "management",
+      "featured": false,
+      "audience": "Lideranças de produto, design, tecnologia e negócio responsáveis por transformar estratégia em execução.",
+      "outcomes": [
+        {
+          "title": "Decidir com contexto",
+          "description": "Conecte sinais de mercado, estratégia e capacidade de execução."
+        },
+        {
+          "title": "Acelerar sem perder qualidade",
+          "description": "Use IA para reduzir ciclos, não para ampliar retrabalho."
+        },
+        {
+          "title": "Evoluir o sistema",
+          "description": "Redesenhe papéis, ritos e artefatos para a nova dinâmica de produto."
+        }
+      ],
+      "program": [
+        {
+          "title": "A nova gestão de produto",
+          "description": "O que muda quando a capacidade de produzir deixa de ser o maior gargalo."
+        },
+        {
+          "title": "O Método Kickops",
+          "description": "Princípios para conectar problema, decisão e construção."
+        },
+        {
+          "title": "IA no fluxo de produto",
+          "description": "Agentes e práticas aplicados da descoberta à entrega."
+        },
+        {
+          "title": "Modelo operacional",
+          "description": "Como transformar aprendizados em uma nova cadência de gestão."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Prepare sua gestão para um novo ritmo de produto.",
+        "description": "Construímos uma experiência conectada ao modelo operacional e aos desafios da sua organização.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Gestão na era da IA."
+      }
+    },
+    {
+      "number": "04",
+      "slug": "arquitetura-desenvolvimento-era-da-ia",
+      "title": "Arquitetura para desenvolvimento na era da IA",
+      "shortDescription": "Estruture código, contexto e decisões para times que desenvolvem com agentes de IA.",
+      "description": "Agentes de código multiplicam a capacidade de entrega — e também a de criar complexidade. Este treinamento mostra como arquitetura, contexto e guardrails tornam a colaboração entre pessoas e agentes mais segura e sustentável.",
+      "category": "Engenharia de software",
+      "level": "Intermediário e avançado",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#72c8d2",
+      "visual": "architecture",
+      "featured": false,
+      "audience": "Desenvolvedores, tech leads e arquitetos que já usam ou estão introduzindo agentes de código no fluxo de engenharia.",
+      "outcomes": [
+        {
+          "title": "Contexto navegável",
+          "description": "Organize o sistema para pessoas e agentes encontrarem o que importa."
+        },
+        {
+          "title": "Limites mais claros",
+          "description": "Desenhe módulos que reduzam efeitos colaterais e acoplamento."
+        },
+        {
+          "title": "Velocidade sustentável",
+          "description": "Crie guardrails que preservam qualidade sem bloquear experimentação."
+        }
+      ],
+      "program": [
+        {
+          "title": "Software legível por agentes",
+          "description": "O que muda na forma de estruturar e documentar sistemas."
+        },
+        {
+          "title": "Módulos profundos",
+          "description": "Interfaces simples, responsabilidades fortes e contexto local."
+        },
+        {
+          "title": "Guardrails de engenharia",
+          "description": "Testes, boundaries e feedback rápido para desenvolvimento assistido."
+        },
+        {
+          "title": "Fluxo humano + agente",
+          "description": "Como dividir trabalho, revisar decisões e manter domínio técnico."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Construa uma base pronta para agentes.",
+        "description": "Aprofundamos os exemplos e exercícios no stack e na realidade do seu time.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Arquitetura para desenvolvimento na era da IA."
+      }
+    },
+    {
+      "number": "05",
+      "slug": "manual-vira-especialista-rags",
+      "title": "Seu manual vira especialista",
+      "subtitle": "Criando RAGs incríveis",
+      "shortDescription": "Transforme conhecimento disperso em assistentes que respondem com contexto, precisão e confiança.",
+      "description": "Do documento esquecido ao conhecimento disponível na hora certa. Uma imersão prática em RAG para criar experiências de IA que consultam fontes próprias, recuperam contexto relevante e entregam respostas verificáveis.",
+      "category": "IA aplicada",
+      "level": "Intermediário",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#ed8d82",
+      "visual": "rag",
+      "featured": false,
+      "audience": "Times de produto, tecnologia, operações e conhecimento que querem tornar bases internas realmente úteis com IA.",
+      "outcomes": [
+        {
+          "title": "Entender o RAG",
+          "description": "Domine o fluxo de ingestão, recuperação, geração e referência."
+        },
+        {
+          "title": "Preparar conhecimento",
+          "description": "Estruture conteúdo para aumentar relevância e reduzir respostas frágeis."
+        },
+        {
+          "title": "Avaliar qualidade",
+          "description": "Defina critérios e testes para evoluir o sistema com segurança."
+        }
+      ],
+      "program": [
+        {
+          "title": "RAG sem mistério",
+          "description": "Componentes, decisões e casos em que a técnica faz sentido."
+        },
+        {
+          "title": "Do documento ao contexto",
+          "description": "Preparação, divisão, metadados e recuperação de conteúdo."
+        },
+        {
+          "title": "Resposta com confiança",
+          "description": "Prompts, referências, limites e experiência de uso."
+        },
+        {
+          "title": "Avaliação e evolução",
+          "description": "Como medir relevância e aprender com o uso real."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Dê voz ao conhecimento da sua organização.",
+        "description": "Podemos trabalhar com exemplos próximos às bases e aos casos de uso do seu time.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Seu manual vira especialista: criando RAGs incríveis."
+      }
+    },
+    {
+      "number": "06",
+      "slug": "design-produto-agentes-codigo",
+      "title": "Design de produto com agentes de código",
+      "shortDescription": "Do insight ao protótipo funcional: uma nova forma de explorar, testar e comunicar decisões de produto.",
+      "description": "Agentes de código permitem que designers atravessem a distância entre intenção e experiência real. O treinamento apresenta um fluxo prático para investigar ideias, construir protótipos e aprender com software funcionando.",
+      "category": "Design de produto",
+      "level": "Todos os níveis",
+      "format": "Presencial ou online",
+      "duration": "Sob medida",
+      "accent": "#b5cdba",
+      "visual": "design",
+      "featured": false,
+      "audience": "Product designers, UX designers e profissionais de produto que querem incorporar agentes de código à prática de descoberta e design.",
+      "outcomes": [
+        {
+          "title": "Prototipar com código",
+          "description": "Transforme hipóteses em experiências navegáveis com mais rapidez."
+        },
+        {
+          "title": "Orientar agentes",
+          "description": "Forneça contexto, restrições e referências que melhoram o resultado."
+        },
+        {
+          "title": "Aprender fazendo",
+          "description": "Use o protótipo como instrumento de decisão, não como entrega final."
+        }
+      ],
+      "program": [
+        {
+          "title": "O novo material do design",
+          "description": "Por que software funcionando muda a qualidade da exploração."
+        },
+        {
+          "title": "Contexto e direção",
+          "description": "Como traduzir intenção, sistema visual e restrições para o agente."
+        },
+        {
+          "title": "Prototipação em ciclos",
+          "description": "Construir, observar, ajustar e descartar com velocidade."
+        },
+        {
+          "title": "Do protótipo à decisão",
+          "description": "Como comunicar aprendizados sem confundir exploração com produção."
+        }
+      ],
+      "cta": {
+        "eyebrow": "VAMOS CONVERSAR",
+        "title": "Amplie o repertório de construção do seu time de design.",
+        "description": "Desenhamos exercícios conectados aos desafios, ferramentas e sistema visual da sua equipe.",
+        "label": "Quero saber mais",
+        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Design de produto com agentes de código."
+      }
+    }
+  ]
+}
