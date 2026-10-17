@@ -87,23 +87,44 @@ async function createSessionToken(secret: string): Promise<string> {
   ).join("");
 }
 
-function restrictedResponse(): NextResponse {
-  return new NextResponse("Acesso restrito.", {
-    status: 401,
-    headers: {
-      "Cache-Control": "private, no-store",
-      "WWW-Authenticate": `Basic realm="${PRIVATE_ACCESS_REALM}", charset="UTF-8"`,
-    },
-  });
+function isSebraePath(pathname: string): boolean {
+  return pathname === "/sebrae" || pathname.startsWith("/sebrae/");
 }
 
-function unavailableResponse(): NextResponse {
-  return new NextResponse("Acesso temporariamente indisponível.", {
-    status: 503,
-    headers: {
-      "Cache-Control": "private, no-store",
-    },
-  });
+function withSebraeNoIndex(
+  response: NextResponse,
+  request: NextRequest,
+): NextResponse {
+  if (isSebraePath(request.nextUrl.pathname)) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+
+  return response;
+}
+
+function restrictedResponse(request: NextRequest): NextResponse {
+  return withSebraeNoIndex(
+    new NextResponse("Acesso restrito.", {
+      status: 401,
+      headers: {
+        "Cache-Control": "private, no-store",
+        "WWW-Authenticate": `Basic realm="${PRIVATE_ACCESS_REALM}", charset="UTF-8"`,
+      },
+    }),
+    request,
+  );
+}
+
+function unavailableResponse(request: NextRequest): NextResponse {
+  return withSebraeNoIndex(
+    new NextResponse("Acesso temporariamente indisponível.", {
+      status: 503,
+      headers: {
+        "Cache-Control": "private, no-store",
+      },
+    }),
+    request,
+  );
 }
 
 export async function authorizePrivateAccess(
@@ -112,7 +133,7 @@ export async function authorizePrivateAccess(
   const config = getPrivateAccessConfig();
 
   if (!config) {
-    return unavailableResponse();
+    return unavailableResponse(request);
   }
 
   const sessionToken = await createSessionToken(config.secret);
@@ -121,7 +142,7 @@ export async function authorizePrivateAccess(
   if (cookieToken && constantTimeEqual(cookieToken, sessionToken)) {
     const response = NextResponse.next();
     response.headers.set("Cache-Control", "private, no-store");
-    return response;
+    return withSebraeNoIndex(response, request);
   }
 
   const credentials = parseBasicCredentials(
@@ -133,7 +154,7 @@ export async function authorizePrivateAccess(
     constantTimeEqual(credentials.password, config.password);
 
   if (!credentialsAreValid) {
-    return restrictedResponse();
+    return restrictedResponse(request);
   }
 
   const response = NextResponse.next();
@@ -148,5 +169,5 @@ export async function authorizePrivateAccess(
     path: "/",
   });
 
-  return response;
+  return withSebraeNoIndex(response, request);
 }
