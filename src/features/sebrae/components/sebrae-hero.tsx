@@ -1,4 +1,5 @@
 import { HeroBaffleText } from "@features/hero/components/hero-baffle-text";
+import { CalendarDays } from "lucide-react";
 import type { SebraeTrainingData } from "../models/sebrae-training";
 import { SebraeCta } from "./sebrae-cta";
 import { SebraeHeroStage } from "./sebrae-hero-stage";
@@ -35,7 +36,11 @@ export function SebraeHero({ data }: { data: SebraeTrainingData }) {
           <p className="mt-4 max-w-xl text-[13px] leading-relaxed text-white/80 md:text-sm lg:text-base">
             {data.hero.description}
           </p>
-          <div className="mt-5 md:mt-6">
+          <p className="mt-5 flex items-center gap-2 text-xs text-white/70 md:text-sm">
+            <CalendarDays aria-hidden className="size-4 shrink-0 text-white/50" />
+            {data.schedule.summary}
+          </p>
+          <div className="mt-4">
             <SebraeCta offer={data.offer} placement="hero" />
           </div>
         </div>

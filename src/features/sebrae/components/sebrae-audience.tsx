@@ -20,10 +20,11 @@ export function SebraeAudience({
       <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
         <div>
           <ul className="grid gap-3 sm:grid-cols-2">
-            {audience.items.map((item) => (
+            {audience.items.map((item, index) => (
               <li
                 key={item}
-                className="flex gap-4 border border-white/20 bg-white/5 p-5 md:p-6"
+                data-sebrae-reveal={(index % 2) * 80}
+                className="sebrae-lift flex gap-4 border border-white/20 bg-white/5 p-5 md:p-6"
               >
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-fe26-lime text-fe26-purple">
                   <Check aria-hidden className="size-4" />

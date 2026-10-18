@@ -18,7 +18,7 @@ export function SebraeHeader({ data }: { data: SebraeTrainingData }) {
           </span>
         </Link>
         <nav
-          aria-label="Navegação da imersão"
+          aria-label="Navegação do treinamento"
           className="hidden items-center gap-5 text-xs xl:flex"
         >
           {data.navigation.map((item) => (

@@ -1,99 +1,130 @@
 {
   "seo": {
     "title": "Como empreender na era da IA | Kickops Academy — Especial FE26",
-    "description": "Uma imersão prática de 5 horas com Guilherme Rey para aprender a usar a inteligência artificial de maneira estratégica no seu negócio. Especial Feira do Empreendedor."
+    "description": "Em 5 horas de conteúdo, construa a primeira versão de um plano de 30 dias para melhorar seu negócio com IA. Treinamento online e ao vivo com Guilherme Rey em 12/11/2026, das 10h às 16h."
   },
   "name": "Como empreender na era da IA",
   "badge": "Especial FE26",
   "navigation": [
-    { "label": "O treinamento", "href": "#principios" },
+    { "label": "O treinamento", "href": "#resultados" },
     { "label": "Programa", "href": "#programa" },
     { "label": "Para quem é", "href": "#publico" },
-    { "label": "Seu mentor", "href": "#mentor" },
+    { "label": "Seu professor", "href": "#mentor" },
     { "label": "FAQ", "href": "#faq" }
   ],
   "hero": {
-    "eyebrow": "Kickops Academy × Feira do Empreendedor 2026",
+    "eyebrow": "Kickops Academy · Feira do Empreendedor SEBRAE 2026",
     "titleLead": "Como empreender",
     "titleDisplay": "na era da IA",
-    "subtitle": "Faça um plano de ação estratégico utilizando a IA do jeito certo.",
-    "description": "A Kickops Academy traz uma oportunidade especial para nossos visitantes da Feira do Empreendedor: Uma imersão prática de 5 horas, para aprender como usar a inteligência artificial de maneira estratégica no seu negócio.",
+    "subtitle": "Em 5 horas, descubra onde a IA pode gerar valor para o seu negócio e construa um plano prático de 30 dias para colocar as ideias em ação.",
+    "description": "Um treinamento online e ao vivo para empreendedores que querem analisar melhor seu mercado, ouvir seus clientes, eliminar desperdícios e tomar decisões mais claras — usando a IA como aliada, não como piloto automático.",
     "highlights": [
-      "5 horas ao vivo",
-      "Online",
-      "Gravação disponível por 1 ano",
+      "5 horas de conteúdo",
+      "Online e ao vivo",
+      "Gravação por 1 ano",
       "Sem pré-requisitos"
     ]
   },
+  "schedule": {
+    "summary": "12/11/2026 · Das 10h às 16h",
+    "details": "O treinamento será realizado na plataforma Kickops Academy. Você receberá o acesso perto da data. A programação inclui intervalos. Fuso horário a confirmar.",
+    "supportLabel": "Falar com a Kickops",
+    "supportUrl": "https://wa.me/5511987717572"
+  },
+  "results": {
+    "eyebrow": "O que você leva",
+    "title": "Não é para aprender novos prompts. É para entender como decidir.",
+    "description": "Ao longo do treinamento, você vai organizar as informações essenciais da sua empresa, selecionar uma oportunidade a testar com clientes, revisar um processo que consome recursos e montar seu plano de 30 dias.",
+    "items": [
+      "Contexto do negócio, em uma página.",
+      "Oportunidade priorizada e teste com cliente.",
+      "Processo mapeado e simplificado.",
+      "Plano de ação de 30 dias."
+    ],
+    "note": "Você constrói versões iniciais e hipóteses de trabalho. A validação acontece depois, com clientes e execução — uma resposta da IA não é evidência de mercado.",
+    "ctaLabel": "GARANTIR MEU LUGAR"
+  },
   "principles": {
-    "eyebrow": "Princípios Kickops",
-    "title": "Pensar é a primeira tecnologia",
+    "eyebrow": "Nosso jeito de pensar",
+    "title": "Pensar é a primeira tecnologia.",
     "items": [
       {
-        "title": "Domínio sobre o negócio",
-        "description": "Todo pensamento estratégico é seu, não artificial. É o primeiro passo para obter melhores resultados a partir do uso da IA."
+        "title": "O empreendedor no comando",
+        "description": "Como dizia um manual da IBM de 1979, os computadores não podem ser responsabilizados, por isso não podem tomar decisões gerenciais."
       },
       {
-        "title": "Evitar desperdício digital",
-        "description": "Automatizar desperdício continua sendo desperdício. Por isso, saber identificá-los é primordial para o seu negócio."
+        "title": "Menos desperdício, mais valor",
+        "description": "Automatizar desperdício continua sendo desperdício. Antes de adicionar ferramentas, precisamos enxergar o que pode ser simplificado, eliminado ou melhorado."
       },
       {
-        "title": "O valor do Não",
-        "description": "Decisões humanas continuam sendo parte essencial — inclusive saber dizer não para o que for necessário."
+        "title": "O valor do não",
+        "description": "Uma boa estratégia também é feita de escolhas. Saber o que não construir, não automatizar e não perseguir é parte de empreender melhor."
       }
     ]
   },
   "program": {
     "eyebrow": "5 horas. 4 etapas.",
-    "title": "Uma jornada que começa no contexto e termina na execução.",
+    "title": "Do entendimento do negócio ao plano de ação.",
+    "detailsLabel": "O que vamos trabalhar",
+    "resultLabel": "Você constrói",
     "items": [
       {
-        "title": "IAE: Inteligência Artificial estratégica",
-        "objective": "Construir contexto de alta qualidade.",
+        "title": "Entenda seu negócio",
+        "summary": "Contexto, IA e julgamento empreendedor.",
+        "objective": "Descobrir como transformar um assistente genérico em um parceiro de análise com contexto confiável, mantendo decisões sob controle humano.",
         "topics": [
-          "Inteligência artificial aplicada à estratégia do negócio",
-          "Limites, riscos e oportunidades da IA",
-          "Por que contexto vale mais que prompt",
-          "Como organizar informações do negócio",
-          "Como trabalhar sem depender de prompts mágicos",
-          "Construção do Dossiê de Contexto"
+          "O que mudou no empreendedorismo com IA — e o que continua sendo responsabilidade humana.",
+          "O que a IA faz bem, onde erra e como identificar respostas plausíveis sem evidência.",
+          "Seu negócio em uma página: cliente, oferta, canal, modelo de receita, principais custos e restrições.",
+          "Contexto, fontes, hipóteses e critérios: como trabalhar além do prompt isolado.",
+          "Escolha de uma pergunta de negócio que vale a pena investigar."
         ],
-        "result": "Contexto Mestre da Empresa"
+        "exercise": "Criar uma ficha de contexto enxuta e comparar uma análise genérica com uma análise contextualizada, verificando informações.",
+        "result": "Contexto essencial e uma pergunta estratégica."
       },
       {
-        "title": "Oportunidades",
-        "objective": "Transformar IA em parceira de análise.",
+        "title": "Encontre oportunidades",
+        "summary": "Cliente, valor, mercado e hipóteses.",
+        "objective": "Identificar uma oportunidade que faça sentido comercialmente, sem confundir ideias geradas por IA com demanda validada.",
         "topics": [
-          "Clientes, concorrência e posicionamento",
-          "Revisão da proposta de valor",
-          "Riscos, hipóteses e oportunidades",
-          "SWOT, Canvas e princípios de Lean Startup como apoio à decisão"
+          "O problema que o cliente realmente tenta resolver.",
+          "Como observar demandas, objeções, concorrentes e alternativas existentes.",
+          "IA como ferramenta de pesquisa e formulação de hipóteses — não como substituta de conversas com clientes.",
+          "Revisão da proposta de valor, oferta e canais de aquisição.",
+          "Noções para decidir com números: preço, margem, conversão e custo de aquisição, quando houver dados.",
+          "Como desenhar um teste pequeno que produza evidência real."
         ],
-        "result": "Mapa de Oportunidades"
+        "exercise": "Escolher um perfil de cliente, uma hipótese de oportunidade e elaborar um teste de validação com conversa, proposta ou oferta real. A validação acontece depois, não durante a aula.",
+        "result": "Oportunidade priorizada e teste de validação."
       },
       {
-        "title": "Lacunas",
-        "objective": "Escolher um processo real e melhorá-lo.",
+        "title": "Elimine desperdícios",
+        "summary": "Processo, gargalos e papel da IA.",
+        "objective": "Identificar onde o tempo, dinheiro e atenção do empreendedor se perdem — e decidir se IA é mesmo a solução.",
         "topics": [
-          "Identificar gargalos e mapear etapas",
-          "Organizar responsabilidades e documentar conhecimento",
-          "Identificar pontos de decisão e oportunidades de IA",
-          "Decidir o que não automatizar",
-          "Criar procedimentos operacionais utilizáveis"
+          "Fluxos reais: da demanda do cliente à entrega.",
+          "Onde aparecem retrabalho, esperas, transferência de informação e decisões repetitivas.",
+          "O que documentar, simplificar, delegar, automatizar ou manter humano.",
+          "Como usar IA para desenhar um procedimento e revisar suas exceções.",
+          "Limites práticos: privacidade, confidencialidade, revisão humana e riscos de automação."
         ],
-        "result": "Processo redesenhado e documentado"
+        "exercise": "Mapear um processo frequente da própria empresa, escolher um gargalo e produzir uma versão simplificada do processo. O exercício não inclui a implantação de uma automação.",
+        "result": "Um processo mapeado e uma melhoria viável."
       },
       {
-        "title": "O Plano",
-        "objective": "Transformar aprendizado em execução.",
+        "title": "Crie seu plano de 30 dias",
+        "summary": "Prioridades, indicadores e execução.",
+        "objective": "Sair com poucas ações relevantes, uma hipótese testável e um método simples de acompanhamento.",
         "topics": [
-          "Prioridades e indicadores",
-          "Pequenas automações e testes",
-          "Critérios de sucesso e ciclos de melhoria",
-          "O que começar, parar, continuar e automatizar",
-          "O que manter humano e como saber se funcionou"
+          "Como priorizar por impacto esperado, esforço, evidência disponível e risco.",
+          "O valor de dizer não — inclusive a ferramentas e automações desnecessárias.",
+          "Indicadores mínimos para saber se a mudança funciona.",
+          "Como transformar ideias em experimentos com responsáveis e prazos.",
+          "Plano dos primeiros 7 dias e sequência até o dia 30.",
+          "Como revisar conclusões da IA e decidir os próximos passos."
         ],
-        "result": "Plano de 30 dias"
+        "exercise": "Consolidar a ficha de contexto, a hipótese de oportunidade e a melhoria de processo em um plano de ação de 30 dias, com prioridades, próximos passos, sinais de sucesso e riscos.",
+        "result": "Um plano de ação inicial com próximos passos."
       }
     ]
   },
@@ -106,12 +137,12 @@
         "description": "Interação em tempo real."
       },
       {
-        "title": "5 horas",
-        "description": "Imersão intensiva com intervalos."
+        "title": "5 horas de conteúdo",
+        "description": "Das 10h às 16h, com intervalos na programação."
       },
       {
         "title": "Mão na massa",
-        "description": "Você trabalha no seu próprio negócio."
+        "description": "Você trabalha no seu próprio negócio ou em uma ideia que deseja estruturar."
       },
       {
         "title": "Gravação por 1 ano",
@@ -148,49 +179,78 @@
     ]
   },
   "mentor": {
-    "eyebrow": "Quem vai guiar você",
-    "title": "Conheça seu mentor",
+    "eyebrow": "Experiência de quem constrói",
+    "title": "Seu professor",
     "name": "Guilherme Rey",
-    "role": "CEO da Kickops · Professor · Pesquisador",
+    "role": "Empreendedor, CEO da Kickops, professor e pesquisador em tecnologia.",
     "imageSrc": "/img/people/guilherme-rey.webp",
-    "imageAlt": "Guilherme Rey, mentor da imersão e CEO da Kickops",
+    "imageAlt": "Guilherme Rey, professor do treinamento e CEO da Kickops",
     "paragraphs": [
-      "Guilherme Rey é CEO da Kickops, professor de Ciências da Computação no SENAC e mestrando pelo Instituto de Pesquisas Energéticas e Nucleares (IPEN).",
-      "Sua trajetória passa por empresas como iFood, Grupo Primo, Spiti (XP), B4A Group e Catu. Agora, reúne essa experiência em tecnologia e educação para conduzir esta imersão.",
-      "Guilherme acredita na educação como caminho de transformação e no uso consciente da IA: parar, entender o negócio e usar a tecnologia a nosso favor, sem promessas falsas."
+      "Guilherme Rey é empreendedor, CEO da Kickops e atua na interseção entre tecnologia, negócios e educação. Ao longo da carreira, participou da construção e evolução de operações digitais como Glambox, Men's Market e B4A Group, além da trajetória da Spiti, posteriormente incorporada ao ecossistema do Grupo Primo. Por meio da Kickops, também atua na estratégia de tecnologia e no desenvolvimento de produtos para negócios como Indê e Plataforma Assaad.",
+      "Formado em Ciência da Computação, com MBA pela FIA Business School e mestre pelo IPEN, Guilherme também é professor de Ciência da Computação. Sua experiência reúne a prática de construir negócios e produtos reais com a capacidade de traduzir tecnologia em decisões compreensíveis.",
+      "Neste treinamento, a proposta é aplicar o mesmo princípio que orienta seu trabalho: entender o problema antes de escolher a ferramenta — e usar a IA para ampliar a capacidade humana, não substituir o julgamento."
     ],
     "credentials": [
       { "title": "Empreendedor", "description": "CEO da Kickops" },
-      { "title": "Educador", "description": "Professor no SENAC" },
-      { "title": "Pesquisa", "description": "Mestrando no IPEN" }
+      { "title": "Formação", "description": "MBA FIA Business School" },
+      { "title": "Educador", "description": "Professor de Computação" },
+      { "title": "Pesquisa", "description": "Mestre pelo IPEN" }
     ],
-    "experienceLabel": "Experiência em empresas como",
-    "companies": ["iFood", "Grupo Primo", "Spiti (XP)", "B4A Group", "Catu"]
+    "experienceLabel": "Experiência em negócios e projetos como",
+    "companies": ["Glambox", "B4A Group", "iFood", "XP", "Grupo Primo"]
   },
   "offer": {
     "eyebrow": "Condição especial FE26",
     "title": "Seu próximo passo começa com um plano.",
-    "description": "Uma imersão prática com Guilherme Rey para usar a IA de maneira estratégica no seu negócio.",
+    "description": "Trabalhe no seu negócio com Guilherme Rey e construa a primeira versão de um plano de 30 dias, com hipóteses, prioridades e próximos testes.",
     "summaryLabel": "Sua inscrição inclui",
-    "regularPrice": 397,
     "price": 89.9,
     "currency": "BRL",
     "includes": [
-      "5 horas online e ao vivo",
+      "5 horas de conteúdo online e ao vivo",
       "Gravação disponível por 1 ano",
       "Materiais e templates",
       "Exercícios no próprio negócio",
-      "Plano de ação estratégico"
+      "Primeira versão do plano de ação de 30 dias"
     ],
     "checkoutUrl": "",
-    "ctaLabel": "Garantir meu lugar",
-    "note": "A condição FE26 segue aplicada no link de checkout.",
+    "ctaLabel": "GARANTIR MEU LUGAR",
+    "note": "Oferta especial para visitantes da Feira do Empreendedor.",
+    "paymentNote": "Formas de pagamento e condições de parcelamento serão informadas no checkout, incluindo eventuais juros ou taxas, antes da confirmação da compra.",
     "securityNote": "Pagamento em ambiente seguro."
   },
   "faq": {
     "eyebrow": "Perguntas frequentes",
     "title": "Antes de começar",
     "items": [
+      {
+        "question": "Quando e em qual horário acontece o treinamento?",
+        "answer": "O treinamento acontece em 12 de novembro de 2026, das 10h às 16h, com 5 horas de conteúdo e intervalos na programação. O fuso horário ainda será confirmado."
+      },
+      {
+        "question": "Como recebo acesso à aula?",
+        "answer": "O treinamento será realizado pela plataforma Kickops Academy. Você receberá o acesso perto da data do treinamento."
+      },
+      {
+        "question": "Quais ferramentas preciso usar?",
+        "answer": "Um computador ou dispositivo com acesso à internet e uma conta gratuita em um assistente de IA compatível com os exercícios. As ferramentas específicas ainda serão confirmadas. Recursos pagos não serão requisito."
+      },
+      {
+        "question": "Vou compartilhar dados confidenciais da minha empresa?",
+        "answer": "Não é necessário. Os exercícios podem usar informações públicas, abstraídas ou anonimizadas. Não insira dados pessoais, financeiros sigilosos ou de clientes em serviços públicos de IA sem a devida autorização e proteção."
+      },
+      {
+        "question": "Tenho suporte técnico?",
+        "answer": "Você pode falar com a Kickops pelo link de atendimento nesta página. Os horários e o escopo do suporte durante a aula ainda serão confirmados."
+      },
+      {
+        "question": "Como funciona cancelamento ou reembolso?",
+        "answer": "Compras feitas a distância estão sujeitas ao direito de arrependimento previsto no Código de Defesa do Consumidor. A política e o procedimento de solicitação da Kickops ainda serão publicados. Fale com a equipe para esclarecer as condições antes de comprar."
+      },
+      {
+        "question": "Como serei informado sobre mudanças na programação?",
+        "answer": "O canal de comunicação de mudanças ainda será confirmado pela Kickops. Consulte a programação nesta página e confirme o fluxo de avisos com a equipe antes da compra."
+      },
       {
         "question": "Preciso pagar ChatGPT Plus?",
         "answer": "Não. O treinamento será estruturado para funcionar com versões gratuitas das principais ferramentas. Recursos pagos podem ser demonstrados, mas não serão requisito."
@@ -216,14 +276,20 @@
         "answer": "Não. Prompts são apenas uma parte da interação com IA. O treinamento é voltado a contexto, análise, decisão, processos e execução."
       },
       {
-        "question": "Preciso assistir ao vivo?",
+        "question": "Posso comprar e assistir apenas à gravação?",
         "answer": "Recomendamos participar ao vivo para aproveitar os exercícios, mas a gravação ficará disponível depois."
       }
     ]
   },
-  "final": {
-    "eyebrow": "Não aprenda apenas a usar IA.",
-    "title": "Aprenda a construir uma empresa melhor com ela.",
-    "description": "Edição especial Kickops Academy × Feira do Empreendedor 2026."
+  "academy": {
+    "eyebrow": "Continue descobrindo · Kickops Academy",
+    "title": "Há mais de um caminho para o seu próximo passo.",
+    "description": "Explore nossos treinamentos em inteligência artificial, produto, tecnologia e novas formas de trabalho. Encontre o tema que faz sentido para você ou para o seu time.",
+    "ctaLabel": "EXPLORAR TREINAMENTOS",
+    "topics": [
+      "Inteligência artificial",
+      "Produto e design",
+      "Tecnologia e trabalho"
+    ]
   }
 }

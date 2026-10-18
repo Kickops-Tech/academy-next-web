@@ -10,7 +10,7 @@ export function SebraeCta({
   placement: string;
 }) {
   const className =
-    "inline-flex min-h-12 w-full items-center justify-center gap-3 bg-fe26-pink px-5 py-4 text-center text-sm font-bold text-kickops-gray transition-colors hover:bg-fe26-lime disabled:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current sm:w-auto";
+    "sebrae-button inline-flex min-h-12 w-full items-center justify-center gap-3 bg-fe26-pink px-5 py-4 text-center text-sm font-bold text-kickops-gray transition-colors hover:bg-fe26-lime disabled:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current sm:w-auto";
   const checkoutReady = isCheckoutReady(offer.checkoutUrl);
   if (!checkoutReady && placement === "offer") {
     return (

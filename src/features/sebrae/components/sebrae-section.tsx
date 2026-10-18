@@ -26,6 +26,7 @@ export function SebraeSection({
           {eyebrow}
         </p>
         <h2
+          data-sebrae-reveal
           id={`${id}-title`}
           className={`mt-5 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] leading-[0.98] ${titleClassName}`}
         >

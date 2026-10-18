@@ -313,6 +313,13 @@
   font-size: clamp(1.125rem, 2.7svh, 1.5rem);
 }
 
+@media (max-width: 47.99rem) and (max-height: 46.25rem) {
+  .sebrae-hero-content {
+    padding-top: 1.25rem;
+    padding-bottom: 1rem;
+  }
+}
+
 @media (min-width: 48rem) {
   .sebrae-landing {
     --sebrae-header-height: 5rem;
@@ -361,6 +368,69 @@
 .sebrae-landing :is(a, button, summary):focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
+}
+
+@keyframes sebrae-sticky-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sebrae-button {
+    transition:
+      transform 250ms ease,
+      background-color 250ms ease,
+      box-shadow 250ms ease;
+  }
+
+  .sebrae-button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .sebrae-button svg,
+  .sebrae-landing summary svg {
+    transition: transform 300ms ease;
+  }
+
+  .sebrae-lift {
+    transition:
+      translate 350ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 350ms ease;
+  }
+
+  .sebrae-portrait img {
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sebrae-academy-orbit {
+    animation: sebrae-offer-orbit 14s ease-in-out infinite;
+  }
+
+  .sebrae-sticky-cta {
+    animation: sebrae-sticky-enter 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .sebrae-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.14);
+  }
+  .sebrae-button:hover svg {
+    transform: translate(2px, -2px);
+  }
+  .sebrae-lift:hover {
+    translate: 0 -5px;
+  }
+  .sebrae-portrait:hover img {
+    transform: scale(1.045);
+  }
 }
 
 /* Rationale: globo corporativo — lifecycle sequencial por ponto; scale no <g> interno (translate no pai). */

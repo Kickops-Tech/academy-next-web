@@ -1,12 +1,12 @@
 import { SiteFooter } from "@core/components/site-footer";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { SebraeHero } from "./sebrae-hero";
 import { SebraeHeader } from "./sebrae-header";
 import { SebraeOffer } from "./sebrae-offer";
 import { SebraeProgram } from "./sebrae-program";
+import { SebraeResults } from "./sebrae-results";
 import { SebraeSection } from "./sebrae-section";
-import { SebraeCta } from "./sebrae-cta";
+import { SebraeAcademy } from "./sebrae-academy";
 import { SebraeAudience } from "./sebrae-audience";
 import { SebraeMentor } from "./sebrae-mentor";
 import { SebraeInteractions } from "./sebrae-interactions";
@@ -30,6 +30,7 @@ export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
       <SebraeHeader data={data} />
       <main id="conteudo">
         <SebraeHero data={data} />
+        <SebraeResults results={data.results} />
         <SebraeSection
           id="principios"
           eyebrow={principles.eyebrow}
@@ -40,7 +41,8 @@ export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
             {principles.items.map((item, index) => (
               <article
                 key={item.title}
-                className="relative overflow-hidden bg-kickops-gray p-7"
+                data-sebrae-reveal={index * 80}
+                className="sebrae-lift relative overflow-hidden bg-kickops-gray p-7"
               >
                 <div
                   aria-hidden
@@ -70,6 +72,7 @@ export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
             {format.items.map((item, index) => (
               <article
                 key={item.title}
+                data-sebrae-reveal={(index % 3) * 70}
                 className="border-t border-kickops-gray/20 pt-6"
               >
                 <p className="font-dm-mono text-xs text-fe26-purple">
@@ -103,32 +106,20 @@ export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
               </details>
             ))}
           </div>
+          <a
+            href={data.schedule.supportUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm font-bold text-fe26-purple underline underline-offset-4"
+          >
+            {data.schedule.supportLabel}
+            <ArrowUpRight aria-hidden className="size-4" />
+          </a>
         </SebraeSection>
-        <SebraeSection
-          id="participar"
-          eyebrow={data.final.eyebrow}
-          title={data.final.title}
-          className="bg-kickops-gray text-white"
-        >
-          <SebraeCta offer={data.offer} placement="final" />
-          <p className="mt-6 text-sm text-white/75">{data.final.description}</p>
-        </SebraeSection>
+        <SebraeAcademy academy={data.academy} />
       </main>
       <div className="bg-kickops-lightgray pb-24 md:pb-0">
-        <SiteFooter>
-          <nav
-            aria-label="Conheça a Kickops Academy"
-            className="flex justify-center border-b border-white/15 px-5 pt-8 pb-5"
-          >
-            <Link
-              href="/treinamentos"
-              className="inline-flex min-h-11 items-center gap-3 text-sm font-bold text-white transition-colors hover:text-fe26-lime"
-            >
-              Conheça os treinamentos da Kickops Academy{" "}
-              <ArrowUpRight aria-hidden className="size-4 shrink-0" />
-            </Link>
-          </nav>
-        </SiteFooter>
+        <SiteFooter whatsappUrl={data.schedule.supportUrl} />
       </div>
       <SebraeInteractions offer={data.offer} />
     </div>

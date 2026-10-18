@@ -14,12 +14,15 @@ export function SebraeMentor({
     >
       <div className="mx-auto max-w-[86.5rem]">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:gap-20">
-          <div className="relative mx-auto w-full max-w-lg pr-4 pb-4 lg:mx-0">
+          <div
+            data-sebrae-reveal
+            className="relative mx-auto w-full max-w-lg pr-4 pb-4 lg:mx-0"
+          >
             <div
               aria-hidden
               className="absolute inset-0 top-8 left-8 bg-fe26-purple"
             />
-            <div className="relative aspect-[4/5] overflow-hidden bg-kickops-gray">
+            <div className="sebrae-portrait relative aspect-[4/5] overflow-hidden bg-kickops-gray">
               <Image
                 src={mentor.imageSrc}
                 alt={mentor.imageAlt}
@@ -36,7 +39,7 @@ export function SebraeMentor({
               </p>
             </div>
           </div>
-          <div>
+          <div data-sebrae-reveal="120">
             <p className="font-dm-mono text-[10px] tracking-[0.18em] text-fe26-purple uppercase">
               {mentor.eyebrow}
             </p>
@@ -51,7 +54,7 @@ export function SebraeMentor({
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-kickops-gray/20 pt-6">
+            <dl className="mt-8 grid grid-cols-2 gap-4 border-t border-kickops-gray/20 pt-6 sm:grid-cols-4">
               {mentor.credentials.map((credential) => (
                 <div key={credential.title}>
                   <dt className="text-sm font-bold text-fe26-purple">
