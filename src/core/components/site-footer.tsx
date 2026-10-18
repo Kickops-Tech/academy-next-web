@@ -43,8 +43,14 @@ export function SiteFooter() {
       <div className="relative mx-auto hidden h-[108px] w-full max-w-[1512px] items-center px-[200px] xl:flex">
         <KickopsLogo className="shrink-0" />
         <p className="absolute left-1/2 -translate-x-1/2 text-center text-[14px] tracking-[-0.4px] whitespace-nowrap">
-          <span>2026 Kickops. Todos os direitos reservados. </span>
-          <span>Segurança e privacidade</span>
+          <span>2026 Kickops. Todos os direitos reservados. </span>
+          <Link href="/politica-de-privacidade" className="hover:underline">
+            Política de privacidade
+          </Link>
+          <span> · </span>
+          <Link href="/termos-de-uso" className="hover:underline">
+            Termos de uso
+          </Link>
         </p>
         <FooterSocials className="ml-auto" />
       </div>
@@ -57,7 +63,13 @@ export function SiteFooter() {
           2026 Kickops. Todos os direitos reservados.
         </p>
         <p className="mt-1 text-center text-[12px] tracking-[-0.4px] leading-normal">
-          Segurança e privacidade
+          <Link href="/politica-de-privacidade" className="hover:underline">
+            Política de privacidade
+          </Link>
+          <span> · </span>
+          <Link href="/termos-de-uso" className="hover:underline">
+            Termos de uso
+          </Link>
         </p>
       </div>
     </footer>

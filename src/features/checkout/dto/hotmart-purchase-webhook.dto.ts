@@ -27,3 +27,30 @@ export const hotmartPurchaseWebhookSchema = z.object({
 });
 
 export type HotmartPurchaseWebhook = z.infer<typeof hotmartPurchaseWebhookSchema>;
+
+/** Fields forwarded to the mailer. Not used by the log. */
+export const hotmartPurchaseEmailFieldsSchema = z.object({
+  event: optionalText,
+  data: z
+    .object({
+      buyer: z
+        .object({
+          email: optionalText,
+          name: optionalText,
+        })
+        .optional(),
+      product: z
+        .object({
+          name: optionalText,
+        })
+        .optional(),
+      purchase: z
+        .object({
+          transaction: optionalText,
+        })
+        .optional(),
+    })
+    .optional(),
+});
+
+export type HotmartPurchaseEmailFields = z.infer<typeof hotmartPurchaseEmailFieldsSchema>;

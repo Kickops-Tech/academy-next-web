@@ -9,11 +9,13 @@ Há quatro superfícies:
 - **Sebrae** (`/sebrae`) — landing da oferta da Feira do Empreendedor. Protegida pelo mesmo acesso.
 - **Checkout** (`/checkout/...`) — páginas externas de obrigado da Hotmart. Públicas, para o comprador chegar depois do pagamento.
 
+Há ainda duas páginas legais, públicas: política de privacidade e termos de uso.
+
 Dois endpoints:
 
 - `POST /api/contact` — encaminha o formulário de contato para o mailer.
-- `POST /api/hotmart/webhook` — recebe eventos de compra da Hotmart.
+- `POST /api/hotmart/webhook` — recebe eventos de compra da Hotmart, grava o payload no Supabase da Academy e, nos eventos de compra, enfileira um e-mail ao comprador.
 
-Não há banco neste repositório. Contato sai por HTTP para `MAILER_CONTACT_URL`. O webhook só autentica e escreve identificadores no log do servidor.
+O contato sai por HTTP para `MAILER_CONTACT_URL` e não fica num banco. O webhook grava o JSON da Hotmart em `hotmart_purchase_webhooks`, no Supabase da Academy. A fila que entrega o e-mail é de outro projeto, o do mailer. O log do servidor continua só com identificadores.
 
 Próximo: [Arquitetura](arquitetura.md).

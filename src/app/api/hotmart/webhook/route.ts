@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
 
-import {
-  authorizeHotmartWebhook,
-  logHotmartPurchaseWebhook,
-} from "@features/checkout/server/handle-hotmart-webhook";
+import { authorizeHotmartWebhook } from "@features/checkout/server/handle-hotmart-webhook";
+import { recordHotmartPurchase } from "@features/checkout/server/record-hotmart-purchase";
 
 export async function POST(request: Request) {
   const auth = authorizeHotmartWebhook(request.headers.get("x-hotmart-hottok"));
 
-  if (!auth.ok) {
+  if (auth.ok === false) {
     const message =
       auth.status === 500 ? "Webhook is not configured" : "Unauthorized";
 
@@ -22,7 +20,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  logHotmartPurchaseWebhook(body);
+  const recorded = await recordHotmartPurchase(body);
+
+  if (recorded.httpStatus === 500) {
+    return NextResponse.json({ error: "Failed to record purchase" }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

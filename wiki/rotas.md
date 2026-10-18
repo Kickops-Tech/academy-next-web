@@ -9,6 +9,8 @@
 | `/checkout/approved` | Público, sem indexação | Obrigado de compra aprovada |
 | `/checkout/awaiting-payment` | Público, sem indexação | Obrigado aguardando pagamento |
 | `/checkout/credit-check` | Público, sem indexação | Obrigado aguardando verificação de crédito |
+| `/politica-de-privacidade` | Público | O que o site recebe e onde guarda |
+| `/termos-de-uso` | Público | Uso do site e compra na Hotmart |
 | `POST /api/contact` | Público | Proxy do formulário de contato |
 | `POST /api/hotmart/webhook` | Hottok | Eventos de compra da Hotmart |
 

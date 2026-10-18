@@ -33,8 +33,14 @@ Textos:
 
 Contrato: [eventos de pedido 2.0.0](https://developers.hotmart.com/docs/pt-BR/2.0.0/webhook/purchase-webhook/). POST JSON. A comparação do token usa `timingSafeEqual`.
 
-O log sai como `hotmart.webhook` com `id`, `event`, `productUcode`, `transaction` e `status`. Nome, e-mail e o restante do payload não entram no log. Se o JSON for válido mas não bater no formato esperado, a resposta continua 200 e o log marca só `{ accepted: true }`, para a Hotmart não reenviar em loop.
+O log sai como `hotmart.webhook` com `id`, `event`, `productUcode`, `transaction`, `status` e `emailStatus`. Nome, e-mail e o restante do payload não entram no log. O JSON inteiro fica na tabela `hotmart_purchase_webhooks`, no Supabase da Academy. O SQL para criar a tabela está em `supabase/hotmart-purchase-webhooks.sql`.
 
-Eventos de compra previstos na documentação 2.0.0 incluem `PURCHASE_APPROVED`, `PURCHASE_BILLET_PRINTED`, `PURCHASE_COMPLETE`, `PURCHASE_CANCELED`, `PURCHASE_PROTEST`, `PURCHASE_REFUNDED`, `PURCHASE_CHARGEBACK`, `PURCHASE_EXPIRED` e `PURCHASE_DELAYED`. O endpoint não filtra por nome: qualquer evento autenticado é aceito.
+A chave é o `id` do evento. Se esse id já estiver `queued` ou `skipped`, a resposta é 200 e o mailer não é chamado de novo. Se o enfileiramento falhar, a linha fica `failed` e a resposta é 500, para a Hotmart tentar de novo. Sem `id`, a resposta é 200 e nada é gravado.
+
+`queued` significa que o mailer aceitou a mensagem na fila dele. O consumo que envia pelo Resend não atualiza esta tabela: os projetos são diferentes, e o mailer não tem a service role da Academy.
+
+Eventos que geram e-mail ao comprador: `PURCHASE_APPROVED`, `PURCHASE_COMPLETE`, `PURCHASE_BILLET_PRINTED`, `PURCHASE_DELAYED`, `PURCHASE_EXPIRED`, `PURCHASE_CANCELED`, `PURCHASE_REFUNDED`, `PURCHASE_PROTEST` e `PURCHASE_CHARGEBACK`. Aprovação e conclusão da mesma compra enviam os dois. Qualquer outro evento autenticado é gravado como `skipped`. Sem `data.buyer.email`, também fica `skipped`.
+
+Se a linha permanecer `pending` porque o processo morreu no meio, o retry responde 500 e não enfileira de novo. Reprocessar essa linha é manual.
 
 Próximo: [Acesso e ambiente](acesso-e-ambiente.md).
