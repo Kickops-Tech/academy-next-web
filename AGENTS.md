@@ -367,6 +367,8 @@ Não copie os catálogos completos para este arquivo; abra as skills quando prec
 - Aplique checagens de acesso / permissão na UI e no server quando a feature for protegida.
 - Verifique o escopo afetado antes de commitiar e reporte validações bloqueadas por tooling existente.
 - Não commitiar `.env` nem secrets.
+- Toda mudança que altere comportamento, rota, ambiente ou operação entra na wiki no mesmo trabalho. Atualize a página que descreve aquilo; se não existir, crie e inclua em `wiki/index.md`. A wiki descreve o estado atual, nunca o anterior.
+- Mudança que mereça histórico também ganha nota em `docs/` com data no frontmatter e prefixo `yyyymmdd`, listada no topo de `docs/index.md`.
 
 ### Commit messages
 
@@ -383,7 +385,7 @@ Tipos em uso:
 | `feat` | Nova capacidade visível ou comportamento novo |
 | `fix` | Correção de bug ou regressão |
 | `chore` | Tooling, boundaries, deps, manutenção sem feature/fix |
-| `docs` | Só documentação (`AGENTS`, `CONTEXT`, `README`, ADRs) |
+| `docs` | Só documentação (`AGENTS`, `CONTEXT`, `README`, `wiki/`, `docs/`, ADRs) |
 
 Regras:
 
@@ -499,4 +501,15 @@ Se uma validação relevante não for feita, informe ao finalizar.
 - Nenhum server-only vazou para Client Components?
 - `npm run lint:boundaries` ok se imports de `core`/`shadcn` mudaram?
 - Critério de sucesso verificado ou validação faltante mencionada?
+- Wiki atualizada ou incrementada para o que mudou, com `wiki/index.md` em ordem?
 - Diff cirúrgico (sem drive-by)?
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -1,5 +1,7 @@
 import { NextConfig } from "next";
 
+import { UNINDEXED_PATHS } from "./src/core/constants/unindexed-paths";
+
 // Attention demo (Introspecção IA workshop) lives in its own Vercel project and
 // is served under kickops.academy/attention-demo through this rewrite.
 const ATTENTION_DEMO_ORIGIN = "https://academy-vite-attention-kickops.vercel.app";
@@ -7,6 +9,16 @@ const ATTENTION_DEMO_ORIGIN = "https://academy-vite-attention-kickops.vercel.app
 const STATIC_DEMOS_ORIGIN = "https://academy-static-demos-kickops.vercel.app";
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return UNINDEXED_PATHS.flatMap((path) =>
+      [path, `${path}/:path*`].map((source) => ({
+        source,
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      })),
+    );
+  },
   async rewrites() {
     return {
       beforeFiles: [
