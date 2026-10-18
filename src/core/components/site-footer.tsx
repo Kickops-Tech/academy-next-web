@@ -1,10 +1,21 @@
 import { KickopsLogo } from "@core/components/kickops-logo";
 import { cn } from "@shadcn/lib/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import {
+  faInstagram,
+  faLinkedinIn,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-function FooterSocials({ className }: { className?: string }) {
+function FooterSocials({
+  className,
+  whatsappUrl,
+}: {
+  className?: string;
+  whatsappUrl?: string;
+}) {
   return (
     <div className={cn("flex items-center gap-5", className)}>
       <Link
@@ -25,11 +36,28 @@ function FooterSocials({ className }: { className?: string }) {
       >
         <FontAwesomeIcon icon={faInstagram} className="size-7" />
       </Link>
+      {whatsappUrl ? (
+        <Link
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Falar com a Kickops pelo WhatsApp"
+          className="text-white transition-opacity hover:opacity-80"
+        >
+          <FontAwesomeIcon icon={faWhatsapp} className="size-7" />
+        </Link>
+      ) : null}
     </div>
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({
+  children,
+  whatsappUrl,
+}: {
+  children?: ReactNode;
+  whatsappUrl?: string;
+}) {
   return (
     <footer
       className={cn(
@@ -38,6 +66,7 @@ export function SiteFooter() {
       )}
     >
       <div aria-hidden className="footer-rainbow absolute inset-x-0 top-0 h-1" />
+      {children}
 
       {/* Desktop — Figma-wide row; below xl the absolute-centered copy collides. */}
       <div className="relative mx-auto hidden h-[108px] w-full max-w-[1512px] items-center px-[200px] xl:flex">
@@ -52,13 +81,13 @@ export function SiteFooter() {
             Termos de uso
           </Link>
         </p>
-        <FooterSocials className="ml-auto" />
+        <FooterSocials className="ml-auto" whatsappUrl={whatsappUrl} />
       </div>
 
       {/* Mobile / tablet / small laptop */}
       <div className="relative flex flex-col items-center px-4 pt-8 pb-10 xl:hidden">
         <KickopsLogo />
-        <FooterSocials className="mt-6" />
+        <FooterSocials className="mt-6" whatsappUrl={whatsappUrl} />
         <p className="mt-8 text-center text-[12px] tracking-[-0.4px] leading-normal">
           2026 Kickops. Todos os direitos reservados.
         </p>

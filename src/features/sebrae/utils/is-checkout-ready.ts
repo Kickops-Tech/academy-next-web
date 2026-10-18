@@ -1,3 +1,8 @@
 export function isCheckoutReady(checkoutUrl: string): boolean {
-  return checkoutUrl.startsWith("https://") || checkoutUrl.startsWith("http://");
+  try {
+    const url = new URL(checkoutUrl);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
 }

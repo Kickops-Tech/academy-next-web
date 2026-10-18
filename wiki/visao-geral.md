@@ -6,7 +6,7 @@ Há quatro superfícies:
 
 - **Home** (`/`) — landing da imersão Introspecção: Inteligência Artificial. Seções Hero, Target, Contents, Formats e People, mais o rodapé.
 - **Treinamentos** (`/treinamentos` e `/treinamentos/[slug]`) — catálogo e detalhe de um treinamento. Protegidos por acesso temporário.
-- **Sebrae** (`/sebrae`) — landing da oferta da Feira do Empreendedor. Protegida pelo mesmo acesso.
+- **Sebrae** (`/sebrae`) — landing pública da oferta da Feira do Empreendedor, sem usuário ou senha e sem indexação.
 - **Checkout** (`/checkout/...`) — páginas externas de obrigado da Hotmart. Públicas, para o comprador chegar depois do pagamento.
 
 Há ainda duas páginas legais, públicas: política de privacidade e termos de uso.

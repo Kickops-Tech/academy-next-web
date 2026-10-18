@@ -25,7 +25,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 ### Acesso temporário
 
-As rotas `/treinamentos`, `/treinamentos/*` e `/sebrae` usam autenticação
+As rotas `/treinamentos` e `/treinamentos/*` usam autenticação
 HTTP Basic temporária. Configure no ambiente local e na Vercel:
 
 ```bash
@@ -37,6 +37,8 @@ PRIVATE_ACCESS_SECRET=<segredo-aleatorio>
 Gere o segredo com `openssl rand -hex 32`. Após o primeiro acesso válido, um
 cookie seguro mantém o navegador autorizado por 30 dias. Sem senha ou segredo
 configurados, as rotas protegidas respondem com `503` e não ficam públicas.
+
+A landing `/sebrae` é pública e não exige usuário, senha ou cookie de acesso.
 
 ## Scripts
 
