@@ -3,6 +3,7 @@ import { cn } from "@shadcn/lib/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 function FooterSocials({ className }: { className?: string }) {
   return (
@@ -29,7 +30,7 @@ function FooterSocials({ className }: { className?: string }) {
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ children }: { children?: ReactNode }) {
   return (
     <footer
       className={cn(
@@ -38,6 +39,7 @@ export function SiteFooter() {
       )}
     >
       <div aria-hidden className="footer-rainbow absolute inset-x-0 top-0 h-1" />
+      {children}
 
       {/* Desktop — Figma-wide row; below xl the absolute-centered copy collides. */}
       <div className="relative mx-auto hidden h-[108px] w-full max-w-[1512px] items-center px-[200px] xl:flex">
