@@ -27,6 +27,6 @@ O rodapé reutiliza `SiteFooter`. O link para `/treinamentos` fica na dobra de c
 
 O produto se chama “Como empreender na era da IA”. A entrega central é a primeira versão de um plano de 30 dias. O bloco de resultados precede os princípios; o exemplo demonstrativo, os parágrafos de introdução do programa/detalhes e a preparação opcional foram removidos. A ementa mantém objetivos e exercícios. A última dobra convida a explorar `/treinamentos`, em vez de repetir a oferta principal.
 
-A landing `/sebrae` é pública, sem HTTP Basic ou cookie obrigatório. O catálogo `/treinamentos` e seus detalhes continuam protegidos pelo acesso temporário. O schema é `Course` com `Organization` como provedor, sem prometer rich results de FAQ.
+A landing `/sebrae` é pública, sem HTTP Basic ou cookie obrigatório, e preserva o bloqueio de indexação via metadata, `robots.txt` e `X-Robots-Tag`. O catálogo `/treinamentos` e seus detalhes continuam protegidos pelo acesso temporário. O schema é `Course` com `Organization` como provedor, sem prometer rich results de FAQ.
 
 As metas de Lighthouse do briefing exigem medição no navegador e não são garantidas apenas pelo build.

@@ -76,6 +76,8 @@ Regras de ouro:
 
 ## Documentação
 
+- [wiki/index.md](wiki/index.md) — como o projeto funciona
+- [docs/index.md](docs/index.md) — registro do que foi feito, por data
 - [AGENTS.md](AGENTS.md) — arquitetura, workflow e convenção de commits para agentes
 - [CONTEXT.md](CONTEXT.md) — glossário de domínio
 - `npm run lint:boundaries` — checagem das regras duras de camada

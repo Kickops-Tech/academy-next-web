@@ -1,0 +1,18 @@
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+
+let client: SupabaseClient | null = null;
+
+export function getCheckoutSupabase(): SupabaseClient | null {
+  const url = process.env.SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !serviceRoleKey) {
+    return null;
+  }
+
+  if (!client) {
+    client = createClient(url, serviceRoleKey);
+  }
+
+  return client;
+}
