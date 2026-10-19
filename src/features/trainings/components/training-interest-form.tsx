@@ -1,5 +1,6 @@
 "use client";
 
+import { TrainingInterestConfetti } from "@features/trainings/components/training-interest-confetti";
 import { maskBrazilMobile, formatBrazilMobile } from "@features/trainings/utils/brazil-mobile";
 import { ArrowRight } from "lucide-react";
 import { useState, type FormEvent } from "react";
@@ -18,12 +19,18 @@ export function TrainingInterestForm({ slug, label }: TrainingInterestFormProps)
   const [phone, setPhone] = useState("");
   const [fieldError, setFieldError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
+  const [showConfetti, setShowConfetti] = useState(false);
 
   if (status === "success") {
     return (
-      <p className="mt-8 text-sm leading-relaxed text-white">
-        Recebemos o seu interesse. Vamos falar com você em breve.
-      </p>
+      <>
+        {showConfetti ? (
+          <TrainingInterestConfetti onDone={() => setShowConfetti(false)} />
+        ) : null}
+        <p className="mt-8 text-sm leading-relaxed text-white">
+          Recebemos o seu interesse. Vamos falar com você em breve.
+        </p>
+      </>
     );
   }
 
@@ -59,6 +66,7 @@ export function TrainingInterestForm({ slug, label }: TrainingInterestFormProps)
         return;
       }
 
+      setShowConfetti(true);
       setStatus("success");
     } catch {
       setStatus("error");
