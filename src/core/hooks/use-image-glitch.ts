@@ -128,6 +128,8 @@ export function useImageGlitch(
   const glitchMixRef = useRef(0);
   const trailRef = useRef<PixelateTrail | null>(null);
   const trailDirtyRef = useRef(false);
+  const trailInkRef = useRef(false);
+  const cleanPresentedRef = useRef(false);
   const trailDimensionsRef = useRef({ cols: 0, rows: 0 });
   const enableHoverPixelateRef = useRef(enableHoverPixelate);
   enableHoverPixelateRef.current = enableHoverPixelate;
@@ -182,6 +184,7 @@ export function useImageGlitch(
       rows: number,
       time: number,
       glitchMix: number,
+      pixelateActive: boolean,
     ): DrawGlitchParams => {
       const trail = trailRef.current;
       return {
@@ -194,6 +197,7 @@ export function useImageGlitch(
         imageAspect,
         fit,
         proceduralPixelate,
+        pixelateActive,
         signalPreset:
           shaderVariant === "signal" ? signalPreset : undefined,
       };
@@ -218,6 +222,7 @@ export function useImageGlitch(
         trailRef.current = createPixelateTrail(cols, rows);
         trailDimensionsRef.current = { cols, rows };
         trailDirtyRef.current = true;
+        trailInkRef.current = false;
       }
     };
 
@@ -277,6 +282,8 @@ export function useImageGlitch(
         pixelateStampStrength,
         pixelateStampBlockSpan,
       );
+      trailInkRef.current = true;
+      cleanPresentedRef.current = false;
       trailDirtyRef.current = true;
       uploadTrailIfDirty();
 
@@ -293,6 +300,7 @@ export function useImageGlitch(
             rows,
             performance.now() * 0.001,
             reducedMotionRef.current ? 0 : glitchMixRef.current,
+            true,
           ),
         );
       }
@@ -444,21 +452,43 @@ export function useImageGlitch(
           lastSpawnRef.current = tickResult.lastSpawnAt;
           nextClusterIdRef.current = tickResult.nextId;
           gridRef.current = tickResult.grid;
+        } else {
+          glitchMixRef.current = 0;
+        }
 
+        let trailLive = trailInkRef.current;
+        if (
+          enableHoverPixelateRef.current &&
+          trailRef.current &&
+          trailLive
+        ) {
+          const decayed = decayPixelateTrail(
+            trailRef.current,
+            pixelateMaskDecay,
+          );
+          trailLive = decayed.live;
+          trailInkRef.current = decayed.live;
+          if (decayed.changed) {
+            trailDirtyRef.current = true;
+            uploadTrailIfDirty();
+          }
+        }
+
+        const mix = reducedMotionRef.current ? 0 : glitchMixRef.current;
+        const idle = mix < 0.001 && !trailLive;
+        if (idle && cleanPresentedRef.current) return;
+
+        if (
+          !reducedMotionRef.current &&
+          enableEpisodicGlitchRef.current &&
+          gridRef.current
+        ) {
           uploadCellData(
             activeRenderer,
             gridRef.current.pixels,
             gridRef.current.cols,
             gridRef.current.rows,
           );
-        } else {
-          glitchMixRef.current = 0;
-        }
-
-        if (enableHoverPixelateRef.current && trailRef.current) {
-          decayPixelateTrail(trailRef.current, pixelateMaskDecay);
-          trailDirtyRef.current = true;
-          uploadTrailIfDirty();
         }
 
         drawGlitchFrame(
@@ -468,9 +498,11 @@ export function useImageGlitch(
             gridRef.current.cols,
             gridRef.current.rows,
             now * 0.001,
-            reducedMotionRef.current ? 0 : glitchMixRef.current,
+            mix,
+            trailLive,
           ),
         );
+        cleanPresentedRef.current = idle;
       };
 
       rafRef.current = requestAnimationFrame(animate);
@@ -495,8 +527,10 @@ export function useImageGlitch(
           gridRef.current.rows,
           performance.now() * 0.001,
           0,
+          false,
         ),
       );
+      cleanPresentedRef.current = true;
 
       setIsReady(true);
       startAnimation();
@@ -565,6 +599,7 @@ export function useImageGlitch(
       const grid = gridRef.current;
       if (!grid || !texturesReadyRef.current) return true;
 
+      const mix = reducedMotionRef.current ? 0 : glitchMixRef.current;
       drawGlitchFrame(
         activeRenderer,
         canvas,
@@ -572,9 +607,11 @@ export function useImageGlitch(
           grid.cols,
           grid.rows,
           performance.now() * 0.001,
-          reducedMotionRef.current ? 0 : glitchMixRef.current,
+          mix,
+          trailInkRef.current,
         ),
       );
+      cleanPresentedRef.current = mix < 0.001 && !trailInkRef.current;
       return true;
     };
 

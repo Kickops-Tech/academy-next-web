@@ -38,6 +38,8 @@ uniform float uGlitchMix;
 uniform vec2 uTrailSize;
 
 uniform sampler2D uTrailMask;
+uniform sampler2D uBlockColor;
+uniform int uPixelatePass;
 
 uniform sampler2D uTex0;
 uniform sampler2D uTex1;
@@ -338,11 +340,37 @@ vec3 renderBust(vec2 vUvCoord) {
 }
 
 // Trail: chunky pixel blocks — pull live glitch color when mix is active.
+// One sample stands for the whole block (the block pass draws one fragment
+// per cell). Corners cover a silhouette that misses the cell center.
 vec3 sampleTrailBlockColor(vec2 vUvCoord) {
-  vec2 qVv = quantizeCanvasUv(vUvCoord);
-  vec3 pix = samplePixelatedLayers(qVv);
+  ivec2 block = ivec2(floor(vUvCoord * uTrailSize));
+  block = clamp(block, ivec2(0), ivec2(uTrailSize) - 1);
+  vec2 blockOrigin = vec2(block) / uTrailSize;
+  vec2 blockSize = 1.0 / uTrailSize;
+  vec2 center = blockOrigin + 0.5 * blockSize;
+  float centerA = texture(uTex0, clampUv(fitUV(center))).a;
+  vec2 sampleUv = center;
+  if (centerA < 0.08) {
+    float bestA = 0.0;
+    for (int i = 0; i < 4; i++) {
+      vec2 o =
+        i == 0 ? vec2(0.18, 0.18) :
+        i == 1 ? vec2(0.82, 0.18) :
+        i == 2 ? vec2(0.18, 0.82) :
+                 vec2(0.82, 0.82);
+      vec2 canvasUv = blockOrigin + o * blockSize;
+      float a = texture(uTex0, clampUv(fitUV(canvasUv))).a;
+      if (a > bestA) {
+        bestA = a;
+        sampleUv = canvasUv;
+      }
+    }
+    if (bestA < 0.08) sampleUv = vUvCoord;
+  }
+  vec3 pix = samplePixelatedLayers(sampleUv);
   if (uGlitchMix < 0.001) return pix;
 
+  vec2 qVv = quantizeCanvasUv(sampleUv);
   vec3 glitchBlock = renderBust(qVv);
   float levels = 5.0;
   vec3 posterized = floor(glitchBlock * levels + 0.5) / levels;
@@ -350,6 +378,11 @@ vec3 sampleTrailBlockColor(vec2 vUvCoord) {
 }
 
 void main() {
+  if (uPixelatePass == 1) {
+    fragColor = vec4(sampleTrailBlockColor(vUv), 1.0);
+    return;
+  }
+
   vec2 imageUv = fitUV(vUv);
 
   if (!inImage(imageUv)) {
@@ -362,7 +395,9 @@ void main() {
 
   float mask = hoverPixelateMask(vUv);
   if (mask >= 0.02 && alpha >= 0.08) {
-    vec3 blockCol = sampleTrailBlockColor(vUv);
+    ivec2 block = ivec2(floor(vUv * uTrailSize));
+    block = clamp(block, ivec2(0), ivec2(uTrailSize) - 1);
+    vec3 blockCol = texelFetch(uBlockColor, block, 0).rgb;
     vec2 qUv = clampUv(fitUV(quantizeCanvasUv(vUv)));
     float blockA = uProceduralPixelate == 1
       ? texture(uTex0, qUv).a

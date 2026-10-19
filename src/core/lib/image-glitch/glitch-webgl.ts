@@ -48,7 +48,15 @@ export interface GlitchRenderer {
     chromaAmp: WebGLUniformLocation | null;
     invertChance: WebGLUniformLocation | null;
     stripActiveThreshold: WebGLUniformLocation | null;
+    blockColor: WebGLUniformLocation | null;
+    pixelatePass: WebGLUniformLocation | null;
   };
+  blockTarget: {
+    texture: WebGLTexture;
+    framebuffer: WebGLFramebuffer;
+    cols: number;
+    rows: number;
+  } | null;
   destroy: () => void;
 }
 
@@ -173,6 +181,8 @@ export function createGlitchRenderer(
       program,
       "uStripActiveThreshold",
     ),
+    blockColor: gl.getUniformLocation(program, "uBlockColor"),
+    pixelatePass: gl.getUniformLocation(program, "uPixelatePass"),
   };
 
   gl.useProgram(program);
@@ -181,6 +191,8 @@ export function createGlitchRenderer(
   }
   gl.uniform1i(uniforms.cellData, 4);
   gl.uniform1i(uniforms.trailMask, 5);
+  gl.uniform1i(uniforms.blockColor, 6);
+  gl.uniform1i(uniforms.pixelatePass, 0);
   gl.uniform1f(uniforms.imageAspect, 1);
   gl.uniform1i(uniforms.fitMode, 0);
   gl.uniform1i(uniforms.proceduralPixelate, 0);
@@ -194,12 +206,18 @@ export function createGlitchRenderer(
   }
 
   const destroy = () => {
+    if (blockTarget) {
+      gl.deleteFramebuffer(blockTarget.framebuffer);
+      gl.deleteTexture(blockTarget.texture);
+    }
     gl.deleteProgram(program);
     gl.deleteVertexArray(vao);
     gl.deleteTexture(cellTexture);
     gl.deleteTexture(trailTexture);
     for (const tex of layerTextures) gl.deleteTexture(tex);
   };
+
+  let blockTarget: GlitchRenderer["blockTarget"] = null;
 
   return {
     gl,
@@ -210,6 +228,12 @@ export function createGlitchRenderer(
     layerTextures,
     variant,
     uniforms,
+    get blockTarget() {
+      return blockTarget;
+    },
+    set blockTarget(value) {
+      blockTarget = value;
+    },
     destroy,
   };
 }
@@ -337,6 +361,8 @@ export interface DrawGlitchParams {
   imageAspect: number;
   fit: ImageGlitchFit;
   proceduralPixelate: boolean;
+  /** When true, fill the block-color target before the screen pass. */
+  pixelateActive: boolean;
   /** Signal preset floats; ignored for vaporwave. */
   signalPreset?: GlitchSignalPreset | GlitchSignalPresetId;
 }
@@ -353,26 +379,65 @@ function resolveSignalPreset(
   return preset;
 }
 
-/**
- * Draw one frame of the glitch image.
- */
-export function drawGlitchFrame(
+function ensureBlockTarget(
   renderer: GlitchRenderer,
-  canvas: HTMLCanvasElement,
-  params: DrawGlitchParams,
+  cols: number,
+  rows: number,
 ): void {
-  const { gl, program, vao, cellTexture, layerTextures, uniforms, variant } =
-    renderer;
+  const { gl } = renderer;
+  const existing = renderer.blockTarget;
+  if (existing && existing.cols === cols && existing.rows === rows) return;
 
-  if (gl.isContextLost()) return;
+  if (existing) {
+    gl.deleteFramebuffer(existing.framebuffer);
+    gl.deleteTexture(existing.texture);
+  }
 
-  gl.viewport(0, 0, canvas.width, canvas.height);
-  gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
+  const texture = gl.createTexture();
+  const framebuffer = gl.createFramebuffer();
+  if (!texture || !framebuffer) {
+    throw new Error("Failed to create pixelate block target");
+  }
 
-  gl.useProgram(program);
-  gl.bindVertexArray(vao);
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.texImage2D(
+    gl.TEXTURE_2D,
+    0,
+    gl.RGBA8,
+    cols,
+    rows,
+    0,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    null,
+  );
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
+  gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
+  gl.framebufferTexture2D(
+    gl.FRAMEBUFFER,
+    gl.COLOR_ATTACHMENT0,
+    gl.TEXTURE_2D,
+    texture,
+    0,
+  );
+  const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  if (status !== gl.FRAMEBUFFER_COMPLETE) {
+    gl.deleteFramebuffer(framebuffer);
+    gl.deleteTexture(texture);
+    throw new Error(`Pixelate block target incomplete (${status})`);
+  }
+  gl.bindTexture(gl.TEXTURE_2D, null);
+
+  renderer.blockTarget = { texture, framebuffer, cols, rows };
+}
+
+function bindLayerTextures(renderer: GlitchRenderer): void {
+  const { gl, cellTexture, layerTextures, trailTexture } = renderer;
   gl.activeTexture(gl.TEXTURE0);
   gl.bindTexture(gl.TEXTURE_2D, layerTextures[0]);
   gl.activeTexture(gl.TEXTURE1);
@@ -384,9 +449,25 @@ export function drawGlitchFrame(
   gl.activeTexture(gl.TEXTURE4);
   gl.bindTexture(gl.TEXTURE_2D, cellTexture);
   gl.activeTexture(gl.TEXTURE5);
-  gl.bindTexture(gl.TEXTURE_2D, renderer.trailTexture);
+  gl.bindTexture(gl.TEXTURE_2D, trailTexture);
+}
 
-  gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
+/**
+ * Draw one frame of the glitch image.
+ */
+export function drawGlitchFrame(
+  renderer: GlitchRenderer,
+  canvas: HTMLCanvasElement,
+  params: DrawGlitchParams,
+): void {
+  const { gl, program, vao, uniforms, variant } = renderer;
+
+  if (gl.isContextLost()) return;
+
+  gl.useProgram(program);
+  gl.bindVertexArray(vao);
+  bindLayerTextures(renderer);
+
   gl.uniform2f(uniforms.gridSize, params.cols, params.rows);
   gl.uniform1f(uniforms.imageAspect, params.imageAspect);
   gl.uniform1i(uniforms.fitMode, params.fit === "cover" ? 1 : 0);
@@ -394,6 +475,8 @@ export function drawGlitchFrame(
   gl.uniform1f(uniforms.time, params.time);
   gl.uniform1f(uniforms.glitchMix, params.glitchMix);
   gl.uniform2f(uniforms.trailSize, params.trailCols, params.trailRows);
+  // Aspect stays the screen canvas so block colors match the composite fit.
+  gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
 
   if (variant === "signal") {
     const preset = resolveSignalPreset(params.signalPreset);
@@ -403,6 +486,29 @@ export function drawGlitchFrame(
     gl.uniform1f(uniforms.stripActiveThreshold, preset.stripActiveThreshold);
   }
 
+  const paintBlocks =
+    params.pixelateActive && params.trailCols > 0 && params.trailRows > 0;
+
+  if (paintBlocks) {
+    ensureBlockTarget(renderer, params.trailCols, params.trailRows);
+    const target = renderer.blockTarget;
+    if (target) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer);
+      gl.viewport(0, 0, target.cols, target.rows);
+      gl.activeTexture(gl.TEXTURE6);
+      gl.bindTexture(gl.TEXTURE_2D, null);
+      gl.uniform1i(uniforms.pixelatePass, 1);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.activeTexture(gl.TEXTURE6);
+      gl.bindTexture(gl.TEXTURE_2D, target.texture);
+    }
+  }
+
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.uniform1i(uniforms.pixelatePass, 0);
+  gl.clearColor(0, 0, 0, 0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   gl.bindVertexArray(null);
 }

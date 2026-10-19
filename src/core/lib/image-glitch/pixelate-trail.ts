@@ -72,13 +72,32 @@ export function stampPixelateBlocksAt(
   }
 }
 
+export interface PixelateTrailDecay {
+  /** True when at least one block changed value. */
+  changed: boolean;
+  /** True when any block is still lit after the fade. */
+  live: boolean;
+}
+
 /** Fade lit blocks each frame so marks dissolve gradually. */
-export function decayPixelateTrail(trail: PixelateTrail, amount = 4): void {
+export function decayPixelateTrail(
+  trail: PixelateTrail,
+  amount = 4,
+): PixelateTrailDecay {
   const { pixels } = trail;
+  let changed = false;
+  let live = false;
   for (let i = 0; i < pixels.length; i++) {
-    if (pixels[i] <= amount) pixels[i] = 0;
-    else pixels[i] -= amount;
+    const value = pixels[i];
+    if (value === 0) continue;
+    changed = true;
+    if (value <= amount) pixels[i] = 0;
+    else {
+      pixels[i] = value - amount;
+      live = true;
+    }
   }
+  return { changed, live };
 }
 
 /**
