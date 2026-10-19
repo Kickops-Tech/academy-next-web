@@ -7,8 +7,9 @@
 - Data: 12/11/2026, das 10h às 16h, com 5 horas de conteúdo e intervalos.
 - Plataforma: Kickops Academy, com acesso enviado perto da data.
 - Professor: Guilherme Rey. A biografia abre com a experiência empreendedora e a aplicação no treinamento; a formação acadêmica vem depois.
-- Oferta: R$ 89,90. O CTA diz “GARANTIR MEU LUGAR”.
+- Oferta: R$ 89,90. O CTA diz “GARANTIR MEU LUGAR”. No Golden Ticket, o R$ 89,90 aparece riscado e o preço passa a R$ 76,42 (15%).
 - Checkout: `NEXT_PUBLIC_CHECKOUT_URL` ou `offer.checkoutUrl`. Sem URL válida, os CTAs levam à oferta e o botão de compra fica desabilitado.
+- Golden Ticket: `?from=kickops-golden-ticket` troca os CTAs para `NEXT_PUBLIC_CHECKOUT_URL_GOLDEN_TICKET`. A escolha fica na aba e o `from` sai da URL atual. Sem essa variável, os CTAs permanecem na URL padrão.
 - O rodapé tem WhatsApp com o mesmo destino dos links de atendimento, além das páginas legais.
 - A última dobra leva ao catálogo público `/treinamentos`.
 - Hero mobile (abaixo de 768 px): promessa curta em `hero.mobileSubtitle`, data e CTA, com os quatro destaques na base. A descrição longa aparece a partir de 768 px.

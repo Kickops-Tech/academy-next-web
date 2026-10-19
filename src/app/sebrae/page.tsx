@@ -16,6 +16,8 @@ export const metadata: Metadata = {
 export default function SebraePage() {
   const checkoutUrl =
     process.env.NEXT_PUBLIC_CHECKOUT_URL || SEBRAE_TRAINING.offer.checkoutUrl;
+  const goldenTicketCheckoutUrl =
+    process.env.NEXT_PUBLIC_CHECKOUT_URL_GOLDEN_TICKET ?? "";
   const schema = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -33,7 +35,10 @@ export default function SebraePage() {
           __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
         }}
       />
-      <SebraeLanding checkoutUrl={checkoutUrl} />
+      <SebraeLanding
+        checkoutUrl={checkoutUrl}
+        goldenTicketCheckoutUrl={goldenTicketCheckoutUrl}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useReportWebVitals } from "next/web-vitals";
 import { SebraeCta } from "./sebrae-cta";
 import { useSebraeMotion } from "../hooks/use-sebrae-motion";
@@ -10,6 +10,11 @@ import {
   readCampaign,
   trackCampaignEvent,
 } from "../utils/campaign-analytics";
+import { isCheckoutReady } from "../utils/is-checkout-ready";
+import {
+  goldenTicketPrice,
+  rememberGoldenTicketSource,
+} from "../utils/golden-ticket-checkout";
 
 function reportMetric(metric: { name: string; value: number; id: string }) {
   trackCampaignEvent("web_vital", {
@@ -21,13 +26,38 @@ function reportMetric(metric: { name: string; value: number; id: string }) {
 
 export function SebraeInteractions({
   offer,
+  goldenTicketCheckoutUrl,
 }: {
   offer: SebraeTrainingData["offer"];
+  goldenTicketCheckoutUrl: string;
 }) {
   const [showSticky, setShowSticky] = useState(false);
+  const [checkoutUrl, setCheckoutUrl] = useState(offer.checkoutUrl);
+  const [campaign, setCampaign] = useState<Record<string, string>>({});
+  const checkoutUrlRef = useRef(offer.checkoutUrl);
+  const priceRef = useRef(offer.price);
   const viewed = useRef({ landing: false, offer: false });
   useReportWebVitals(reportMetric);
   useSebraeMotion();
+
+  useLayoutEffect(() => {
+    const goldenTicket = rememberGoldenTicketSource();
+    priceRef.current = goldenTicket
+      ? goldenTicketPrice(offer.price)
+      : offer.price;
+    const useGoldenTicket =
+      goldenTicket && isCheckoutReady(goldenTicketCheckoutUrl);
+    const next = useGoldenTicket ? goldenTicketCheckoutUrl : offer.checkoutUrl;
+    checkoutUrlRef.current = next;
+    setCheckoutUrl(next);
+    const nextCampaign = readCampaign();
+    setCampaign(nextCampaign);
+    document
+      .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
+      .forEach((link) => {
+        link.href = campaignCheckoutUrl(next, nextCampaign);
+      });
+  }, [goldenTicketCheckoutUrl, offer.checkoutUrl]);
 
   useEffect(() => {
     const campaign = readCampaign();
@@ -54,7 +84,7 @@ export function SebraeInteractions({
           if (offerVisible && !viewed.current.offer) {
             trackCampaignEvent("offer_view", {
               currency: offer.currency,
-              value: offer.price,
+              value: priceRef.current,
             });
             viewed.current.offer = true;
           }
@@ -75,18 +105,18 @@ export function SebraeInteractions({
     document
       .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
       .forEach((link) => {
-        link.href = campaignCheckoutUrl(offer.checkoutUrl, campaign);
+        link.href = campaignCheckoutUrl(checkoutUrlRef.current, campaign);
       });
     function onClick(event: MouseEvent) {
       if (!(event.target instanceof Element)) return;
       const link = event.target.closest<HTMLAnchorElement>("a");
       if (!link) return;
       if (link.dataset.checkout) {
-        link.href = campaignCheckoutUrl(offer.checkoutUrl, readCampaign());
+        link.href = campaignCheckoutUrl(checkoutUrlRef.current, readCampaign());
         trackCampaignEvent("checkout_click", {
           placement: link.dataset.checkout,
           currency: offer.currency,
-          value: offer.price,
+          value: priceRef.current,
         });
       }
       if (link.getAttribute("href") === "#programa")
@@ -116,14 +146,22 @@ export function SebraeInteractions({
       document.removeEventListener("click", onClick);
       document.removeEventListener("toggle", onToggle, true);
     };
-  }, [offer.checkoutUrl, offer.price, offer.currency]);
+  }, [offer.price, offer.currency]);
 
   return (
     <div
       hidden={!showSticky}
       className="sebrae-sticky-cta fixed inset-x-0 bottom-0 z-50 border-t border-white/20 bg-kickops-gray px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] text-white md:hidden"
     >
-      <SebraeCta offer={offer} placement="sticky" />
+      <SebraeCta
+        offer={{
+          ...offer,
+          checkoutUrl: isCheckoutReady(checkoutUrl)
+            ? campaignCheckoutUrl(checkoutUrl, campaign)
+            : checkoutUrl,
+        }}
+        placement="sticky"
+      />
     </div>
   );
 }

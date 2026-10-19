@@ -1,13 +1,10 @@
 import { BadgeCheck, CalendarDays, Check, LockKeyhole } from "lucide-react";
 import type { SebraeTrainingData } from "../models/sebrae-training";
 import { SebraeCta } from "./sebrae-cta";
+import { SebraeOfferPrice } from "./sebrae-offer-price";
 
 export function SebraeOffer({ data }: { data: SebraeTrainingData }) {
   const { offer } = data;
-  const money = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: offer.currency,
-  });
   return (
     <section
       id="oferta"
@@ -79,9 +76,7 @@ export function SebraeOffer({ data }: { data: SebraeTrainingData }) {
           <p className="mt-5 font-dm-mono text-[10px] tracking-widest text-fe26-purple uppercase">
             {offer.eyebrow}
           </p>
-          <p className="my-3 font-league-gothic text-7xl leading-none text-fe26-purple">
-            {money.format(offer.price)}
-          </p>
+          <SebraeOfferPrice price={offer.price} currency={offer.currency} />
           <p className="mb-7 text-sm leading-relaxed text-kickops-lightgray">
             {offer.note}
           </p>
