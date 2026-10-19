@@ -17,6 +17,7 @@
     "titleLead": "Como empreender",
     "titleDisplay": "na era da IA",
     "subtitle": "Em 5 horas, descubra onde a IA pode gerar valor para o seu negócio e construa um plano prático de 30 dias para colocar as ideias em ação.",
+    "mobileSubtitle": "Descubra onde usar IA no seu negócio e monte seu primeiro plano de 30 dias.",
     "description": "Um treinamento online e ao vivo para empreendedores que querem analisar melhor seu mercado, ouvir seus clientes, eliminar desperdícios e tomar decisões mais claras — usando a IA como aliada, não como piloto automático.",
     "highlights": [
       "5 horas de conteúdo",
@@ -27,7 +28,7 @@
   },
   "schedule": {
     "summary": "12/11/2026 · Das 10h às 16h",
-    "details": "O treinamento será realizado na plataforma Kickops Academy. Você receberá o acesso perto da data. A programação inclui intervalos. Fuso horário a confirmar.",
+    "details": "O treinamento será realizado na plataforma Kickops Academy. Você receberá o acesso perto da data. A programação inclui intervalos.",
     "supportLabel": "Falar com a Kickops",
     "supportUrl": "https://wa.me/5511987717572"
   },
@@ -186,9 +187,9 @@
     "imageSrc": "/img/people/guilherme-rey.webp",
     "imageAlt": "Guilherme Rey, professor do treinamento e CEO da Kickops",
     "paragraphs": [
-      "Guilherme Rey é empreendedor, CEO da Kickops e atua na interseção entre tecnologia, negócios e educação. Ao longo da carreira, participou da construção e evolução de operações digitais como Glambox, Men's Market e B4A Group, além da trajetória da Spiti, posteriormente incorporada ao ecossistema do Grupo Primo. Por meio da Kickops, também atua na estratégia de tecnologia e no desenvolvimento de produtos para negócios como Indê e Plataforma Assaad.",
-      "Formado em Ciência da Computação, com MBA pela FIA Business School e mestre pelo IPEN, Guilherme também é professor de Ciência da Computação. Sua experiência reúne a prática de construir negócios e produtos reais com a capacidade de traduzir tecnologia em decisões compreensíveis.",
-      "Neste treinamento, a proposta é aplicar o mesmo princípio que orienta seu trabalho: entender o problema antes de escolher a ferramenta — e usar a IA para ampliar a capacidade humana, não substituir o julgamento."
+      "Empreendedor e CEO da Kickops, Guilherme Rey participou da construção e evolução de operações digitais como Glambox, Men's Market e B4A Group, além da trajetória da Spiti, posteriormente incorporada ao ecossistema do Grupo Primo. Por meio da Kickops, atua na estratégia de tecnologia e no desenvolvimento de produtos para negócios como Indê e Plataforma Assaad.",
+      "É essa prática de construir negócios e produtos reais que ele traz para o treinamento: entender o problema antes de escolher a ferramenta e transformar tecnologia em decisões — usando a IA para ampliar a capacidade humana, não substituir o julgamento.",
+      "Formado em Ciência da Computação, com MBA pela FIA Business School e mestre pelo IPEN, Guilherme também é professor de Ciência da Computação."
     ],
     "credentials": [
       { "title": "Empreendedor", "description": "CEO da Kickops" },
@@ -216,7 +217,6 @@
     "checkoutUrl": "",
     "ctaLabel": "GARANTIR MEU LUGAR",
     "note": "Oferta especial para visitantes da Feira do Empreendedor.",
-    "paymentNote": "Formas de pagamento e condições de parcelamento serão informadas no checkout, incluindo eventuais juros ou taxas, antes da confirmação da compra.",
     "securityNote": "Pagamento em ambiente seguro."
   },
   "faq": {
@@ -224,60 +224,28 @@
     "title": "Antes de começar",
     "items": [
       {
-        "question": "Quando e em qual horário acontece o treinamento?",
-        "answer": "O treinamento acontece em 12 de novembro de 2026, das 10h às 16h, com 5 horas de conteúdo e intervalos na programação. O fuso horário ainda será confirmado."
+        "question": "Preciso entender de IA ou pagar por ferramentas?",
+        "answer": "Não. Você não precisa de conhecimento técnico nem de assinaturas como ChatGPT Plus. Os exercícios usam versões gratuitas de assistentes de IA; basta um dispositivo com acesso à internet e uma conta gratuita."
+      },
+      {
+        "question": "Serve para o meu negócio, mesmo se ele ainda for uma ideia?",
+        "answer": "Sim. Você pode trabalhar no seu próprio negócio, seja de produtos ou serviços, ou em uma ideia que deseja estruturar. Os exercícios partem do seu contexto."
+      },
+      {
+        "question": "O que vou conseguir aplicar depois do treinamento?",
+        "answer": "Você constrói a primeira versão de um plano de 30 dias: contexto do negócio, uma oportunidade a testar com clientes e uma melhoria de processo. O foco é decidir e agir, não decorar prompts. São hipóteses e próximos passos para validar na prática depois da aula."
+      },
+      {
+        "question": "E se eu não puder participar ao vivo?",
+        "answer": "Você poderá assistir à gravação, que ficará disponível por 1 ano. Recomendamos participar ao vivo para aproveitar a interação e os exercícios, mas você pode revisar o conteúdo depois, no seu ritmo."
       },
       {
         "question": "Como recebo acesso à aula?",
-        "answer": "O treinamento será realizado pela plataforma Kickops Academy. Você receberá o acesso perto da data do treinamento."
-      },
-      {
-        "question": "Quais ferramentas preciso usar?",
-        "answer": "Um computador ou dispositivo com acesso à internet e uma conta gratuita em um assistente de IA compatível com os exercícios. As ferramentas específicas ainda serão confirmadas. Recursos pagos não serão requisito."
-      },
-      {
-        "question": "Vou compartilhar dados confidenciais da minha empresa?",
-        "answer": "Não é necessário. Os exercícios podem usar informações públicas, abstraídas ou anonimizadas. Não insira dados pessoais, financeiros sigilosos ou de clientes em serviços públicos de IA sem a devida autorização e proteção."
-      },
-      {
-        "question": "Tenho suporte técnico?",
-        "answer": "Você pode falar com a Kickops pelo link de atendimento nesta página. Os horários e o escopo do suporte durante a aula ainda serão confirmados."
+        "answer": "O treinamento acontece na plataforma Kickops Academy, em 12/11/2026, das 10h às 16h, com intervalos. Você receberá o acesso perto da data. Se precisar de ajuda, fale com a Kickops pelo link de atendimento nesta página."
       },
       {
         "question": "Como funciona cancelamento ou reembolso?",
-        "answer": "Compras feitas a distância estão sujeitas ao direito de arrependimento previsto no Código de Defesa do Consumidor. A política e o procedimento de solicitação da Kickops ainda serão publicados. Fale com a equipe para esclarecer as condições antes de comprar."
-      },
-      {
-        "question": "Como serei informado sobre mudanças na programação?",
-        "answer": "O canal de comunicação de mudanças ainda será confirmado pela Kickops. Consulte a programação nesta página e confirme o fluxo de avisos com a equipe antes da compra."
-      },
-      {
-        "question": "Preciso pagar ChatGPT Plus?",
-        "answer": "Não. O treinamento será estruturado para funcionar com versões gratuitas das principais ferramentas. Recursos pagos podem ser demonstrados, mas não serão requisito."
-      },
-      {
-        "question": "Preciso saber tecnologia?",
-        "answer": "Não. O foco é negócio, estratégia, operação e uso prático de IA."
-      },
-      {
-        "question": "E se eu ainda não tiver uma empresa?",
-        "answer": "Você pode trabalhar em cima de uma ideia de negócio ou projeto que deseja estruturar."
-      },
-      {
-        "question": "O treinamento serve para produtos e serviços?",
-        "answer": "Sim. O método trabalha com princípios aplicáveis a diferentes modelos de negócio."
-      },
-      {
-        "question": "Vou receber a gravação?",
-        "answer": "Sim. A gravação ficará disponível por 1 ano."
-      },
-      {
-        "question": "É um curso de prompts?",
-        "answer": "Não. Prompts são apenas uma parte da interação com IA. O treinamento é voltado a contexto, análise, decisão, processos e execução."
-      },
-      {
-        "question": "Posso comprar e assistir apenas à gravação?",
-        "answer": "Recomendamos participar ao vivo para aproveitar os exercícios, mas a gravação ficará disponível depois."
+        "answer": "Compras feitas a distância estão sujeitas ao direito de arrependimento previsto no Código de Defesa do Consumidor. Nessa oferta especial Kickops + Feira do Empreendedor, você poderá pedir cancelamento com reembolso total até um dia antes do evento, caso queira."
       }
     ]
   },

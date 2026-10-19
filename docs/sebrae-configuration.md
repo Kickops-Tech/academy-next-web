@@ -16,8 +16,8 @@ Referência editorial: [ementa, copy e conversão](./kickops-academy-fe26-revisa
 
 ## Pendências externas
 
-- Turma: 12/11/2026, das 10h às 16h, na plataforma Kickops Academy. Acesso enviado perto da data. Mantidas as 5 horas de conteúdo anunciadas, dentro da janela com intervalos. Fuso e canal de aviso de mudanças ainda pendentes. Sincronizar `schedule` e FAQ com checkout, confirmação e e-mails quando configurados.
-- Checkout: falta a URL, além das formas de pagamento, parcelamento/juros, dados da empresa e política/procedimento real de cancelamento e reembolso. A landing não promete modalidades ou condições ainda desconhecidas; mostra o contato de atendimento já usado pelo projeto.
+- Turma: 12/11/2026, das 10h às 16h, na plataforma Kickops Academy. Acesso enviado perto da data. Mantidas as 5 horas de conteúdo anunciadas, dentro da janela com intervalos. Canal de aviso de mudanças ainda pendente. Sincronizar `schedule` e FAQ com checkout, confirmação e e-mails quando configurados.
+- Checkout: falta a URL, além das formas de pagamento, parcelamento/juros, dados da empresa e procedimento de solicitação de cancelamento e reembolso. A oferta Kickops + Feira do Empreendedor permite pedir cancelamento com reembolso total até um dia antes do evento, além do direito de arrependimento previsto no CDC. Sincronizar essa condição com o checkout. O contato de atendimento está disponível na página.
 - Biografia: atualizada para “Seu professor” e “Mestre pelo IPEN”, conforme informado pelo usuário. A faixa de experiência mostra Glambox, B4A Group, iFood, XP e Grupo Primo; Indê e Plataforma Assaad permanecem como clientes da Kickops no texto. A contagem “14+ anos” aguarda confirmação e não foi publicada.
 - Captura de leads/amostra e testes A/B são propostas futuras, dependentes de material, fluxo operacional e política de privacidade. Não foram adicionados formulários sem esses insumos.
 
@@ -27,6 +27,8 @@ O rodapé reutiliza `SiteFooter`. O link para `/treinamentos` fica na dobra de c
 
 O produto se chama “Como empreender na era da IA”. A entrega central é a primeira versão de um plano de 30 dias. O bloco de resultados precede os princípios; o exemplo demonstrativo, os parágrafos de introdução do programa/detalhes e a preparação opcional foram removidos. A ementa mantém objetivos e exercícios. A última dobra convida a explorar `/treinamentos`, em vez de repetir a oferta principal.
 
-A landing `/sebrae` é pública, sem HTTP Basic ou cookie obrigatório, e preserva o bloqueio de indexação via metadata, `robots.txt` e `X-Robots-Tag`. O catálogo `/treinamentos` e seus detalhes continuam protegidos pelo acesso temporário. O schema é `Course` com `Organization` como provedor, sem prometer rich results de FAQ.
+No Hero abaixo de 768 px, `hero.mobileSubtitle` apresenta a promessa em uma frase, seguida da data e do CTA. A descrição longa aparece apenas a partir de 768 px; os destaques de formato permanecem na base. A biografia prioriza experiência empreendedora, aplicação no treinamento e, por último, formação acadêmica. O FAQ reúne seis objeções de compra, consolidando ferramentas/pré-requisitos e participação/gravação. A oferta não inclui o aviso sobre formas de pagamento e parcelamento.
+
+A landing `/sebrae` é pública, sem HTTP Basic ou cookie obrigatório, e preserva o bloqueio de indexação via metadata, `robots.txt` e `X-Robots-Tag`. O catálogo `/treinamentos` e seus detalhes também são públicos. O schema é `Course` com `Organization` como provedor, sem prometer rich results de FAQ.
 
 As metas de Lighthouse do briefing exigem medição no navegador e não são garantidas apenas pelo build.

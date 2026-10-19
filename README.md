@@ -23,22 +23,10 @@ npm run dev
 
 Abra [http://localhost:3000](http://localhost:3000).
 
-### Acesso temporário
+### Acesso público
 
-As rotas `/treinamentos` e `/treinamentos/*` usam autenticação
-HTTP Basic temporária. Configure no ambiente local e na Vercel:
-
-```bash
-PRIVATE_ACCESS_USERNAME=kickops
-PRIVATE_ACCESS_PASSWORD=<senha-compartilhada>
-PRIVATE_ACCESS_SECRET=<segredo-aleatorio>
-```
-
-Gere o segredo com `openssl rand -hex 32`. Após o primeiro acesso válido, um
-cookie seguro mantém o navegador autorizado por 30 dias. Sem senha ou segredo
-configurados, as rotas protegidas respondem com `503` e não ficam públicas.
-
-A landing `/sebrae` é pública e não exige usuário, senha ou cookie de acesso.
+O catálogo `/treinamentos`, suas páginas de detalhe e a landing `/sebrae`
+são públicos e não exigem usuário, senha ou cookie de acesso.
 
 ## Scripts
 
