@@ -16,7 +16,7 @@ Referência editorial: [ementa, copy e conversão](./kickops-academy-fe26-revisa
 
 ## Pendências externas
 
-- Turma: 12/11/2026, das 10h às 16h, na plataforma Kickops Academy. Acesso enviado perto da data. Mantidas as 5 horas de conteúdo anunciadas, dentro da janela com intervalos. Canal de aviso de mudanças ainda pendente. Sincronizar `schedule` e FAQ com checkout, confirmação e e-mails quando configurados.
+- Turma: 12/11/2026, das 10h às 16h, na plataforma Kickops Academy. Acesso enviado perto da data. Mantidas as 5 horas de conteúdo anunciadas, dentro da janela com intervalos. Canal de aviso de mudanças ainda pendente. O e-mail de compra aprovada do produto `8752307` já traz 12/11/2026, 10h–16h. Sincronizar `schedule` e FAQ com o checkout e a página de confirmação continua pendente.
 - Checkout: falta a URL, além das formas de pagamento, parcelamento/juros, dados da empresa e procedimento de solicitação de cancelamento e reembolso. A oferta Kickops + Feira do Empreendedor permite pedir cancelamento com reembolso total até um dia antes do evento, além do direito de arrependimento previsto no CDC. Sincronizar essa condição com o checkout. O contato de atendimento está disponível na página.
 - Biografia: atualizada para “Seu professor” e “Mestre pelo IPEN”, conforme informado pelo usuário. A faixa de experiência mostra Glambox, B4A Group, iFood, XP e Grupo Primo; Indê e Plataforma Assaad permanecem como clientes da Kickops no texto. A contagem “14+ anos” aguarda confirmação e não foi publicada.
 - Captura de leads/amostra e testes A/B são propostas futuras, dependentes de material, fluxo operacional e política de privacidade. Não foram adicionados formulários sem esses insumos.

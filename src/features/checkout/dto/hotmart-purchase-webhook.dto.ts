@@ -5,6 +5,18 @@ const optionalText = z.preprocess(
   z.string().optional(),
 );
 
+const optionalProductId = z.preprocess((value) => {
+  if (typeof value === "number" && Number.isInteger(value)) {
+    return value;
+  }
+
+  if (typeof value === "string" && /^\d+$/.test(value.trim())) {
+    return Number(value.trim());
+  }
+
+  return undefined;
+}, z.number().int().optional());
+
 /** Purchase webhook 2.0.0. Extra fields are ignored so buyer data is never logged. */
 export const hotmartPurchaseWebhookSchema = z.object({
   id: optionalText,
@@ -41,6 +53,7 @@ export const hotmartPurchaseEmailFieldsSchema = z.object({
         .optional(),
       product: z
         .object({
+          id: optionalProductId,
           name: optionalText,
         })
         .optional(),

@@ -30,6 +30,7 @@ export async function enqueuePurchaseEmail(
         name: fields.data?.buyer?.name,
         email: buyerEmail,
         productName: fields.data?.product?.name,
+        productId: fields.data?.product?.id,
         transaction: fields.data?.purchase?.transaction,
       }),
     });

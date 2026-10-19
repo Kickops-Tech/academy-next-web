@@ -11,6 +11,7 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-19 | [E-mail só na compra aprovada](20261019-purchase-approved-email.md) |
 | 2026-10-19 | [Checkout do Golden Ticket na FE26](20261019-golden-ticket-checkout.md) |
 | 2026-10-19 | [Catálogo de treinamentos no modelo do Figma](20261019-treinamentos-figma.md) |
 | 2026-10-19 | [Catálogo público e reembolso da oferta FE26](20261019-public-trainings-refund.md) |

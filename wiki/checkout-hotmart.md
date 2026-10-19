@@ -39,7 +39,7 @@ A chave é o `id` do evento. Se esse id já estiver `queued` ou `skipped`, a res
 
 `queued` significa que o mailer aceitou a mensagem na fila dele. O consumo que envia pelo Resend não atualiza esta tabela: os projetos são diferentes, e o mailer não tem a service role da Academy.
 
-Eventos que geram e-mail ao comprador: `PURCHASE_APPROVED`, `PURCHASE_COMPLETE`, `PURCHASE_BILLET_PRINTED`, `PURCHASE_DELAYED`, `PURCHASE_EXPIRED`, `PURCHASE_CANCELED`, `PURCHASE_REFUNDED`, `PURCHASE_PROTEST` e `PURCHASE_CHARGEBACK`. Aprovação e conclusão da mesma compra enviam os dois. Qualquer outro evento autenticado é gravado como `skipped`. Sem `data.buyer.email`, também fica `skipped`.
+O e-mail ao comprador sai só em `PURCHASE_APPROVED`. O body leva `event`, `name`, `email`, `productName`, `productId` (`data.product.id`) e `transaction`. Qualquer outro evento autenticado é gravado como `skipped`. Sem `data.buyer.email`, também fica `skipped`.
 
 Se a linha permanecer `pending` porque o processo morreu no meio, o retry responde 500 e não enfileira de novo. Reprocessar essa linha é manual.
 
