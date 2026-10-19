@@ -18,6 +18,6 @@ As páginas do site são públicas, sem HTTP Basic ou cookie de acesso obrigató
 
 `/sebrae` e `/checkout` (incluindo filhos) não entram em índice. O `robots.txt` bloqueia esses caminhos para qualquer user-agent, crawler ou agent que respeite o arquivo. A resposta também manda `X-Robots-Tag: noindex, nofollow`, e o HTML dessas rotas repete `noindex`.
 
-O conteúdo de treinamentos e da landing Sebrae vem de dados em `src/assets/data` e da feature correspondente. O checkout não depende desses dados. A página de obrigado é a mesma para qualquer produto.
+O conteúdo de treinamentos e da landing Sebrae vem de dados em `src/assets/data` e da feature correspondente. O catálogo em `/treinamentos` mostra a grade “Escolha por onde começar”: cards coloridos com o objeto 3D, categoria, título em League Gothic (estreita e em negrito) e descrição. O detalhe mantém o menu Academy e, abaixo, a faixa da mesma cor, com volta ao catálogo, título em League Gothic (estreita e em negrito), duração, formato e o objeto. O checkout não depende desses dados. A página de obrigado é a mesma para qualquer produto.
 
 Próximo: [Checkout Hotmart](checkout-hotmart.md).

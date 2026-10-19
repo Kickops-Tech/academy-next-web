@@ -20,6 +20,7 @@ export type Training = {
   number: string;
   slug: string;
   title: string;
+  titleLines: string[];
   subtitle?: string;
   shortDescription: string;
   description: string;

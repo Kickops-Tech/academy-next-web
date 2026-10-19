@@ -1,5 +1,8 @@
 import { SiteFooter } from "@core/components/site-footer";
-import { TrainingVisual } from "@features/trainings/components/training-visual";
+import arrowLeft from "@assets/trainings/arrow-left.svg";
+import clockIcon from "@assets/trainings/clock.svg";
+import presentationIcon from "@assets/trainings/presentation.svg";
+import { TRAINING_ART } from "@features/trainings/components/training-art";
 import { TrainingsHeader } from "@features/trainings/components/trainings-header";
 import type { Training } from "@features/trainings/models/training";
 import {
@@ -7,7 +10,7 @@ import {
   getTrainingContactHref,
   getTrainingHref,
 } from "@features/trainings/utils/trainings";
-import { ArrowLeft, ArrowRight, Check, Clock3, MonitorUp } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 
 type TrainingDetailProps = {
@@ -45,57 +48,73 @@ function TrainingContactCard({ training }: TrainingDetailProps) {
   );
 }
 
+function formatTrainingMeta(value: string): string {
+  if (value.toLowerCase() === "sob medida") return "Sob Medida";
+  if (value.toLowerCase() === "presencial ou online") return "Presencial ou Online";
+  return value;
+}
+
 export function TrainingDetail({ training }: TrainingDetailProps) {
   const nextTraining = getNextTraining(training);
 
+  const art = TRAINING_ART[training.visual];
+
   return (
     <main className="bg-[#f2f1ed] text-kickops-gray">
-      <section className="bg-kickops-gray text-white">
+      <div className="bg-kickops-gray">
         <TrainingsHeader />
-        <div className="mx-auto w-full max-w-[120rem] px-5 pt-7 pb-12 md:px-10 md:pt-12 md:pb-20 xl:px-16">
+      </div>
+
+      <section
+        className="relative overflow-hidden text-black"
+        style={{ backgroundColor: training.accent }}
+      >
+        <img
+          src={art.hero.src}
+          alt=""
+          width={art.hero.width}
+          height={art.hero.height}
+          className={`${art.heroClassName} hidden md:block`}
+        />
+
+        <div className="relative mx-auto flex min-h-[640px] w-full max-w-[120rem] flex-col px-5 py-16 md:px-20 md:py-20">
           <Link
             href="/treinamentos"
-            className="inline-flex items-center gap-2 font-dm-mono text-[10px] tracking-[0.16em] text-white/60 uppercase transition-colors hover:text-kickops-yellow"
+            aria-label="Voltar para todos os treinamentos"
+            className="inline-flex w-fit bg-[#121212] p-2.5"
           >
-            <ArrowLeft aria-hidden className="size-3.5" />
-            Todos os treinamentos
+            <img src={arrowLeft.src} alt="" width={40} height={40} />
           </Link>
 
-          <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(24rem,0.85fr)] lg:items-stretch">
-            <div className="flex flex-col justify-between py-1 md:py-5">
-              <div>
-                <div className="flex items-center gap-4 font-dm-mono text-[10px] tracking-[0.16em] text-kickops-green uppercase">
-                  <span>{training.number}</span>
-                  <span className="h-px w-10 bg-kickops-green/50" />
-                  <span>{training.category}</span>
-                </div>
-                <h1 className="mt-7 max-w-5xl font-league-gothic text-[clamp(4rem,8vw,8.5rem)] leading-[0.84] font-black tracking-[-0.015em] uppercase">
-                  {training.title}
-                </h1>
-                {training.subtitle ? (
-                  <p className="mt-4 font-abril-fatface text-2xl text-kickops-yellow md:text-4xl">
-                    {training.subtitle}
-                  </p>
-                ) : null}
-              </div>
+          <p className="font-inter mt-12 text-xl font-medium uppercase md:mt-[52px]">
+            {training.category}
+          </p>
+          <h1 className="mt-4 font-league-gothic text-5xl leading-[0.9] font-black uppercase md:text-[64px]">
+            {training.titleLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
 
-              <div className="mt-12 grid gap-4 border-t border-white/20 pt-6 text-xs text-white/70 sm:grid-cols-3">
-                <span className="flex items-center gap-2">
-                  <Clock3 aria-hidden className="size-4 text-kickops-yellow" />
-                  {training.duration}
-                </span>
-                <span className="flex items-center gap-2">
-                  <MonitorUp aria-hidden className="size-4 text-kickops-yellow" />
-                  {training.format}
-                </span>
-                <span className="font-dm-mono text-[10px] tracking-[0.1em] uppercase sm:text-right">
-                  {training.level}
-                </span>
-              </div>
-            </div>
-
-            <TrainingVisual training={training} />
+          <div className="mt-10 flex flex-wrap gap-x-12 gap-y-4 md:mt-16">
+            <span className="font-inter flex items-center gap-3 text-base font-medium">
+              <img src={clockIcon.src} alt="" width={28} height={28} />
+              {formatTrainingMeta(training.duration)}
+            </span>
+            <span className="font-inter flex items-center gap-3 text-base font-medium">
+              <img src={presentationIcon.src} alt="" width={28} height={28} />
+              {formatTrainingMeta(training.format)}
+            </span>
           </div>
+
+          <img
+            src={art.hero.src}
+            alt=""
+            width={art.hero.width}
+            height={art.hero.height}
+            className="mt-10 h-auto w-full max-w-md md:hidden"
+          />
         </div>
       </section>
 

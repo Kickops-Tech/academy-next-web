@@ -11,6 +11,7 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-19 | [Catálogo de treinamentos no modelo do Figma](20261019-treinamentos-figma.md) |
 | 2026-10-19 | [Catálogo público e reembolso da oferta FE26](20261019-public-trainings-refund.md) |
 | 2026-10-18 | [Hero mobile e copy de conversão da FE26](20261018-sebrae-copy-mobile.md) |
 | 2026-10-18 | [GTM global com GA4 e Clarity no container](20261018-gtm-global.md) |
