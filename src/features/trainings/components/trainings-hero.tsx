@@ -138,7 +138,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
             className={cn(
               "font-abril-fatface tracking-tight",
               "bg-linear-to-b from-white to-[#f5f5f5] bg-clip-text text-transparent",
-              "text-[clamp(3.75rem,13vw,7rem)] md:text-[7.5rem] xl:text-[8.5rem] 3xl:text-[9.5rem]",
+              "text-[clamp(3.75rem,8vw,8.5rem)] 3xl:text-[9.5rem]",
             )}
           />
           <HeroBaffleText
@@ -147,7 +147,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
             duration={1450}
             className={cn(
               "-mt-[0.06em] font-league-gothic font-black tracking-normal text-kickops-green uppercase",
-              "text-[clamp(6rem,22vw,10rem)] md:text-[11rem] xl:text-[13rem] 3xl:text-[15rem]",
+              "text-[clamp(6rem,12vw,13rem)] 3xl:text-[15rem]",
             )}
           />
         </h1>

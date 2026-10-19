@@ -23,12 +23,13 @@ export function TrainingsCatalog() {
           className="pointer-events-none absolute top-1/2 -left-[479px] h-[2260px] w-[2469px] max-w-none -translate-y-[42%]"
         />
 
-        <div className="relative mx-auto w-full max-w-[1111px]">
+        <div className="@container relative mx-auto w-full max-w-[1111px]">
           <h2 className="font-league-gothic text-[clamp(3rem,8vw,80px)] leading-none font-black uppercase">
             {catalog.sectionTitle}
           </h2>
 
-          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {/* 3 columns once each card is ~300px (3×300 + gaps). Portrait iPad stays at 2. */}
+          <div className="mt-9 grid gap-5 md:grid-cols-2 @min-[940px]:grid-cols-3">
             {trainings.map((training) => (
               <TrainingCard key={training.slug} training={training} />
             ))}
