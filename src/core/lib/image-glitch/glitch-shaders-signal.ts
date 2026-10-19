@@ -32,6 +32,8 @@ uniform float uInvertChance;
 uniform float uStripActiveThreshold;
 
 uniform sampler2D uTrailMask;
+uniform sampler2D uBlockColor;
+uniform int uPixelatePass;
 uniform sampler2D uTex0;
 uniform sampler2D uTex1;
 uniform sampler2D uTex2;
@@ -315,6 +317,11 @@ vec4 sampleTrailBlockColor(vec2 vUvCoord) {
 }
 
 void main() {
+  if (uPixelatePass == 1) {
+    fragColor = sampleTrailBlockColor(vUv);
+    return;
+  }
+
   vec2 imageUv = fitUV(vUv);
 
   if (!inImage(imageUv)) {
@@ -327,7 +334,9 @@ void main() {
 
   float mask = hoverPixelateMask(vUv);
   if (mask >= 0.02 && bustAlpha >= 0.08) {
-    vec4 blockCol = sampleTrailBlockColor(vUv);
+    ivec2 block = ivec2(floor(vUv * uTrailSize));
+    block = clamp(block, ivec2(0), ivec2(uTrailSize) - 1);
+    vec4 blockCol = texelFetch(uBlockColor, block, 0);
     if (blockCol.a >= 0.08) {
       // Mask alone drives coverage — opaque blocks, no sharp bust showing through.
       col.rgb = mix(col.rgb, blockCol.rgb, mask);

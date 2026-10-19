@@ -11,6 +11,7 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-19 | [Pixelate do glitch sem redesenhar o quadro parado](20261019-glitch-pixelate.md) |
 | 2026-10-19 | [Catálogo com lista de espera e cursos novos](20261019-treinamentos-catalogo.md) |
 | 2026-10-19 | [Interesse no detalhe do treinamento](20261019-training-interest.md) |
 | 2026-10-19 | [E-mail só na compra aprovada](20261019-purchase-approved-email.md) |
