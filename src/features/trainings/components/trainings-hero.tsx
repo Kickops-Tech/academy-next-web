@@ -8,7 +8,7 @@ import { TrainingsHeader } from "@features/trainings/components/trainings-header
 import type { TrainingCatalog } from "@features/trainings/models/training";
 import { cn } from "@shadcn/lib/utils";
 import { ArrowDown } from "lucide-react";
-import { useRef, type CSSProperties } from "react";
+import { useRef, type CSSProperties, type MouseEvent } from "react";
 
 type TrainingsHeroProps = {
   catalog: TrainingCatalog["catalog"];
@@ -34,6 +34,48 @@ const COPY_LAYER_STYLE = layerStyle(
   HERO_SCROLL_CSS.copyOpacity,
 );
 
+const CATALOG_SCROLL_MS = 380;
+
+function easeOutCubic(progress: number): number {
+  return 1 - (1 - progress) ** 3;
+}
+
+function scrollToCatalog(event: MouseEvent<HTMLAnchorElement>) {
+  const target = document.getElementById("catalogo");
+  if (!target) {
+    return;
+  }
+
+  event.preventDefault();
+
+  const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  const destination = Math.max(0, target.getBoundingClientRect().top + window.scrollY - margin);
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    window.scrollTo(0, destination);
+    history.pushState(null, "", "#catalogo");
+    return;
+  }
+
+  const start = window.scrollY;
+  const distance = destination - start;
+  const startTime = performance.now();
+
+  function step(now: number) {
+    const progress = Math.min(1, (now - startTime) / CATALOG_SCROLL_MS);
+    window.scrollTo(0, start + distance * easeOutCubic(progress));
+    if (progress < 1) {
+      requestAnimationFrame(step);
+      return;
+    }
+
+    history.pushState(null, "", "#catalogo");
+  }
+
+  requestAnimationFrame(step);
+}
+
 export function TrainingsHero({ catalog }: TrainingsHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   useHeroScrollParallax(sectionRef);
@@ -44,6 +86,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
       aria-labelledby="trainings-hero-title"
       className={cn(
         "relative flex w-full min-h-fold flex-col items-center overflow-hidden",
+        "md:h-fold md:max-h-fold",
         "bg-kickops-gray text-white",
         "bg-radial from-kickops-lightgray to-kickops-gray",
       )}
@@ -61,9 +104,9 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
             introMode="fade"
             className={cn(
               "h-[min(86svh,44rem)] w-auto max-w-[min(100vw,30rem)] select-none",
-              "md:h-[min(108svh,68rem)] md:max-w-none",
-              "2xl:h-[min(106svh,74rem)] 3xl:h-[min(104svh,82rem)]",
-              "-translate-y-[min(2vh,1rem)] md:-translate-y-[min(4vh,2rem)]",
+              "md:h-[min(92svh,58rem)] md:max-w-none",
+              "2xl:h-[min(90svh,64rem)] 3xl:h-[min(88svh,70rem)]",
+              "-translate-y-[min(2vh,1rem)] md:-translate-y-[min(12vh,5.5rem)]",
             )}
           />
         </div>
@@ -78,8 +121,8 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
         )}
       />
 
-      <div className="relative z-20 mx-auto flex w-full max-w-[120rem] flex-1 flex-col items-center justify-end px-3 pt-[36svh] pb-8 text-center md:px-8 md:pt-[44svh] md:pb-14 3xl:pb-20">
-        <p className="font-dm-mono text-[9px] tracking-[0.2em] text-kickops-green uppercase md:text-xs">
+      <div className="relative z-20 mx-auto flex w-full max-w-[120rem] flex-1 flex-col items-center justify-end px-3 pt-[36svh] pb-8 text-center md:px-8 md:pt-0 md:pb-10 3xl:pb-14">
+        <p className="font-dm-mono text-[9px] tracking-[0.2em] text-kickops-green uppercase md:w-fit md:border md:border-white/20 md:bg-black/35 md:px-2.5 md:py-0.5 md:text-sm md:tracking-[0.16em] md:text-white md:backdrop-blur-md">
           {catalog.eyebrow}
         </p>
 
@@ -117,6 +160,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
           <a
             href="#catalogo"
             aria-label="Ir para o catálogo de treinamentos"
+            onClick={scrollToCatalog}
             className="mt-5 flex size-11 items-center justify-center border border-white/35 text-white transition-colors hover:border-kickops-yellow hover:bg-kickops-yellow hover:text-kickops-gray md:mt-6 md:size-12"
           >
             <ArrowDown aria-hidden className="size-5" />

@@ -38,7 +38,7 @@ export function TrainingCard({ training }: TrainingCardProps) {
         <p className="font-inter text-sm font-medium tracking-normal uppercase">
           {training.category}
         </p>
-        <h3 className="mt-[13px] font-league-gothic text-[32px] leading-[0.9] font-black uppercase">
+        <h3 className="mt-[13px] font-league-gothic text-[52px] leading-[0.9] font-black uppercase xl:text-[46px]">
           {training.titleLines.map((line) => (
             <span key={line} className="block">
               {line}

@@ -3,13 +3,10 @@ import arrowLeft from "@assets/trainings/arrow-left.svg";
 import clockIcon from "@assets/trainings/clock.svg";
 import presentationIcon from "@assets/trainings/presentation.svg";
 import { TRAINING_ART } from "@features/trainings/components/training-art";
+import { TrainingInterestForm } from "@features/trainings/components/training-interest-form";
 import { TrainingsHeader } from "@features/trainings/components/trainings-header";
 import type { Training } from "@features/trainings/models/training";
-import {
-  getNextTraining,
-  getTrainingContactHref,
-  getTrainingHref,
-} from "@features/trainings/utils/trainings";
+import { getNextTraining, getTrainingHref } from "@features/trainings/utils/trainings";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 
@@ -29,21 +26,7 @@ function TrainingContactCard({ training }: TrainingDetailProps) {
       <p className="mt-5 text-sm leading-relaxed text-white/65">
         {training.cta.description}
       </p>
-      <a
-        href={getTrainingContactHref(training)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group mt-8 flex w-full items-center justify-between bg-kickops-yellow px-5 py-4 font-bold text-kickops-gray transition-colors hover:bg-white"
-      >
-        {training.cta.label}
-        <ArrowRight
-          aria-hidden
-          className="size-5 transition-transform group-hover:translate-x-1"
-        />
-      </a>
-      <p className="mt-4 text-center font-dm-mono text-[9px] tracking-[0.12em] text-white/40 uppercase">
-        Atendimento direto pelo WhatsApp
-      </p>
+      <TrainingInterestForm slug={training.slug} label={training.cta.label} />
     </aside>
   );
 }
@@ -89,7 +72,7 @@ export function TrainingDetail({ training }: TrainingDetailProps) {
           <p className="font-inter mt-12 text-xl font-medium uppercase md:mt-[52px]">
             {training.category}
           </p>
-          <h1 className="mt-4 font-league-gothic text-5xl leading-[0.9] font-black uppercase md:text-[64px]">
+          <h1 className="mt-4 font-league-gothic text-[56px] leading-[0.9] font-black uppercase md:text-[76px]">
             {training.titleLines.map((line) => (
               <span key={line} className="block">
                 {line}

@@ -12,12 +12,13 @@
 | `/politica-de-privacidade` | Público | O que o site recebe e onde guarda |
 | `/termos-de-uso` | Público | Uso do site e compra na Hotmart |
 | `POST /api/contact` | Público | Proxy do formulário de contato |
+| `POST /api/trainings/interest` | Público | Interesse no detalhe de um treinamento |
 | `POST /api/hotmart/webhook` | Hottok | Eventos de compra da Hotmart |
 
 As páginas do site são públicas, sem HTTP Basic ou cookie de acesso obrigatório. O webhook Hotmart autentica as requisições pelo Hottok.
 
 `/sebrae` e `/checkout` (incluindo filhos) não entram em índice. O `robots.txt` bloqueia esses caminhos para qualquer user-agent, crawler ou agent que respeite o arquivo. A resposta também manda `X-Robots-Tag: noindex, nofollow`, e o HTML dessas rotas repete `noindex`.
 
-O conteúdo de treinamentos e da landing Sebrae vem de dados em `src/assets/data` e da feature correspondente. O catálogo em `/treinamentos` mostra a grade “Escolha por onde começar”: cards coloridos com o objeto 3D, categoria, título em League Gothic (estreita e em negrito) e descrição. O detalhe mantém o menu Academy e, abaixo, a faixa da mesma cor, com volta ao catálogo, título em League Gothic (estreita e em negrito), duração, formato e o objeto. O checkout não depende desses dados. A página de obrigado é a mesma para qualquer produto.
+O conteúdo de treinamentos e da landing Sebrae vem de dados em `src/assets/data` e da feature correspondente. No desktop, a primeira dobra de `/treinamentos` cabe na altura da janela: menu, busto, linha, títulos, texto e seta. O catálogo abaixo mostra a grade “Escolha por onde começar”: cards coloridos com o objeto 3D, categoria, título em League Gothic (estreita e em negrito) e descrição. O detalhe mantém o menu Academy e, abaixo, a faixa da mesma cor, com volta ao catálogo, título em League Gothic (estreita e em negrito), duração, formato e o objeto. O card lateral pede nome, e-mail e celular; o envio grava `academy_contact_training_interest` e enfileira o e-mail interno. O link “Fale com a gente” do cabeçalho continua no WhatsApp. O checkout não depende desses dados. A página de obrigado é a mesma para qualquer produto.
 
 Próximo: [Checkout Hotmart](checkout-hotmart.md).

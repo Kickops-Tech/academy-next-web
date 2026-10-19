@@ -14,11 +14,6 @@ export function getTrainingHref(slug: string): string {
   return `/treinamentos/${slug}`;
 }
 
-export function getTrainingContactHref(training: Training): string {
-  const { whatsappNumber } = TRAINING_CATALOG.catalog;
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(training.cta.message)}`;
-}
-
 export function getCatalogContactHref(): string {
   const { whatsappNumber, contactMessage } = TRAINING_CATALOG.catalog;
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(contactMessage)}`;

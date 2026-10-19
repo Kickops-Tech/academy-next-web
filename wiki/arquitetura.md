@@ -12,7 +12,7 @@ public/       arquivos servidos por URL estável
 
 A página em `src/app` compõe a tela e fica fina. A regra e a UI do domínio ficam na feature. `core` não importa `app` nem `features`. `shadcn` não importa o resto do app. Feature pode importar outra feature. `npm run lint:boundaries` cobre só os limites duros de `core` e `shadcn`.
 
-Código de servidor (segredo, cookie, chamada externa) fica em `server/` e não entra em Client Component. O formulário de contato e o webhook da Hotmart seguem isso: o route handler em `src/app/api` só recebe o pedido e delega.
+Código de servidor (segredo, cookie, chamada externa) fica em `server/` e não entra em Client Component. O formulário de contato, o interesse em treinamento e o webhook da Hotmart seguem isso: o route handler em `src/app/api` só recebe o pedido e delega.
 
 Aliases: `@app/*`, `@assets/*`, `@core/*`, `@features/*`, `@shadcn/*`.
 
