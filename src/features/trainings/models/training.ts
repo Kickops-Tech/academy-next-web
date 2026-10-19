@@ -4,7 +4,9 @@ export type TrainingVisualId =
   | "management"
   | "architecture"
   | "rag"
-  | "design";
+  | "design"
+  | "steps"
+  | "business";
 
 export type TrainingOutcome = {
   title: string;

@@ -28,7 +28,7 @@ export function TrainingInterestForm({ slug, label }: TrainingInterestFormProps)
           <TrainingInterestConfetti onDone={() => setShowConfetti(false)} />
         ) : null}
         <p className="mt-8 text-sm leading-relaxed text-white">
-          Recebemos o seu interesse. Vamos falar com você em breve.
+          Recebemos o seu aviso. Falamos com você quando a próxima turma abrir.
         </p>
       </>
     );

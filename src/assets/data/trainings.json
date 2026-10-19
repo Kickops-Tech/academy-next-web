@@ -20,8 +20,8 @@
       "description": "Um encontro para tirar a inteligência artificial do campo da abstração. Construímos uma visão comum sobre o que mudou, o que ainda é ruído e onde estão as oportunidades reais para pessoas, produtos e negócios.",
       "category": "Fundamentos de IA",
       "level": "Todos os níveis",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#b5cdba",
       "visual": "brain",
       "featured": true,
@@ -59,24 +59,24 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Leve esta introspecção para o seu time.",
-        "description": "A experiência pode ser adaptada ao contexto, aos desafios e ao repertório da sua organização.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Introspecção: Inteligência Artificial."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma desta introspecção.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Introspecção: Inteligência Artificial."
       }
     },
     {
       "number": "02",
-      "slug": "trabalho-remoto-alta-performance",
-      "title": "Trabalho Remoto de Alta Performance",
-      "titleLines": ["Trabalho", "Remoto de Alta", "Performance"],
+      "slug": "remoto-de-verdade",
+      "title": "Remoto de Verdade",
+      "titleLines": ["Remoto", "de Verdade"],
       "shortDescription": "Práticas para criar autonomia, clareza e ritmo para transformar a agenda em uma coleção de reunião.",
       "description": "Trabalho remoto de alta performance não é reproduzir o escritório em uma tela. É desenhar acordos, rituais e sistemas de comunicação que favoreçam foco, contexto e responsabilidade compartilhada.",
       "category": "Novas formas de trabalho",
       "level": "Times e lideranças",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#ffe27a",
       "visual": "remote",
       "featured": false,
@@ -114,25 +114,25 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Redesenhe a forma como seu time trabalha.",
-        "description": "Adaptamos o treinamento à realidade, aos rituais e aos desafios da sua equipe.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Trabalho remoto de alta performance."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de Remoto de Verdade.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Remoto de Verdade."
       }
     },
     {
       "number": "03",
-      "slug": "gestao-na-era-da-ia",
-      "title": "Gestão na Era da IA",
-      "titleLines": ["Gestão na", "Era da IA"],
+      "slug": "metodo-kickops",
+      "title": "Método Kickops",
+      "titleLines": ["Método", "Kickops"],
       "subtitle": "O Método Kickops para desenvolvimento de produtos",
       "shortDescription": "O método Kickops para desenvolver produtos com estratégia, velocidade e inteligência aplicada.",
       "description": "Um treinamento para líderes de produto e tecnologia que precisam atualizar seu sistema de gestão. Conectamos estratégia, descoberta, entrega e agentes de IA em um método prático para construir produtos melhores.",
       "category": "Gestão de produto",
       "level": "Intermediário",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#c9b5e4",
       "visual": "management",
       "featured": false,
@@ -170,24 +170,24 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Prepare sua gestão para um novo ritmo de produto.",
-        "description": "Construímos uma experiência conectada ao modelo operacional e aos desafios da sua organização.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Gestão na era da IA."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de Método Kickops.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Método Kickops."
       }
     },
     {
       "number": "04",
-      "slug": "arquitetura-desenvolvimento-era-da-ia",
-      "title": "Arquitetura para Desenvolvimento na Era da IA",
-      "titleLines": ["Arquitetura para", "Desenvolvimento", "na Era da IA"],
+      "slug": "engenharia-de-ia",
+      "title": "Engenharia de IA",
+      "titleLines": ["Engenharia", "de IA"],
       "shortDescription": "Estruture código, contexto e decisões para times que desenvolvem com múltiplos agentes de IA.",
       "description": "Agentes de código multiplicam a capacidade de entrega — e também a de criar complexidade. Este treinamento mostra como arquitetura, contexto e guardrails tornam a colaboração entre pessoas e agentes mais segura e sustentável.",
       "category": "Engenharia e software",
       "level": "Intermediário e avançado",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#72c8d2",
       "visual": "architecture",
       "featured": false,
@@ -225,24 +225,24 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Construa uma base pronta para agentes.",
-        "description": "Aprofundamos os exemplos e exercícios no stack e na realidade do seu time.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Arquitetura para desenvolvimento na era da IA."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de Engenharia de IA.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Engenharia de IA."
       }
     },
     {
       "number": "05",
-      "slug": "manual-vira-especialista-rags",
-      "title": "Criando RAGs incríveis",
-      "titleLines": ["Criando RAGs", "incríveis"],
+      "slug": "seu-agente-especialista",
+      "title": "Seu agente especialista",
+      "titleLines": ["Seu agente", "especialista"],
       "shortDescription": "Transforme conhecimento disperso em assistentes que respondem com contexto, precisão e segurança.",
       "description": "Do documento esquecido ao conhecimento disponível na hora certa. Uma imersão prática em RAG para criar experiências de IA que consultam fontes próprias, recuperam contexto relevante e entregam respostas verificáveis.",
       "category": "IA aplicada",
       "level": "Intermediário",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#ed8d82",
       "visual": "rag",
       "featured": false,
@@ -280,24 +280,24 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Dê voz ao conhecimento da sua organização.",
-        "description": "Podemos trabalhar com exemplos próximos às bases e aos casos de uso do seu time.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Criando RAGs incríveis."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de Seu agente especialista.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Seu agente especialista."
       }
     },
     {
       "number": "06",
-      "slug": "design-produto-agentes-codigo",
-      "title": "Design de Produto com Agentes de código",
-      "titleLines": ["Design de Produto", "com Agentes", "de código"],
+      "slug": "design-com-alma",
+      "title": "Design com alma",
+      "titleLines": ["Design", "com alma"],
       "shortDescription": "Do insight ao protótipo funcional: uma nova forma de explorar, testar e comunicar decisões de produto.",
       "description": "Agentes de código permitem que designers atravessem a distância entre intenção e experiência real. O treinamento apresenta um fluxo prático para investigar ideias, construir protótipos e aprender com software funcionando.",
       "category": "Gestão de produto",
       "level": "Todos os níveis",
-      "format": "Presencial ou online",
-      "duration": "Sob medida",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
       "accent": "#ffbd62",
       "visual": "design",
       "featured": false,
@@ -335,11 +335,121 @@
         }
       ],
       "cta": {
-        "eyebrow": "VAMOS CONVERSAR",
-        "title": "Amplie o repertório de construção do seu time de design.",
-        "description": "Desenhamos exercícios conectados aos desafios, ferramentas e sistema visual da sua equipe.",
-        "label": "Quero saber mais",
-        "message": "Olá! Vim pelo site da Kickops Academy e gostaria de saber mais sobre o treinamento Design de produto com agentes de código."
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de Design com alma.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Design com alma."
+      }
+    },
+    {
+      "number": "07",
+      "slug": "prototipando-seu-negocio",
+      "title": "Prototipando seu negócio",
+      "titleLines": ["Prototipando", "seu negócio"],
+      "shortDescription": "Saia com um protótipo navegável do seu negócio para testar a oferta com gente real.",
+      "description": "Um treinamento para transformar uma ideia de negócio em algo que outra pessoa consegue percorrer: proposta, jornada e uma primeira versão. O resultado é um protótipo para aprender com uso, não um plano que fica na gaveta.",
+      "category": "Negócios",
+      "level": "Todos os níveis",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
+      "accent": "#d0ed82",
+      "visual": "business",
+      "featured": false,
+      "audience": "Quem está tirando um negócio do papel, ou revisitando uma oferta, e precisa ver a ideia funcionando antes de investir mais.",
+      "outcomes": [
+        {
+          "title": "Proposta em uma frase",
+          "description": "A oferta cabe numa frase que outra pessoa entende sem você ao lado."
+        },
+        {
+          "title": "Jornada percorrível",
+          "description": "Alguém consegue ir do primeiro contato até o que você entrega."
+        },
+        {
+          "title": "Primeira versão na frente do cliente",
+          "description": "Um protótipo para colocar na frente de um cliente e aprender com o uso."
+        }
+      ],
+      "program": [
+        {
+          "title": "A oferta em uma frase",
+          "description": "O que você vende, para quem e por que alguém trocaria tempo ou dinheiro por isso."
+        },
+        {
+          "title": "A jornada de quem compra",
+          "description": "Os passos reais de quem chega até a oferta, decide e recebe o que foi prometido."
+        },
+        {
+          "title": "A primeira versão navegável",
+          "description": "Um protótipo que dá para percorrer, sem esperar o produto definitivo."
+        },
+        {
+          "title": "O que observar no teste",
+          "description": "O que anotar quando uma pessoa real usa, para decidir o próximo passo."
+        }
+      ],
+      "cta": {
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de prototipação de negócio.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Prototipando seu negócio."
+      }
+    },
+    {
+      "number": "08",
+      "slug": "primeiros-passos-com-ia",
+      "title": "Primeiros passos com IA",
+      "titleLines": ["Primeiros passos", "com IA"],
+      "shortDescription": "Para quem já conhece um assistente de IA e quer sair da pergunta solta para um uso simples, claro e confiável.",
+      "description": "Você já viu esse tipo de conversa com inteligência artificial. Ainda não tem um jeito de pedir, de ler a resposta e de perceber quando ela não serve. O treinamento parte daí, sem jargão e sem pressupor prática.",
+      "category": "Começando em IA",
+      "level": "Iniciante",
+      "format": "Online na Plataforma Kickops Academy",
+      "duration": "Treinamento gravado, com encontros ao vivo. Acesso às gravações por 1 ano.",
+      "accent": "#fbc1ff",
+      "visual": "steps",
+      "featured": false,
+      "audience": "Pessoas que já conhecem um assistente de IA e ainda estão nos primeiros usos, sem método e sem vocabulário técnico.",
+      "outcomes": [
+        {
+          "title": "Pedir com material",
+          "description": "Levar objetivo, material e formato para a primeira mensagem já nascer útil."
+        },
+        {
+          "title": "Apertar a conversa",
+          "description": "Corrigir e pedir outra versão sem recomeçar do zero quando a resposta vem genérica."
+        },
+        {
+          "title": "Checar antes de usar",
+          "description": "Separar o que dá para usar, o que está inventado e o que não se delega."
+        }
+      ],
+      "program": [
+        {
+          "title": "Pedido com matéria-prima",
+          "description": "Objetivo, material e formato para a primeira mensagem já nascer útil."
+        },
+        {
+          "title": "A conversa em voltas",
+          "description": "Corrigir, pedir outra versão e apertar o que veio genérico, sem recomeçar do zero."
+        },
+        {
+          "title": "Checagem mínima",
+          "description": "Separar o que dá para usar, o que está inventado e o que não se delega."
+        },
+        {
+          "title": "Uma tarefa para repetir",
+          "description": "Fechar um ciclo de pedir, revisar e reaproveitar numa tarefa que volta na semana."
+        }
+      ],
+      "cta": {
+        "eyebrow": "PRÓXIMA TURMA",
+        "title": "Entre na próxima turma de primeiros passos com IA.",
+        "description": "Deixe seu contato. Avisamos quando a próxima turma abrir na Plataforma Kickops Academy.",
+        "label": "Me avise sobre a próxima turma",
+        "message": "Olá! Vim pelo site da Kickops Academy e quero ser avisado sobre a próxima turma de Primeiros passos com IA."
       }
     }
   ]

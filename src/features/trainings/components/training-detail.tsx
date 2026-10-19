@@ -31,12 +31,6 @@ function TrainingContactCard({ training }: TrainingDetailProps) {
   );
 }
 
-function formatTrainingMeta(value: string): string {
-  if (value.toLowerCase() === "sob medida") return "Sob Medida";
-  if (value.toLowerCase() === "presencial ou online") return "Presencial ou Online";
-  return value;
-}
-
 export function TrainingDetail({ training }: TrainingDetailProps) {
   const nextTraining = getNextTraining(training);
 
@@ -83,11 +77,11 @@ export function TrainingDetail({ training }: TrainingDetailProps) {
           <div className="mt-10 flex flex-wrap gap-x-12 gap-y-4 md:mt-16">
             <span className="font-inter flex items-center gap-3 text-base font-medium">
               <img src={clockIcon.src} alt="" width={28} height={28} />
-              {formatTrainingMeta(training.duration)}
+              {training.duration}
             </span>
             <span className="font-inter flex items-center gap-3 text-base font-medium">
               <img src={presentationIcon.src} alt="" width={28} height={28} />
-              {formatTrainingMeta(training.format)}
+              {training.format}
             </span>
           </div>
 

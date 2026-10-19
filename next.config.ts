@@ -8,7 +8,22 @@ const ATTENTION_DEMO_ORIGIN = "https://academy-vite-attention-kickops.vercel.app
 // ELIZA and the Minimax tic-tac-toe (same workshop) live in the academy-static-demos project.
 const STATIC_DEMOS_ORIGIN = "https://academy-static-demos-kickops.vercel.app";
 
+const TRAINING_SLUG_REDIRECTS = [
+  ["trabalho-remoto-alta-performance", "remoto-de-verdade"],
+  ["gestao-na-era-da-ia", "metodo-kickops"],
+  ["arquitetura-desenvolvimento-era-da-ia", "engenharia-de-ia"],
+  ["manual-vira-especialista-rags", "seu-agente-especialista"],
+  ["design-produto-agentes-codigo", "design-com-alma"],
+] as const;
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return TRAINING_SLUG_REDIRECTS.map(([source, destination]) => ({
+      source: `/treinamentos/${source}`,
+      destination: `/treinamentos/${destination}`,
+      permanent: true,
+    }));
+  },
   async headers() {
     return UNINDEXED_PATHS.flatMap((path) =>
       [path, `${path}/:path*`].map((source) => ({

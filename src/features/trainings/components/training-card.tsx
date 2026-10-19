@@ -22,13 +22,15 @@ export function TrainingCard({ training }: TrainingCardProps) {
         className="absolute inset-0 z-10 focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-black"
       />
 
-      <img
-        src={art.card.src}
-        alt=""
-        width={art.card.width}
-        height={art.card.height}
-        className={art.cardClassName}
-      />
+      <div className={art.cardFrameClassName}>
+        <img
+          src={art.card.src}
+          alt=""
+          width={art.card.width}
+          height={art.card.height}
+          className={art.cardClassName}
+        />
+      </div>
 
       <span className="absolute top-10 right-10 z-0 bg-[#121212] p-2.5">
         <img src={arrowUpRight.src} alt="" width={40} height={40} />
