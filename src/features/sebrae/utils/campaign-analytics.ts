@@ -7,10 +7,6 @@ const UTM_KEYS = [
   "utm_term",
 ] as const;
 
-type DataLayerWindow = Window & {
-  dataLayer?: Array<Record<string, unknown>>;
-};
-
 export function readCampaign(): Record<string, string> {
   const current = new URLSearchParams(window.location.search);
   let saved: Record<string, string> = {};
@@ -50,8 +46,7 @@ export function trackCampaignEvent(
   event: string,
   properties: Record<string, unknown> = {},
 ) {
-  const target = window as DataLayerWindow;
   const data = { campaign: "fe26", ...readCampaign(), ...properties };
-  target.dataLayer ??= [];
-  target.dataLayer.push({ event, ...data });
+  window.dataLayer ??= [];
+  window.dataLayer.push({ event, ...data });
 }
