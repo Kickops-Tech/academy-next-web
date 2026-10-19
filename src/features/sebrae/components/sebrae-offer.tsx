@@ -86,9 +86,6 @@ export function SebraeOffer({ data }: { data: SebraeTrainingData }) {
             {offer.note}
           </p>
           <SebraeCta offer={offer} placement="offer" />
-          <p className="mt-4 text-xs leading-relaxed text-kickops-lightgray">
-            {offer.paymentNote}
-          </p>
           <p className="mt-4 flex items-center gap-2 text-xs text-kickops-lightgray">
             <LockKeyhole aria-hidden className="size-3 shrink-0" />
             {offer.securityNote}

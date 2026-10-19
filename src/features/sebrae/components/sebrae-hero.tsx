@@ -31,9 +31,10 @@ export function SebraeHero({ data }: { data: SebraeTrainingData }) {
             />
           </h1>
           <p className="sebrae-hero-subtitle mt-4 max-w-xl font-bold leading-tight">
-            {data.hero.subtitle}
+            <span className="md:hidden">{data.hero.mobileSubtitle}</span>
+            <span className="hidden md:inline">{data.hero.subtitle}</span>
           </p>
-          <p className="mt-4 max-w-xl text-[13px] leading-relaxed text-white/80 md:text-sm lg:text-base">
+          <p className="mt-4 hidden max-w-xl text-[13px] leading-relaxed text-white/80 md:block md:text-sm lg:text-base">
             {data.hero.description}
           </p>
           <p className="mt-5 flex items-center gap-2 text-xs text-white/70 md:text-sm">
