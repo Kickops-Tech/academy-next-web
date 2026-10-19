@@ -45,11 +45,10 @@ export async function recordTrainingInterest(
     trainingName: training.title,
   });
 
-  if (!enqueued.ok) {
-    console.info(`training.interest slug=${training.slug} status=failed`);
-    return { ok: false, status: 502 };
+  console.info(`training.interest slug=${training.slug} status=${enqueued.detail}`);
+  if (enqueued.ok) {
+    return { ok: true };
   }
 
-  console.info(`training.interest slug=${training.slug} status=queued`);
-  return { ok: true };
+  return { ok: false, status: 502 };
 }

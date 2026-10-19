@@ -9,7 +9,7 @@ Variáveis de servidor. Nenhuma delas deve ir para `NEXT_PUBLIC_*`. Os nomes est
 | `SUPABASE_URL` | Projeto Supabase da Academy, diferente do mailer. Sem ela, o webhook e o interesse em treinamento respondem 500. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Chave de serviço dessa tabela. Não é `NEXT_PUBLIC_`. |
 | `MAILER_PURCHASE_WEBHOOK_URL` | `POST` que enfileira o e-mail de compra. Sem ela, evento que precisa de e-mail responde 500. |
-| `MAILER_TRAINING_INTEREST_URL` | `POST` que enfileira o e-mail de interesse em treinamento. Sem ela, o formulário grava a linha e responde 502. |
+| `MAILER_TRAINING_INTEREST_URL` | `POST` que enfileira o e-mail de interesse em treinamento. Sem ela, o app usa `https://mailer.kickops.dev/kickops/academy/training-interest`. |
 
 `/treinamentos`, seus detalhes e `/sebrae` são públicos. As variáveis `PRIVATE_ACCESS_*` não são utilizadas, e o cookie antigo `kickops_private_access` não participa do acesso.
 

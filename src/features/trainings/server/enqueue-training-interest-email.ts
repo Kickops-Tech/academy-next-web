@@ -5,17 +5,19 @@ export type TrainingInterestEmail = {
   trainingName: string;
 };
 
-export type EnqueueTrainingInterestResult =
-  | { ok: true }
-  | { ok: false; reason: "not-configured" | "rejected" | "unreachable" };
+const DEFAULT_MAILER_TRAINING_INTEREST_URL =
+  "https://mailer.kickops.dev/kickops/academy/training-interest";
+
+export type EnqueueTrainingInterestResult = {
+  ok: boolean;
+  detail: string;
+};
 
 export async function enqueueTrainingInterestEmail(
   fields: TrainingInterestEmail,
 ): Promise<EnqueueTrainingInterestResult> {
-  const mailerUrl = process.env.MAILER_TRAINING_INTEREST_URL;
-  if (!mailerUrl) {
-    return { ok: false, reason: "not-configured" };
-  }
+  const mailerUrl =
+    process.env.MAILER_TRAINING_INTEREST_URL || DEFAULT_MAILER_TRAINING_INTEREST_URL;
 
   let response: Response;
   try {
@@ -25,12 +27,12 @@ export async function enqueueTrainingInterestEmail(
       body: JSON.stringify(fields),
     });
   } catch {
-    return { ok: false, reason: "unreachable" };
+    return { ok: false, detail: "unreachable" };
   }
 
   if (!response.ok) {
-    return { ok: false, reason: "rejected" };
+    return { ok: false, detail: `rejected http=${response.status}` };
   }
 
-  return { ok: true };
+  return { ok: true, detail: "queued" };
 }

@@ -9,4 +9,6 @@ O card do detalhe deixa o WhatsApp e pede nome, e-mail e celular. `POST /api/tra
 
 O cabeçalho “Fale com a gente” continua no WhatsApp. O formulário da home não muda.
 
+Sem `MAILER_TRAINING_INTEREST_URL`, o app envia para `https://mailer.kickops.dev/kickops/academy/training-interest`. A variável na Vercel, no projeto academy-next-web, substitui esse endereço.
+
 Estado atual: [Rotas](../wiki/rotas.md) e [Acesso e ambiente](../wiki/acesso-e-ambiente.md).
