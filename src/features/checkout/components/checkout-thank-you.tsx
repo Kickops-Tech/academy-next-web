@@ -30,7 +30,9 @@ export function CheckoutThankYou({ status, details }: CheckoutThankYouProps) {
         </p>
 
         {details.name ? (
-          <p className="mt-8 text-base font-medium md:text-lg">Olá, {details.name}</p>
+          <p className="mt-8 text-base font-medium md:text-lg" data-clarity-mask="">
+            Olá, {details.name}
+          </p>
         ) : null}
 
         {hasPurchaseDetails ? (
@@ -40,7 +42,9 @@ export function CheckoutThankYou({ status, details }: CheckoutThankYouProps) {
                 <dt className="font-dm-mono text-[10px] tracking-[0.18em] uppercase">
                   E-mail
                 </dt>
-                <dd className="mt-1 text-sm md:text-base">{details.email}</dd>
+                <dd className="mt-1 text-sm md:text-base" data-clarity-mask="">
+                  {details.email}
+                </dd>
               </div>
             ) : null}
             {details.transaction ? (
@@ -48,7 +52,9 @@ export function CheckoutThankYou({ status, details }: CheckoutThankYouProps) {
                 <dt className="font-dm-mono text-[10px] tracking-[0.18em] uppercase">
                   Transação
                 </dt>
-                <dd className="mt-1 text-sm md:text-base">{details.transaction}</dd>
+                <dd className="mt-1 text-sm md:text-base" data-clarity-mask="">
+                  {details.transaction}
+                </dd>
               </div>
             ) : null}
           </dl>

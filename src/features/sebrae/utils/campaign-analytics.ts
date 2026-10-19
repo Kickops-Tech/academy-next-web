@@ -7,11 +7,6 @@ const UTM_KEYS = [
   "utm_term",
 ] as const;
 
-type CampaignWindow = Window & {
-  dataLayer?: Array<unknown>;
-  gtag?: (...args: unknown[]) => void;
-};
-
 export function readCampaign(): Record<string, string> {
   const current = new URLSearchParams(window.location.search);
   let saved: Record<string, string> = {};
@@ -51,21 +46,7 @@ export function trackCampaignEvent(
   event: string,
   properties: Record<string, unknown> = {},
 ) {
-  const target = window as CampaignWindow;
-  if (process.env.NEXT_PUBLIC_GA_ID && !target.gtag) {
-    target.dataLayer ??= [];
-    target.gtag = function () {
-      target.dataLayer.push(arguments);
-    };
-    target.gtag("js", new Date());
-    target.gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
-      send_page_view: false,
-    });
-  }
   const data = { campaign: "fe26", ...readCampaign(), ...properties };
-  if (target.gtag) target.gtag("event", event, data);
-  else {
-    target.dataLayer ??= [];
-    target.dataLayer.push({ event, ...data });
-  }
+  window.dataLayer ??= [];
+  window.dataLayer.push({ event, ...data });
 }

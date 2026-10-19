@@ -1,7 +1,6 @@
 import { SebraeLanding } from "@features/sebrae/components/sebrae-landing";
 import { SEBRAE_TRAINING } from "@features/sebrae/utils/sebrae-training";
 import type { Metadata } from "next";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: SEBRAE_TRAINING.seo.title,
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
 export default function SebraePage() {
   const checkoutUrl =
     process.env.NEXT_PUBLIC_CHECKOUT_URL || SEBRAE_TRAINING.offer.checkoutUrl;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -29,14 +27,6 @@ export default function SebraePage() {
   };
   return (
     <>
-      {gaId ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`}
-            strategy="afterInteractive"
-          />
-        </>
-      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
