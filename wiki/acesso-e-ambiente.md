@@ -20,10 +20,10 @@ Configurações públicas da landing FE26:
 | Variável | Uso |
 |---|---|
 | `NEXT_PUBLIC_CHECKOUT_URL` | URL completa de compra, incluindo cupom. Tem prioridade sobre `offer.checkoutUrl` no JSON. |
-| `NEXT_PUBLIC_GA_ID` | ID de medição GA4. Sem ele, eventos ficam em `window.dataLayer`. |
+| `NEXT_PUBLIC_GTM_ID` | Container do Google Tag Manager. Sem ele, o script não entra. GA4 e Clarity ficam no container, não nesta variável. |
 
 Essas duas configurações são públicas, não credenciais. Alterações exigem novo build/deploy.
 
 Comandos do dia a dia: `npm run dev`, `npm run build`, `npm run lint` e `npm run lint:boundaries`.
 
-Próximo: [Documentação](documentacao.md).
+Próximo: [Medição](medicao.md).

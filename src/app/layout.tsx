@@ -9,8 +9,10 @@ import {
   League_Gothic,
 } from "next/font/google";
 import localFont from "next/font/local";
+import { AnalyticsPageView } from "@core/components/analytics-page-view";
 import { cn } from "@shadcn/lib/utils";
 import "@assets/styles/main.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const leagueGothic = League_Gothic({
   subsets: ["latin"],
@@ -104,6 +106,8 @@ interface RootLayoutProps {
  * for Kickops Academy landings.
  */
 export default function RootLayout({ children = null }: RootLayoutProps) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html
       lang={"pt-BR"}
@@ -119,7 +123,11 @@ export default function RootLayout({ children = null }: RootLayoutProps) {
         leagueGothic.variable,
       )}
     >
-      <body>{children}</body>
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
+      <body>
+        <AnalyticsPageView />
+        {children}
+      </body>
     </html>
   );
 }

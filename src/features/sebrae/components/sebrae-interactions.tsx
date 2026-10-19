@@ -32,7 +32,6 @@ export function SebraeInteractions({
   useEffect(() => {
     const campaign = readCampaign();
     if (!viewed.current.landing) {
-      trackCampaignEvent("page_view", { page_path: "/sebrae" });
       trackCampaignEvent("landing_view", { page_path: "/sebrae" });
       viewed.current.landing = true;
     }
