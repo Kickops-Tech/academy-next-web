@@ -11,6 +11,8 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-20 | [Selo FE26 na primeira dobra da home](20261020-home-selo-fe26.md) |
+| 2026-10-20 | [Mentes pensantes no final da home](20261020-home-mentes-pensantes.md) |
 | 2026-10-20 | [Motion dos cards na home](20261020-catalog-card-motion.md) |
 | 2026-10-20 | [Treinamentos na home rola até o catálogo](20261020-nav-treinamentos-scroll.md) |
 | 2026-10-20 | [Ordem dos cards na home](20261020-catalog-order.md) |

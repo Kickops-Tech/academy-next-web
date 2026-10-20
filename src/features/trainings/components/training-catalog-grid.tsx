@@ -3,10 +3,9 @@
 import { InViewReveal } from "@core/components/in-view-reveal";
 import { TrainingCard } from "@features/trainings/components/training-card";
 import { SEBRAE_CATALOG_CARD } from "@features/trainings/constants/sebrae-catalog";
+import { useSebraeCatalogOrigin } from "@features/trainings/hooks/use-sebrae-catalog-origin";
 import type { Training } from "@features/trainings/models/training";
-import { rememberSebraeCatalogOrigin } from "@features/trainings/utils/sebrae-catalog-origin";
 import { getTrainingHref } from "@features/trainings/utils/trainings";
-import { useLayoutEffect, useState } from "react";
 
 const CATALOG_REVEAL_STAGGER_MS = 40;
 const CATALOG_REVEAL_WAVE = 3;
@@ -20,11 +19,7 @@ export function TrainingCatalogGrid({
   trainings,
   showSebraeCard = false,
 }: TrainingCatalogGridProps) {
-  const [showExtra, setShowExtra] = useState(showSebraeCard);
-
-  useLayoutEffect(() => {
-    setShowExtra(rememberSebraeCatalogOrigin(showSebraeCard));
-  }, [showSebraeCard]);
+  const showExtra = useSebraeCatalogOrigin(showSebraeCard);
 
   return (
     <div className="mt-9 grid gap-5 md:grid-cols-2 @min-[940px]:grid-cols-3">

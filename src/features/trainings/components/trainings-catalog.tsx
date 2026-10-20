@@ -1,5 +1,7 @@
 import { SiteFooter } from "@core/components/site-footer";
+import { WireframeGlobeBand } from "@core/components/wireframe-globe-band";
 import catalogGrid from "@assets/trainings/catalog-grid.svg";
+import { PeopleMain } from "@features/people/components/people-main";
 import { TrainingCatalogGrid } from "@features/trainings/components/training-catalog-grid";
 import { TrainingsHero } from "@features/trainings/components/trainings-hero";
 import { CATALOG_SECTION_ID } from "@features/trainings/utils/scroll-to-catalog";
@@ -20,7 +22,7 @@ export function TrainingsCatalog({
 
   return (
     <main className="bg-[#f2f1ed] text-kickops-gray">
-      <TrainingsHero catalog={catalog} />
+      <TrainingsHero catalog={catalog} showSebraeCard={showSebraeCard} />
 
       <section
         id={CATALOG_SECTION_ID}
@@ -46,6 +48,16 @@ export function TrainingsCatalog({
           />
         </div>
       </section>
+
+      <WireframeGlobeBand>
+        <div
+          data-brain-hover-root=""
+          data-globe-section="formats"
+          className="relative flex flex-col overflow-clip"
+        >
+          <PeopleMain />
+        </div>
+      </WireframeGlobeBand>
 
       <SiteFooter />
     </main>

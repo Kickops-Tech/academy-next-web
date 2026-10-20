@@ -6,6 +6,8 @@ import { HeroBust } from "@features/hero/components/hero-bust";
 import { HERO_SCROLL_CSS } from "@features/hero/constants/hero-scroll-parallax";
 import { useHeroScrollParallax } from "@features/hero/hooks/use-hero-scroll-parallax";
 import { TrainingsHeader } from "@features/trainings/components/trainings-header";
+import { TrainingsSebraeSeal } from "@features/trainings/components/trainings-sebrae-seal";
+import { useSebraeCatalogOrigin } from "@features/trainings/hooks/use-sebrae-catalog-origin";
 import type { TrainingCatalog } from "@features/trainings/models/training";
 import {
   CATALOG_SECTION_ID,
@@ -17,6 +19,7 @@ import { useRef, type CSSProperties } from "react";
 
 type TrainingsHeroProps = {
   catalog: TrainingCatalog["catalog"];
+  showSebraeCard?: boolean;
 };
 
 function layerStyle(yVar: string, opacityVar: string): CSSProperties {
@@ -39,8 +42,12 @@ const COPY_LAYER_STYLE = layerStyle(
   HERO_SCROLL_CSS.copyOpacity,
 );
 
-export function TrainingsHero({ catalog }: TrainingsHeroProps) {
+export function TrainingsHero({
+  catalog,
+  showSebraeCard = false,
+}: TrainingsHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const fromSebrae = useSebraeCatalogOrigin(showSebraeCard);
   useHeroScrollParallax(sectionRef);
 
   return (
@@ -120,14 +127,18 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
             <strong className="font-bold">{catalog.title}</strong>{" "}
             <span className="text-white/70">{catalog.description}</span>
           </p>
-          <a
-            href={`#${CATALOG_SECTION_ID}`}
-            aria-label="Ir para o catálogo de treinamentos"
-            onClick={scrollToCatalog}
-            className="mt-5 flex size-11 items-center justify-center border border-white/35 text-white transition-colors hover:border-kickops-yellow hover:bg-kickops-yellow hover:text-kickops-gray md:mt-6 md:size-12"
-          >
-            <ArrowDown aria-hidden className="size-5" />
-          </a>
+          {fromSebrae ? (
+            <TrainingsSebraeSeal />
+          ) : (
+            <a
+              href={`#${CATALOG_SECTION_ID}`}
+              aria-label="Ir para o catálogo de treinamentos"
+              onClick={scrollToCatalog}
+              className="mt-5 flex size-11 items-center justify-center border border-white/35 text-white transition-colors hover:border-kickops-yellow hover:bg-kickops-yellow hover:text-kickops-gray md:mt-6 md:size-12"
+            >
+              <ArrowDown aria-hidden className="size-5" />
+            </a>
+          )}
         </div>
       </div>
     </section>
