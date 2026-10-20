@@ -1,10 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
-import {
-  goldenTicketPrice,
-  rememberGoldenTicketSource,
-} from "../utils/golden-ticket-checkout";
+import { useGoldenTicketSource } from "../hooks/use-golden-ticket-source";
 
 export function SebraeOfferPrice({
   price,
@@ -13,16 +9,12 @@ export function SebraeOfferPrice({
   price: number;
   currency: string;
 }) {
-  const [goldenTicket, setGoldenTicket] = useState(false);
-  useLayoutEffect(() => {
-    setGoldenTicket(rememberGoldenTicketSource());
-  }, []);
+  const goldenTicket = useGoldenTicketSource();
 
   const money = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency,
   });
-  const discounted = goldenTicketPrice(price);
 
   if (!goldenTicket) {
     return (
@@ -34,9 +26,7 @@ export function SebraeOfferPrice({
 
   return (
     <p className="my-3 text-fe26-purple">
-      <span className="sr-only">
-        De {money.format(price)} por {money.format(discounted)}
-      </span>
+      <span className="sr-only">De {money.format(price)} por cortesia</span>
       <span
         aria-hidden
         className="block font-league-gothic text-4xl leading-none line-through decoration-2 opacity-50"
@@ -47,7 +37,7 @@ export function SebraeOfferPrice({
         aria-hidden
         className="mt-1 block font-league-gothic text-7xl leading-none"
       >
-        {money.format(discounted)}
+        Cortesia
       </span>
     </p>
   );

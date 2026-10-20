@@ -1,6 +1,6 @@
 ---
 title: Registro
-updated: 2026-10-19
+updated: 2026-10-20
 ---
 
 # Registro
@@ -11,6 +11,7 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-20 | [Formulário do Golden Ticket na FE26](20261020-golden-ticket-form.md) |
 | 2026-10-19 | [Pixelate do glitch sem redesenhar o quadro parado](20261019-glitch-pixelate.md) |
 | 2026-10-19 | [Catálogo com lista de espera e cursos novos](20261019-treinamentos-catalogo.md) |
 | 2026-10-19 | [Interesse no detalhe do treinamento](20261019-training-interest.md) |

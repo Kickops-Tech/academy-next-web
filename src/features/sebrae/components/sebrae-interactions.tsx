@@ -11,10 +11,7 @@ import {
   trackCampaignEvent,
 } from "../utils/campaign-analytics";
 import { isCheckoutReady } from "../utils/is-checkout-ready";
-import {
-  goldenTicketPrice,
-  rememberGoldenTicketSource,
-} from "../utils/golden-ticket-checkout";
+import { rememberGoldenTicketSource } from "../utils/golden-ticket-checkout";
 
 function reportMetric(metric: { name: string; value: number; id: string }) {
   trackCampaignEvent("web_vital", {
@@ -24,17 +21,25 @@ function reportMetric(metric: { name: string; value: number; id: string }) {
   });
 }
 
+function pointCheckoutLinksToOffer() {
+  document
+    .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
+    .forEach((link) => {
+      link.href = "#oferta";
+      link.removeAttribute("data-checkout");
+    });
+}
+
 export function SebraeInteractions({
   offer,
-  goldenTicketCheckoutUrl,
 }: {
   offer: SebraeTrainingData["offer"];
-  goldenTicketCheckoutUrl: string;
 }) {
   const [showSticky, setShowSticky] = useState(false);
   const [checkoutUrl, setCheckoutUrl] = useState(offer.checkoutUrl);
   const [campaign, setCampaign] = useState<Record<string, string>>({});
   const checkoutUrlRef = useRef(offer.checkoutUrl);
+  const goldenTicketRef = useRef(false);
   const priceRef = useRef(offer.price);
   const viewed = useRef({ landing: false, offer: false });
   useReportWebVitals(reportMetric);
@@ -42,22 +47,26 @@ export function SebraeInteractions({
 
   useLayoutEffect(() => {
     const goldenTicket = rememberGoldenTicketSource();
-    priceRef.current = goldenTicket
-      ? goldenTicketPrice(offer.price)
-      : offer.price;
-    const useGoldenTicket =
-      goldenTicket && isCheckoutReady(goldenTicketCheckoutUrl);
-    const next = useGoldenTicket ? goldenTicketCheckoutUrl : offer.checkoutUrl;
-    checkoutUrlRef.current = next;
-    setCheckoutUrl(next);
+    goldenTicketRef.current = goldenTicket;
+    priceRef.current = goldenTicket ? 0 : offer.price;
     const nextCampaign = readCampaign();
     setCampaign(nextCampaign);
+
+    if (goldenTicket) {
+      checkoutUrlRef.current = "";
+      setCheckoutUrl("");
+      pointCheckoutLinksToOffer();
+      return;
+    }
+
+    checkoutUrlRef.current = offer.checkoutUrl;
+    setCheckoutUrl(offer.checkoutUrl);
     document
       .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
       .forEach((link) => {
-        link.href = campaignCheckoutUrl(next, nextCampaign);
+        link.href = campaignCheckoutUrl(offer.checkoutUrl, nextCampaign);
       });
-  }, [goldenTicketCheckoutUrl, offer.checkoutUrl]);
+  }, [offer.checkoutUrl, offer.price]);
 
   useEffect(() => {
     const campaign = readCampaign();
@@ -101,12 +110,16 @@ export function SebraeInteractions({
     if (footer) observer.observe(footer);
     if (academy) observer.observe(academy);
 
-    // Keep native anchors (including open-in-new-tab) and the provider's coupon parameters.
-    document
-      .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
-      .forEach((link) => {
-        link.href = campaignCheckoutUrl(checkoutUrlRef.current, campaign);
-      });
+    if (goldenTicketRef.current) {
+      pointCheckoutLinksToOffer();
+    } else {
+      document
+        .querySelectorAll<HTMLAnchorElement>("a[data-checkout]")
+        .forEach((link) => {
+          link.href = campaignCheckoutUrl(checkoutUrlRef.current, campaign);
+        });
+    }
+
     function onClick(event: MouseEvent) {
       if (!(event.target instanceof Element)) return;
       const link = event.target.closest<HTMLAnchorElement>("a");
@@ -156,9 +169,10 @@ export function SebraeInteractions({
       <SebraeCta
         offer={{
           ...offer,
-          checkoutUrl: isCheckoutReady(checkoutUrl)
-            ? campaignCheckoutUrl(checkoutUrl, campaign)
-            : checkoutUrl,
+          checkoutUrl:
+            !goldenTicketRef.current && isCheckoutReady(checkoutUrl)
+              ? campaignCheckoutUrl(checkoutUrl, campaign)
+              : checkoutUrl,
         }}
         placement="sticky"
       />

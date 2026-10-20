@@ -13,13 +13,7 @@ import { SebraeInteractions } from "./sebrae-interactions";
 import { SEBRAE_TRAINING } from "../utils/sebrae-training";
 import type { SebraeTrainingData } from "../models/sebrae-training";
 
-export function SebraeLanding({
-  checkoutUrl,
-  goldenTicketCheckoutUrl,
-}: {
-  checkoutUrl: string;
-  goldenTicketCheckoutUrl: string;
-}) {
+export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
   const data: SebraeTrainingData = {
     ...SEBRAE_TRAINING,
     offer: { ...SEBRAE_TRAINING.offer, checkoutUrl },
@@ -127,10 +121,7 @@ export function SebraeLanding({
       <div className="bg-kickops-lightgray pb-24 md:pb-0">
         <SiteFooter whatsappUrl={data.schedule.supportUrl} />
       </div>
-      <SebraeInteractions
-        offer={data.offer}
-        goldenTicketCheckoutUrl={goldenTicketCheckoutUrl}
-      />
+      <SebraeInteractions offer={data.offer} />
     </div>
   );
 }

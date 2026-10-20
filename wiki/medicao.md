@@ -18,7 +18,8 @@ A landing `/sebrae` acrescenta eventos próprios, todos com `campaign: "fe26"` e
 |---|---|
 | `landing_view` | Abertura da landing |
 | `offer_view` | A oferta entra na tela, uma vez por montagem |
-| `checkout_click` | Clique de saída para o checkout, se a URL estiver configurada |
+| `checkout_click` | Clique de saída para o checkout, se a URL estiver configurada. Não dispara no Golden Ticket. |
+| `golden_ticket_submit` | Envio bem-sucedido do formulário de cortesia |
 | `syllabus_click` | Clique na ementa |
 | `faq_open` | Abertura de uma pergunta |
 | `program_open` | Abertura de uma etapa do programa |

@@ -1,6 +1,6 @@
-import { BadgeCheck, CalendarDays, Check, LockKeyhole } from "lucide-react";
+import { BadgeCheck, CalendarDays, Check } from "lucide-react";
 import type { SebraeTrainingData } from "../models/sebrae-training";
-import { SebraeCta } from "./sebrae-cta";
+import { SebraeOfferAction } from "./sebrae-offer-action";
 import { SebraeOfferPrice } from "./sebrae-offer-price";
 
 export function SebraeOffer({ data }: { data: SebraeTrainingData }) {
@@ -77,14 +77,7 @@ export function SebraeOffer({ data }: { data: SebraeTrainingData }) {
             {offer.eyebrow}
           </p>
           <SebraeOfferPrice price={offer.price} currency={offer.currency} />
-          <p className="mb-7 text-sm leading-relaxed text-kickops-lightgray">
-            {offer.note}
-          </p>
-          <SebraeCta offer={offer} placement="offer" />
-          <p className="mt-4 flex items-center gap-2 text-xs text-kickops-lightgray">
-            <LockKeyhole aria-hidden className="size-3 shrink-0" />
-            {offer.securityNote}
-          </p>
+          <SebraeOfferAction offer={offer} />
         </div>
       </div>
     </section>
