@@ -37,7 +37,11 @@ export function TrainingCard({ training }: TrainingCardProps) {
     <article
       ref={cardRef}
       className={cn(
-        "relative h-[578px] overflow-hidden",
+        "group relative z-0 h-[578px] overflow-hidden",
+        "transition-transform duration-500 ease-out",
+        "pointer-fine:hover:z-10 pointer-fine:hover:scale-[1.04]",
+        "pointer-fine:focus-within:z-10 pointer-fine:focus-within:scale-[1.04]",
+        "motion-reduce:transition-none motion-reduce:scale-100",
         training.visual === "sebrae" ? "text-white" : "text-black",
       )}
       style={{ backgroundColor: training.accent }}
@@ -54,18 +58,28 @@ export function TrainingCard({ training }: TrainingCardProps) {
         className="pointer-events-none absolute inset-0 z-0 will-change-transform"
         style={ART_PARALLAX_STYLE}
       >
-        <div className={art.cardFrameClassName}>
-          <img
-            src={art.card.src}
-            alt=""
-            width={art.card.width}
-            height={art.card.height}
-            className={art.cardClassName}
-          />
+        <div
+          className={cn(
+            "size-full origin-[50%_38%]",
+            "transition-transform duration-500 ease-out",
+            "pointer-fine:group-hover:scale-[1.08]",
+            "pointer-fine:group-focus-within:scale-[1.08]",
+            "motion-reduce:transition-none motion-reduce:scale-100",
+          )}
+        >
+          <div className={art.cardFrameClassName}>
+            <img
+              src={art.card.src}
+              alt=""
+              width={art.card.width}
+              height={art.card.height}
+              className={art.cardClassName}
+            />
+          </div>
         </div>
       </div>
 
-      <span className="absolute top-10 right-10 z-0 bg-[#121212] p-2.5">
+      <span className="absolute top-10 right-10 z-0 bg-[#121212] p-2.5 transition-transform duration-500 ease-out pointer-fine:group-hover:scale-110 pointer-fine:group-focus-within:scale-110 motion-reduce:transition-none">
         <img src={arrowUpRight.src} alt="" width={40} height={40} />
       </span>
 

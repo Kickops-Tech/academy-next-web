@@ -9,13 +9,13 @@ export const TRAINING_CARD_PARALLAX_CSS = {
  * Positive Y follows the scroll (image rises faster); negative lags.
  */
 export const TRAINING_CARD_PARALLAX = {
-  brain: { y: 32 },
-  remote: { y: -18 },
-  management: { y: 38 },
-  architecture: { y: 20 },
-  rag: { y: -14 },
-  design: { y: 28 },
-  steps: { y: -24 },
-  business: { y: 22 },
-  sebrae: { y: 26 },
+  brain: { y: 44 },
+  remote: { y: -26 },
+  management: { y: 52 },
+  architecture: { y: 28 },
+  rag: { y: -20 },
+  design: { y: 38 },
+  steps: { y: -34 },
+  business: { y: 30 },
+  sebrae: { y: 36 },
 } as const satisfies Record<TrainingVisualId, { y: number }>;
