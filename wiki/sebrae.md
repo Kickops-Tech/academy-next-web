@@ -2,7 +2,7 @@
 
 `/treinamentos/como-empreender-na-era-da-ia` divulga o treinamento **Como empreender na era da IA**. É pública, sem HTTP Basic ou cookie obrigatório, e permanece fora de indexação via metadata, `robots.txt` e `X-Robots-Tag`.
 
-`/sebrae` é só o porteiro. Sem Golden Ticket, manda para a home com `?from=sebrae` e o catálogo mostra o card da FE26 primeiro enquanto a origem durar na aba. Com `?from=kickops-golden-ticket`, manda para o slug da landing com o mesmo parâmetro e a Cortesia.
+`/sebrae` é só o porteiro. Sem Golden Ticket, manda para a home com `?from=sebrae`. Enquanto a origem durar na aba, a primeira dobra troca a seta do catálogo pelo botão especial da FE SEBRAE 2026 — o clique rola até o catálogo, com o card da FE26 primeiro. Com `?from=kickops-golden-ticket`, manda para o slug da landing com o mesmo parâmetro e a Cortesia.
 
 - Conteúdo editável: `src/assets/data/sebrae-training.json`.
 - Componentes e interações: `src/features/sebrae`.

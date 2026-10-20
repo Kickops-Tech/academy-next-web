@@ -4,7 +4,7 @@ Landings públicas de marketing e conversão da Kickops Academy, o braço educac
 
 Há cinco superfícies:
 
-- **Home** (`/`) — catálogo de treinamentos da Kickops Academy. `/treinamentos` redireciona para cá.
+- **Home** (`/`) — catálogo de treinamentos da Kickops Academy, com a dobra Mentes pensantes ao final. Com origem `/sebrae`, a primeira dobra leva um botão da FE26. `/treinamentos` redireciona para cá.
 - **Para empresas** (`/para-empresas`) — landing B2B (Hero, Contents, Moments, Formats e People), sem a dobra Target.
 - **Treinamentos** (`/treinamentos/[slug]`) — detalhe de um treinamento, público e sem usuário ou senha.
 - **Sebrae** (`/sebrae` e `/treinamentos/como-empreender-na-era-da-ia`) — porteiro da feira e landing da oferta FE26, sem usuário ou senha e sem indexação.

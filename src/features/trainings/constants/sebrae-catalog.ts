@@ -12,3 +12,7 @@ export const SEBRAE_CATALOG_CARD = {
   href: FE26_TRAINING_HREF,
   visual: "sebrae",
 } as const;
+
+export const SEBRAE_CATALOG_SEAL = {
+  label: "Confira o Treinamento Especial • FE Sebrae 2026",
+} as const;

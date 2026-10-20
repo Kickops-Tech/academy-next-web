@@ -17,7 +17,7 @@ Uma página pública de apresentação e conversão da Kickops Academy.
 _Avoid_: Home genérica, website institucional (quando se referir a esta superfície específica)
 
 **Home**:
-O catálogo público de treinamentos, em `/`.
+O catálogo público de treinamentos, em `/`, encerrado pela dobra People. Com origem Sebrae, a primeira dobra leva o botão da FE26.
 _Avoid_: Landing B2B, /treinamentos (como URL canônica)
 
 **Para empresas**:
