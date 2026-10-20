@@ -1,14 +1,13 @@
 "use client";
 
 import { LANDING_SECTION_ID } from "@core/constants/landing-sections";
+import { WireframeGlobeBackdrop } from "@core/components/wireframe-globe-backdrop";
 import { Button } from "@shadcn/ui/button";
 import { HeroArtificialText } from "@features/hero/components/hero-artificial-text";
 import { HeroBaffleText } from "@features/hero/components/hero-baffle-text";
 import { HeroBust } from "@features/hero/components/hero-bust";
-import type { HeroIntroLoaderProps } from "@features/hero/components/hero-intro-loader";
 import {
   HERO_INTRO_COPY_DURATION_MS,
-  HERO_INTRO_LOADER_ENABLED,
   HERO_INTRO_TITLE_BAFFLE,
 } from "@features/hero/constants/hero-intro";
 import { HERO_SCROLL_CSS } from "@features/hero/constants/hero-scroll-parallax";
@@ -16,11 +15,10 @@ import { useHeroIntroSequence } from "@features/hero/hooks/use-hero-intro-sequen
 import { useHeroScrollParallax } from "@features/hero/hooks/use-hero-scroll-parallax";
 import { cn } from "@shadcn/lib/utils";
 import { ArrowRight } from "lucide-react";
-import dynamic from "next/dynamic";
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useRef, type CSSProperties, type ReactNode } from "react";
 
 function scrollToSecondFold() {
-  const target = document.getElementById(LANDING_SECTION_ID.target);
+  const target = document.getElementById(LANDING_SECTION_ID.contents);
   if (!target) {
     return;
   }
@@ -51,7 +49,7 @@ const HERO_TITLE_INTROSPECCAO_SIZE =
   "text-[clamp(2.75rem,1.25rem+8vw,4rem)] md:text-[4.5rem] lg:text-[5.25rem] xl:text-[6rem] 2xl:text-[6.75rem] 3xl:text-[7.5rem]";
 
 const HERO_TITLE_IA_SIZE =
-  "text-[clamp(5rem,2rem+14vw,7rem)] md:text-[6.75rem] lg:text-[7.25rem] xl:text-[7.75rem] 2xl:text-[8.75rem] 3xl:text-[10rem]";
+  "text-[clamp(5rem,2rem+14vw,7rem)] md:text-[7.5rem] lg:text-[8.5rem] xl:text-[9.5rem] 2xl:text-[10.5rem] 3xl:text-[12rem]";
 
 function layerStyle(yVar: string, opacityVar: string): CSSProperties {
   return {
@@ -70,33 +68,16 @@ const TITLE_LAYER_STYLE = layerStyle(
 );
 
 /**
- * Lazy Lottie loader. Import lives only here so the kill-switch never pulls
- * `lottie_light` / JSON into the hero chunk. Failed chunk → onFinish release.
- */
-const HeroIntroLoader = HERO_INTRO_LOADER_ENABLED
-  ? dynamic(
-      () =>
-        import("@features/hero/components/hero-intro-loader").catch(() => ({
-          default: function HeroIntroLoaderFailed({
-            onFinish,
-          }: HeroIntroLoaderProps) {
-            useEffect(() => {
-              onFinish();
-            }, [onFinish]);
-            return null;
-          },
-        })),
-      { ssr: false },
-    )
-  : null;
-
-/**
  * Hero section with scroll parallax: bust moves up faster and fades slower;
  * titles and copy fade out sooner with lighter vertical travel.
  *
- * Intro: optional Lottie loader → title baffle → copy/CTA fade-in slide-up.
+ * Intro: global Lottie (first load) → title baffle → copy/CTA fade-in slide-up.
  */
-export function HeroParallaxSection() {
+export function HeroParallaxSection({
+  children,
+}: {
+  children?: ReactNode;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   useHeroScrollParallax(sectionRef);
 
@@ -108,29 +89,14 @@ export function HeroParallaxSection() {
       aria-label={"Hero"}
       className={cn(
         "relative w-full min-h-fold overflow-hidden",
-        // Narrow viewports: lock to one screen so overlay padding can’t grow the fold.
-        "h-fold md:h-auto",
-        "flex flex-col items-center justify-end",
-        "bg-kickops-gray text-white",
-        "bg-radial from-kickops-lightgray to-kickops-gray",
+        "h-fold md:max-h-fold",
+        "flex flex-col items-center",
+        "hero-empresas-atmosphere text-white",
       )}
     >
-      {intro.showBackdrop ? (
-        <div className="hero-intro-backdrop" aria-hidden={true} />
-      ) : null}
+      {children ? <div className="relative z-20 w-full shrink-0">{children}</div> : null}
 
-      <noscript>
-        <style>{`.hero-intro-backdrop{display:none!important}`}</style>
-      </noscript>
-
-      {intro.loaderMounted && HeroIntroLoader ? (
-        <HeroIntroLoader
-          pageReady={intro.pageReady}
-          onPlayerReady={intro.onPlayerReady}
-          onReveal={intro.onReveal}
-          onFinish={intro.onFinish}
-        />
-      ) : null}
+      <WireframeGlobeBackdrop />
 
       <div
         className={cn(
@@ -181,22 +147,21 @@ export function HeroParallaxSection() {
         aria-hidden={true}
         className={cn(
           "pointer-events-none absolute inset-x-0 bottom-0 z-10",
-          "h-[55%] md:h-[50%]",
-          "bg-linear-to-b from-transparent via-kickops-gray/55 to-kickops-gray",
+          "h-[42%] md:h-[38%]",
+          "bg-linear-to-b from-transparent via-kickops-gray/35 to-kickops-gray/80",
         )}
       />
 
       <div
         data-hero-overlay=""
         className={cn(
-          "relative z-20 flex w-full flex-col items-center text-center",
+          "relative z-20 flex w-full flex-1 flex-col items-center justify-end text-center",
           // Figma 1512 → soft grow to 1920 (3xl), then plateau for 4K.
           "max-w-[94.5rem] 3xl:max-w-[120rem]",
           // Mobile: light top pad — justify-end parks the CTA; keep titles readable.
           "px-3 pb-8 pt-4",
-          // md+: more top pad so title + bust sit lower with air under the fold top.
-          "md:px-8 md:pb-16 md:pt-[min(50svh,26rem)]",
-          "3xl:pb-20 3xl:pt-[min(46svh,28rem)]",
+          "md:px-8 md:pb-10 md:pt-0",
+          "3xl:pb-12",
         )}
       >
         <h1
@@ -208,17 +173,36 @@ export function HeroParallaxSection() {
           style={TITLE_LAYER_STYLE}
           aria-hidden={!intro.titleActive}
         >
-          <HeroBaffleText
-            text={"Introspecção"}
-            enabled={intro.titleActive}
-            delay={HERO_INTRO_TITLE_BAFFLE.introspeccao.delay}
-            duration={HERO_INTRO_TITLE_BAFFLE.introspeccao.duration}
+          <span
             className={cn(
-              "font-abril-fatface",
-              "bg-linear-to-b from-white to-[#f5f5f5] bg-clip-text text-transparent",
-              HERO_TITLE_INTROSPECCAO_SIZE,
+              "flex w-full items-center",
+              "flex-col lg:flex-row lg:items-baseline lg:justify-center lg:gap-4",
             )}
-          />
+          >
+            <HeroBaffleText
+              text={"Kickops"}
+              enabled={intro.titleActive}
+              delay={HERO_INTRO_TITLE_BAFFLE.introspeccao.delay}
+              duration={HERO_INTRO_TITLE_BAFFLE.introspeccao.duration}
+              className={cn(
+                "font-abril-fatface",
+                "bg-linear-to-b from-white to-[#f5f5f5] bg-clip-text text-transparent",
+                HERO_TITLE_INTROSPECCAO_SIZE,
+              )}
+            />
+            <HeroBaffleText
+              text={"Academy"}
+              enabled={intro.titleActive}
+              delay={HERO_INTRO_TITLE_BAFFLE.academy.delay}
+              duration={HERO_INTRO_TITLE_BAFFLE.academy.duration}
+              className={cn(
+                "font-abril-fatface",
+                "bg-linear-to-b from-white to-[#f5f5f5] bg-clip-text text-transparent",
+                HERO_TITLE_INTROSPECCAO_SIZE,
+                "-mt-[0.08em] lg:mt-0",
+              )}
+            />
+          </span>
 
           <span
             className={cn(
@@ -230,13 +214,14 @@ export function HeroParallaxSection() {
             )}
           >
             <HeroBaffleText
-              text={"Inteligência"}
+              text={"Para"}
               enabled={intro.titleActive}
               delay={HERO_INTRO_TITLE_BAFFLE.inteligencia.delay}
               duration={HERO_INTRO_TITLE_BAFFLE.inteligencia.duration}
               className={cn("block text-kickops-green")}
             />
             <HeroArtificialText
+              text="empresas"
               enabled={intro.titleActive}
               delay={HERO_INTRO_TITLE_BAFFLE.artificial.delay}
               duration={HERO_INTRO_TITLE_BAFFLE.artificial.duration}

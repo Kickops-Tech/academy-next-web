@@ -10,6 +10,8 @@ import {
 } from "next/font/google";
 import localFont from "next/font/local";
 import { AnalyticsPageView } from "@core/components/analytics-page-view";
+import { SiteIntroRoot } from "@features/hero/components/site-intro-root";
+import { siteIntroSeenInlineScript } from "@features/hero/utils/site-intro";
 import { cn } from "@shadcn/lib/utils";
 import "@assets/styles/main.css";
 import { GoogleTagManager } from "@next/third-parties/google";
@@ -125,8 +127,16 @@ export default function RootLayout({ children = null }: RootLayoutProps) {
     >
       {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       <body>
-        <AnalyticsPageView />
-        {children}
+        <script
+          dangerouslySetInnerHTML={{ __html: siteIntroSeenInlineScript() }}
+        />
+        <noscript>
+          <style>{`.hero-intro-backdrop{display:none!important}`}</style>
+        </noscript>
+        <SiteIntroRoot>
+          <AnalyticsPageView />
+          {children}
+        </SiteIntroRoot>
       </body>
     </html>
   );

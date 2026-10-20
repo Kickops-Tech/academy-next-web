@@ -1,18 +1,29 @@
 import { SiteFooter } from "@core/components/site-footer";
 import catalogGrid from "@assets/trainings/catalog-grid.svg";
-import { TrainingCard } from "@features/trainings/components/training-card";
+import { TrainingCatalogGrid } from "@features/trainings/components/training-catalog-grid";
 import { TrainingsHero } from "@features/trainings/components/trainings-hero";
-import { TRAINING_CATALOG } from "@features/trainings/utils/trainings";
+import { CATALOG_SECTION_ID } from "@features/trainings/utils/scroll-to-catalog";
+import {
+  getOrderedCatalogTrainings,
+  TRAINING_CATALOG,
+} from "@features/trainings/utils/trainings";
 
-export function TrainingsCatalog() {
-  const { catalog, trainings } = TRAINING_CATALOG;
+type TrainingsCatalogProps = {
+  showSebraeCard?: boolean;
+};
+
+export function TrainingsCatalog({
+  showSebraeCard = false,
+}: TrainingsCatalogProps) {
+  const { catalog } = TRAINING_CATALOG;
+  const trainings = getOrderedCatalogTrainings();
 
   return (
     <main className="bg-[#f2f1ed] text-kickops-gray">
       <TrainingsHero catalog={catalog} />
 
       <section
-        id="catalogo"
+        id={CATALOG_SECTION_ID}
         className="relative scroll-mt-8 overflow-hidden px-5 py-16 md:px-10 md:py-20 xl:px-16"
       >
         <img
@@ -29,11 +40,10 @@ export function TrainingsCatalog() {
           </h2>
 
           {/* 3 columns once each card is ~300px (3×300 + gaps). Portrait iPad stays at 2. */}
-          <div className="mt-9 grid gap-5 md:grid-cols-2 @min-[940px]:grid-cols-3">
-            {trainings.map((training) => (
-              <TrainingCard key={training.slug} training={training} />
-            ))}
-          </div>
+          <TrainingCatalogGrid
+            trainings={trainings}
+            showSebraeCard={showSebraeCard}
+          />
         </div>
       </section>
 

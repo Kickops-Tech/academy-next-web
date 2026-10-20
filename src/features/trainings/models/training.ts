@@ -6,7 +6,8 @@ export type TrainingVisualId =
   | "rag"
   | "design"
   | "steps"
-  | "business";
+  | "business"
+  | "sebrae";
 
 export type TrainingOutcome = {
   title: string;

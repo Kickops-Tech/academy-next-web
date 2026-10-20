@@ -1,3 +1,4 @@
+import { getCatalogHref } from "@features/trainings/utils/trainings";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { SebraeTrainingData } from "../models/sebrae-training";
@@ -32,7 +33,7 @@ export function SebraeAcademy({
             {academy.description}
           </p>
           <Link
-            href="/treinamentos"
+            href={getCatalogHref()}
             className="sebrae-button mt-8 inline-flex min-h-14 items-center justify-center gap-6 bg-fe26-purple px-6 py-4 text-sm font-bold text-white hover:bg-kickops-gray"
           >
             {academy.ctaLabel}

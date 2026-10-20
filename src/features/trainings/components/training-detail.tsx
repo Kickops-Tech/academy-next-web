@@ -6,7 +6,11 @@ import { TRAINING_ART } from "@features/trainings/components/training-art";
 import { TrainingInterestForm } from "@features/trainings/components/training-interest-form";
 import { TrainingsHeader } from "@features/trainings/components/trainings-header";
 import type { Training } from "@features/trainings/models/training";
-import { getNextTraining, getTrainingHref } from "@features/trainings/utils/trainings";
+import {
+  getCatalogHref,
+  getNextTraining,
+  getTrainingHref,
+} from "@features/trainings/utils/trainings";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 
@@ -56,7 +60,7 @@ export function TrainingDetail({ training }: TrainingDetailProps) {
 
         <div className="relative mx-auto flex min-h-[640px] w-full max-w-[120rem] flex-col px-5 py-16 md:px-20 md:py-20">
           <Link
-            href="/treinamentos"
+            href={getCatalogHref()}
             aria-label="Voltar para todos os treinamentos"
             className="inline-flex w-fit bg-[#121212] p-2.5"
           >

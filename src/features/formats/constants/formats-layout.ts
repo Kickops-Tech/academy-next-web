@@ -24,10 +24,9 @@ export const FORMATS_DESKTOP_BLOCK_LEFT = {
 
 /**
  * Vertical positions in desktop frame (Figma 918:286).
- * Notice bar `918:351` @ 335; blocks resume below it.
+ * Blocks sit where the duration notice used to start.
  */
 export const FORMATS_DESKTOP_TOP = {
-  notice: 335,
-  blocks: 500,
-  cta: 780,
+  blocks: 335,
+  cta: 615,
 } as const;

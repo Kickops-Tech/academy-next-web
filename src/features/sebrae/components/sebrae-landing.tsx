@@ -1,7 +1,7 @@
 import { SiteFooter } from "@core/components/site-footer";
+import { TrainingsHeader } from "@features/trainings/components/trainings-header";
 import { ArrowUpRight } from "lucide-react";
 import { SebraeHero } from "./sebrae-hero";
-import { SebraeHeader } from "./sebrae-header";
 import { SebraeOffer } from "./sebrae-offer";
 import { SebraeProgram } from "./sebrae-program";
 import { SebraeResults } from "./sebrae-results";
@@ -27,7 +27,9 @@ export function SebraeLanding({ checkoutUrl }: { checkoutUrl: string }) {
       >
         Pular para o conteúdo
       </a>
-      <SebraeHeader data={data} />
+      <div className="bg-kickops-gray">
+        <TrainingsHeader />
+      </div>
       <main id="conteudo">
         <SebraeHero data={data} />
         <SebraeResults results={data.results} />

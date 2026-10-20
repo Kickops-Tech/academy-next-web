@@ -1,38 +1,85 @@
+"use client";
+
 import arrowUpRight from "@assets/trainings/arrow-up-right.svg";
 import { TRAINING_ART } from "@features/trainings/components/training-art";
-import type { Training } from "@features/trainings/models/training";
-import { getTrainingHref } from "@features/trainings/utils/trainings";
+import { TRAINING_CARD_PARALLAX_CSS } from "@features/trainings/constants/training-card-parallax";
+import { useTrainingCardArtParallax } from "@features/trainings/hooks/use-training-card-art-parallax";
+import type { TrainingVisualId } from "@features/trainings/models/training";
+import { cn } from "@shadcn/lib/utils";
 import Link from "next/link";
+import { useRef, type CSSProperties } from "react";
+
+export type TrainingCardModel = {
+  title: string;
+  titleLines: readonly string[];
+  shortDescription: string;
+  category: string;
+  accent: string;
+  href: string;
+  visual: TrainingVisualId;
+};
 
 type TrainingCardProps = {
-  training: Training;
+  training: TrainingCardModel;
+};
+
+const ART_PARALLAX_STYLE: CSSProperties = {
+  transform: `translate3d(0, var(${TRAINING_CARD_PARALLAX_CSS.y}, 0px), 0)`,
 };
 
 export function TrainingCard({ training }: TrainingCardProps) {
+  const cardRef = useRef<HTMLElement>(null);
+  const artRef = useRef<HTMLDivElement>(null);
   const art = TRAINING_ART[training.visual];
+  useTrainingCardArtParallax(cardRef, artRef, training.visual);
 
   return (
     <article
-      className="relative h-[578px] overflow-hidden text-black"
+      ref={cardRef}
+      className={cn(
+        "group relative z-0 h-[578px] overflow-hidden",
+        "transition-transform duration-500 ease-out",
+        "pointer-fine:hover:z-10 pointer-fine:hover:scale-[1.04]",
+        "pointer-fine:focus-within:z-10 pointer-fine:focus-within:scale-[1.04]",
+        "motion-reduce:transition-none motion-reduce:scale-100",
+        training.visual === "sebrae" ? "text-white" : "text-black",
+      )}
       style={{ backgroundColor: training.accent }}
     >
       <Link
-        href={getTrainingHref(training.slug)}
+        href={training.href}
         aria-label={`Conhecer o treinamento ${training.title}`}
         className="absolute inset-0 z-10 focus-visible:outline-3 focus-visible:outline-offset-[-3px] focus-visible:outline-black"
       />
 
-      <div className={art.cardFrameClassName}>
-        <img
-          src={art.card.src}
-          alt=""
-          width={art.card.width}
-          height={art.card.height}
-          className={art.cardClassName}
-        />
+      <div
+        ref={artRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 will-change-transform"
+        style={ART_PARALLAX_STYLE}
+      >
+        <div
+          className={cn(
+            "size-full origin-[50%_38%]",
+            "transition-transform duration-500 ease-out",
+            "pointer-fine:group-hover:scale-[1.08]",
+            "pointer-fine:group-focus-within:scale-[1.08]",
+            "motion-reduce:transition-none motion-reduce:scale-100",
+          )}
+        >
+          <div className={art.cardFrameClassName}>
+            <img
+              src={art.card.src}
+              alt=""
+              width={art.card.width}
+              height={art.card.height}
+              className={art.cardClassName}
+            />
+          </div>
+        </div>
       </div>
 
-      <span className="absolute top-10 right-10 z-0 bg-[#121212] p-2.5">
+      <span className="absolute top-10 right-10 z-0 bg-[#121212] p-2.5 transition-transform duration-500 ease-out pointer-fine:group-hover:scale-110 pointer-fine:group-focus-within:scale-110 motion-reduce:transition-none">
         <img src={arrowUpRight.src} alt="" width={40} height={40} />
       </span>
 
@@ -47,7 +94,14 @@ export function TrainingCard({ training }: TrainingCardProps) {
             </span>
           ))}
         </h3>
-        <p className="font-inter mt-4 text-base leading-[1.4]">{training.shortDescription}</p>
+        <p
+          className={cn(
+            "font-inter mt-4 text-base leading-[1.4]",
+            training.visual === "sebrae" && "text-white/85",
+          )}
+        >
+          {training.shortDescription}
+        </p>
       </div>
     </article>
   );

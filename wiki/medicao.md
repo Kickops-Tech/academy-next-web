@@ -12,7 +12,7 @@ A cada rota, inclusive a primeira e as trocas do App Router, o layout empurra:
 
 `page_path` é só o caminho. A query não entra, para nome, e-mail e transação do checkout não seguirem ao analytics. No checkout, o cumprimento, o e-mail e a transação visíveis levam `data-clarity-mask`.
 
-A landing `/sebrae` acrescenta eventos próprios, todos com `campaign: "fe26"` e os UTMs da sessão:
+A landing `/treinamentos/como-empreender-na-era-da-ia` acrescenta eventos próprios, todos com `campaign: "fe26"` e os UTMs da sessão:
 
 | Evento | Quando |
 |---|---|
@@ -25,7 +25,7 @@ A landing `/sebrae` acrescenta eventos próprios, todos com `campaign: "fe26"` e
 | `program_open` | Abertura de uma etapa do programa |
 | `web_vital` | Métrica de Web Vitals |
 
-O `page_view` da landing é o global. Não há um segundo `page_view` só do `/sebrae`.
+O `page_view` da landing é o global. Não há um segundo `page_view` só da FE26.
 
 ## Checklist do container
 

@@ -11,6 +11,14 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-10-20 | [Motion dos cards na home](20261020-catalog-card-motion.md) |
+| 2026-10-20 | [Treinamentos na home rola até o catálogo](20261020-nav-treinamentos-scroll.md) |
+| 2026-10-20 | [Ordem dos cards na home](20261020-catalog-order.md) |
+| 2026-10-20 | [Sem aviso de duração em É preciso saber](20261020-formats-sem-aviso-duracao.md) |
+| 2026-10-20 | [Fotos da Introspecção em para empresas](20261020-para-empresas-moments.md) |
+| 2026-10-20 | [Dobra Como funciona em para empresas](20261020-para-empresas-como-funciona.md) |
+| 2026-10-20 | [Lottie no first load global](20261020-lottie-first-load-global.md) |
+| 2026-10-20 | [Catálogo na home e landing para empresas](20261020-catalog-home-para-empresas.md) |
 | 2026-10-20 | [Formulário do Golden Ticket na FE26](20261020-golden-ticket-form.md) |
 | 2026-10-19 | [Pixelate do glitch sem redesenhar o quadro parado](20261019-glitch-pixelate.md) |
 | 2026-10-19 | [Catálogo com lista de espera e cursos novos](20261019-treinamentos-catalogo.md) |

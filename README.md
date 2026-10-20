@@ -25,8 +25,9 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 ### Acesso público
 
-O catálogo `/treinamentos`, suas páginas de detalhe e a landing `/sebrae`
-são públicos e não exigem usuário, senha ou cookie de acesso.
+A home `/`, `/para-empresas`, os detalhes em `/treinamentos/[slug]`,
+`/sebrae` e `/treinamentos/como-empreender-na-era-da-ia` são públicos
+e não exigem usuário, senha ou cookie de acesso.
 
 ## Scripts
 

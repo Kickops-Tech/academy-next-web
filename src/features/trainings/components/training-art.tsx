@@ -10,9 +10,11 @@ import wifiArt from "@assets/trainings/wifi.png";
 import type { TrainingVisualId } from "@features/trainings/models/training";
 import type { StaticImageData } from "next/image";
 
+type TrainingArtImage = Pick<StaticImageData, "src" | "width" | "height">;
+
 type TrainingArt = {
-  card: StaticImageData;
-  hero: StaticImageData;
+  card: TrainingArtImage;
+  hero: TrainingArtImage;
   cardFrameClassName: string;
   cardClassName: string;
   heroClassName: string;
@@ -84,5 +86,14 @@ export const TRAINING_ART: Record<TrainingVisualId, TrainingArt> = {
     cardClassName: "absolute -top-[55px] -left-[105px] size-[402px] max-w-none",
     heroClassName:
       "pointer-events-none absolute top-[-12%] right-[-6%] w-[min(48%,560px)] max-w-none",
+  },
+  sebrae: {
+    card: { src: "/img/home/bust-1.png", width: 900, height: 1100 },
+    hero: { src: "/img/home/bust-1.png", width: 900, height: 1100 },
+    cardFrameClassName: "contents",
+    cardClassName:
+      "absolute -top-16 left-1/2 h-[420px] w-auto max-w-none -translate-x-1/2 object-contain",
+    heroClassName:
+      "pointer-events-none absolute top-[-8%] right-[-4%] w-[min(52%,560px)] max-w-none",
   },
 };

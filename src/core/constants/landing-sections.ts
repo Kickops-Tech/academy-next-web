@@ -4,4 +4,6 @@
  */
 export const LANDING_SECTION_ID = {
   target: "pra-quem",
+  contents: "como-funciona",
+  moments: "pratica-ao-vivo",
 } as const;

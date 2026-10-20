@@ -12,13 +12,13 @@ Variáveis de servidor. Nenhuma delas deve ir para `NEXT_PUBLIC_*`. Os nomes est
 | `MAILER_TRAINING_INTEREST_URL` | `POST` que enfileira o e-mail de interesse em treinamento. Sem ela, o app usa `https://mailer.kickops.dev/kickops/academy/training-interest`. |
 | `MAILER_GOLDEN_TICKET_URL` | `POST` que enfileira a confirmação do Golden Ticket e o aviso interno. Sem ela, o app usa `https://mailer.kickops.dev/kickops/academy/golden-ticket`. |
 
-`/treinamentos`, seus detalhes e `/sebrae` são públicos. As variáveis `PRIVATE_ACCESS_*` não são utilizadas, e o cookie antigo `kickops_private_access` não participa do acesso.
+`/`, `/para-empresas`, os detalhes em `/treinamentos/[slug]`, `/sebrae` e `/treinamentos/como-empreender-na-era-da-ia` são públicos. As variáveis `PRIVATE_ACCESS_*` não são utilizadas, e o cookie antigo `kickops_private_access` não participa do acesso.
 
 Configurações públicas da landing FE26:
 
 | Variável | Uso |
 |---|---|
-| `NEXT_PUBLIC_CHECKOUT_URL` | URL completa de compra, incluindo cupom. Tem prioridade sobre `offer.checkoutUrl` no JSON. Vale para `/sebrae` sem Golden Ticket. |
+| `NEXT_PUBLIC_CHECKOUT_URL` | URL completa de compra, incluindo cupom. Tem prioridade sobre `offer.checkoutUrl` no JSON. Vale para `/treinamentos/como-empreender-na-era-da-ia` sem Golden Ticket. |
 | `NEXT_PUBLIC_GTM_ID` | Container do Google Tag Manager. Sem ele, o script não entra. GA4 e Clarity ficam no container, não nesta variável. |
 
 Essas configurações são públicas, não credenciais. Alterações exigem novo build/deploy.

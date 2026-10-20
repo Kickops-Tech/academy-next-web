@@ -10,7 +10,7 @@ import { createPortal } from "react-dom";
  * Props for {@link HeroIntroLoader}.
  */
 export interface HeroIntroLoaderProps {
-  /** Page gate (bust + fonts, or ready timeout). Phase 2 starts when true. */
+  /** Page gate (fonts, or ready timeout). Phase 2 starts when true. */
   pageReady: boolean;
   /** Lottie DOM ready — SSR black backdrop can be removed. */
   onPlayerReady: () => void;
