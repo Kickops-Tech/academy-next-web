@@ -2,14 +2,17 @@
 
 Landings públicas de marketing e conversão da Kickops Academy, o braço educacional da Kickops. O app é Next.js (App Router), React, TypeScript e Tailwind. A base de UI do shadcn fica em `src/shadcn` e não é editada à mão.
 
-Há quatro superfícies:
+Há cinco superfícies:
 
-- **Home** (`/`) — landing da imersão Introspecção: Inteligência Artificial. Seções Hero, Target, Contents, Formats e People, mais o rodapé.
-- **Treinamentos** (`/treinamentos` e `/treinamentos/[slug]`) — catálogo e detalhe de um treinamento, públicos e sem usuário ou senha.
-- **Sebrae** (`/sebrae`) — landing pública da oferta da Feira do Empreendedor, sem usuário ou senha e sem indexação.
+- **Home** (`/`) — catálogo de treinamentos da Kickops Academy. `/treinamentos` redireciona para cá.
+- **Para empresas** (`/para-empresas`) — landing B2B (Hero, Contents, Moments, Formats e People), sem a dobra Target.
+- **Treinamentos** (`/treinamentos/[slug]`) — detalhe de um treinamento, público e sem usuário ou senha.
+- **Sebrae** (`/sebrae` e `/treinamentos/como-empreender-na-era-da-ia`) — porteiro da feira e landing da oferta FE26, sem usuário ou senha e sem indexação.
 - **Checkout** (`/checkout/...`) — páginas externas de obrigado da Hotmart. Públicas, para o comprador chegar depois do pagamento.
 
 Há ainda duas páginas legais, públicas: política de privacidade e termos de uso.
+
+A primeira visita de uma aba mostra a Lottie da marca em tela cheia (exceto checkout e o porteiro `/sebrae`). A sessão da aba guarda que já tocou.
 
 Quatro endpoints:
 

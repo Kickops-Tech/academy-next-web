@@ -16,6 +16,14 @@ _Avoid_: Academy (sozinho, como nome canônico), Platform, site, app (quando se 
 Uma página pública de apresentação e conversão da Kickops Academy.
 _Avoid_: Home genérica, website institucional (quando se referir a esta superfície específica)
 
+**Home**:
+O catálogo público de treinamentos, em `/`.
+_Avoid_: Landing B2B, /treinamentos (como URL canônica)
+
+**Para empresas**:
+A landing B2B da Kickops Academy, em `/para-empresas` — oferta corporativa sem a dobra Target.
+_Avoid_: Home, Introspecção (como nome da página)
+
 **Hero**:
 A seção principal de abertura da Landing — primeiro viewport com a mensagem central e o chamado à ação.
 _Avoid_: Banner, header, capa
@@ -29,8 +37,12 @@ Um perfil de destinatário da oferta (ex.: corporativo, tech, aperfeiçoamento).
 _Avoid_: Persona, segmento, card (quando se referir ao conceito de domínio)
 
 **Contents**:
-A seção da Landing que apresenta os eixos / tópicos do programa.
-_Avoid_: Topics, curriculum, syllabus (quando se referir à seção)
+A seção da Landing B2B que apresenta como a oferta corporativa funciona — do entendimento do negócio ao acompanhamento.
+_Avoid_: Topics, curriculum, syllabus, Vamos abordar (quando se referir à seção)
+
+**Moments**:
+A seção da Landing B2B com fotos de um encontro real da Introspecção.
+_Avoid_: Gallery, Instagram, feed (quando se referir à seção)
 
 **Formats**:
 A seção da Landing que apresenta formato de entrega, personalização de conteúdo e investimento.

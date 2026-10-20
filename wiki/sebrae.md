@@ -1,6 +1,8 @@
 # Landing FE26
 
-`/sebrae` divulga o treinamento **Como empreender na era da IA**. É pública, sem HTTP Basic ou cookie obrigatório, e permanece fora de indexação via metadata, `robots.txt` e `X-Robots-Tag`.
+`/treinamentos/como-empreender-na-era-da-ia` divulga o treinamento **Como empreender na era da IA**. É pública, sem HTTP Basic ou cookie obrigatório, e permanece fora de indexação via metadata, `robots.txt` e `X-Robots-Tag`.
+
+`/sebrae` é só o porteiro. Sem Golden Ticket, manda para a home com `?from=sebrae` e o catálogo mostra o card da FE26 primeiro enquanto a origem durar na aba. Com `?from=kickops-golden-ticket`, manda para o slug da landing com o mesmo parâmetro e a Cortesia.
 
 - Conteúdo editável: `src/assets/data/sebrae-training.json`.
 - Componentes e interações: `src/features/sebrae`.
@@ -11,7 +13,8 @@
 - Checkout pago: `NEXT_PUBLIC_CHECKOUT_URL` ou `offer.checkoutUrl`. Sem URL válida, os CTAs levam à oferta e o botão de compra fica desabilitado.
 - Golden Ticket: `?from=kickops-golden-ticket` troca o checkout por um formulário no card da oferta (nome, e-mail, celular). Os outros CTAs rolam até `#oferta`. A origem fica na aba e o `from` sai da URL atual. O envio grava `academy_contact_training_interest` com `training_slug = sebrae-golden-ticket` e enfileira a confirmação ao visitante mais o aviso interno. No sucesso, um confete dourado denso cobre a tela e some; quem prefere menos movimento não o vê.
 - O rodapé tem WhatsApp com o mesmo destino dos links de atendimento, além das páginas legais.
-- A última dobra leva ao catálogo público `/treinamentos`.
+- A última dobra leva ao catálogo público `/`.
+- O cabeçalho é o menu Academy do site (Para empresas, Treinamentos, WhatsApp). Não há âncoras internas no topo.
 - Hero mobile (abaixo de 768 px): promessa curta em `hero.mobileSubtitle`, data e CTA, com os quatro destaques na base. A descrição longa aparece a partir de 768 px.
 - FAQ: seis perguntas sobre pré-requisitos/ferramentas, adequação ao negócio, aplicação prática, gravação, acesso e reembolso.
 - Reembolso da oferta Kickops + Feira do Empreendedor: além do direito de arrependimento previsto no CDC, é possível pedir cancelamento com reembolso total até um dia antes do evento.

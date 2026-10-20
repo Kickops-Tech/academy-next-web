@@ -18,11 +18,18 @@ const TRAINING_SLUG_REDIRECTS = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return TRAINING_SLUG_REDIRECTS.map(([source, destination]) => ({
-      source: `/treinamentos/${source}`,
-      destination: `/treinamentos/${destination}`,
-      permanent: true,
-    }));
+    return [
+      {
+        source: "/treinamentos",
+        destination: "/",
+        permanent: true,
+      },
+      ...TRAINING_SLUG_REDIRECTS.map(([source, destination]) => ({
+        source: `/treinamentos/${source}`,
+        destination: `/treinamentos/${destination}`,
+        permanent: true,
+      })),
+    ];
   },
   async headers() {
     return UNINDEXED_PATHS.flatMap((path) =>

@@ -11,34 +11,34 @@ export type ContentsTopic = {
 export const CONTENTS_TOPICS: readonly ContentsTopic[] = [
   {
     id: "past",
-    label: "VOLTANDO AO PASSADO",
-    title: "Todos os bastidores",
+    label: "O SEU NEGÓCIO",
+    title: "Entendemos primeiro",
     description:
-      "Como funciona a IA? O que acontece quando escrevemos um prompt no conforto da nossa mesa de trabalho?",
+      "Qual é o desafio de verdade? A gente senta, escuta e entende o negócio — reuniões para chegar no contexto, não no pacote pronto.",
     iconSrc: "/img/contents/icon-past.svg",
   },
   {
     id: "inflection",
-    label: "PONTO DE MUDANÇA",
-    title: "Inflexão",
+    label: "SOB MEDIDA",
+    title: "Feito no seu contexto",
     description:
-      "Em que momento da história as coisas mudam? Onde foi que apertaram o botão que transformou nosso futuro?",
+      "A partir do que ouvimos, criamos o treinamento no idioma do seu time: casos, processos e restrições de vocês.",
     iconSrc: "/img/contents/icon-inflection.svg",
   },
   {
     id: "now",
-    label: "O AGORA",
-    title: "Os dias de hoje",
+    label: "O ENCONTRO",
+    title: "Presencial ou online",
     description:
-      "Onde estamos? O que de fato está acontecendo, evoluindo e mudando de fato para a mudança do amanhã?",
+      "Realizamos o treinamento onde o time estiver. Na sala ou na tela — o importante é estar no mesmo lugar.",
     iconSrc: "/img/contents/icon-now.svg",
   },
   {
     id: "future",
-    label: "FUTURO",
-    title: "Pra onde vamos",
+    label: "ACOMPANHAMENTO",
+    title: "Faz sentido?",
     description:
-      "O que já se consegue ver lá na frente com evoluções muito rápidas e efetivas nas ferramentas de IA.",
+      "Depois, voltamos para uma sessão: o que fizemos juntos está fazendo sentido no dia a dia?",
     iconSrc: "/img/contents/icon-future.svg",
   },
 ] as const;

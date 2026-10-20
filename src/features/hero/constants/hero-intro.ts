@@ -1,5 +1,5 @@
 /**
- * Hero first-paint intro choreography (bust → title baffle → copy/CTA).
+ * First-paint intro: global Lottie curtain, then Hero baffle / copy.
  *
  * @module features/hero/constants/hero-intro
  */
@@ -13,6 +13,7 @@ export const HERO_INTRO_TITLE_GAP_MS = 40;
 /** Baffle timings (must match HeroParallaxSection props). */
 export const HERO_INTRO_TITLE_BAFFLE = {
   introspeccao: { delay: 20, duration: 700 },
+  academy: { delay: 50, duration: 750 },
   inteligencia: { delay: 80, duration: 850 },
   artificial: { delay: 120, duration: 900 },
 } as const;
@@ -31,6 +32,18 @@ export const HERO_INTRO_COPY_DURATION_MS = 350;
  * (`lottie_light` + JSON) nunca é baixado. Rollback seguro.
  */
 export const HERO_INTRO_LOADER_ENABLED = true;
+
+/** sessionStorage: Lottie already played in this tab. */
+export const SITE_INTRO_STORAGE_KEY = "kickops-intro-seen";
+
+/** Injected style id that hides the SSR curtain (do not mutate `<html>` class). */
+export const SITE_INTRO_SEEN_STYLE_ID = "site-intro-seen";
+
+/** Exact paths that never play the brand intro (gate / redirect). */
+export const SITE_INTRO_SKIP_PATHS = ["/sebrae"] as const;
+
+/** Path prefixes that never play the brand intro (post-purchase). */
+export const SITE_INTRO_SKIP_PREFIXES = ["/checkout"] as const;
 
 /** Frames e timeouts do Lottie intro loader (`kickops-intro.json`, 60fps). */
 export const HERO_INTRO_LOADER = {

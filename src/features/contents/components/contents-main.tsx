@@ -1,5 +1,6 @@
 "use client";
 
+import { LANDING_SECTION_ID } from "@core/constants/landing-sections";
 import { ContentsSection } from "@features/contents/components/contents-section";
 import { useContentsColumnParallax } from "@features/contents/hooks/use-contents-column-parallax";
 import { useSectionHeadingParallax } from "@core/hooks/use-section-heading-parallax";
@@ -15,7 +16,8 @@ export function ContentsMain() {
   return (
     <section
       ref={sectionRef}
-      aria-label="Vamos abordar"
+      id={LANDING_SECTION_ID.contents}
+      aria-label="Como funciona"
       data-globe-section="contents"
       style={SECTION_HEADING_SECTION_STYLE}
       className={cn(

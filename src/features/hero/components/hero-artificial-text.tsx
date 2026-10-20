@@ -10,6 +10,8 @@ import { useSporadicFontGlitch } from "@features/hero/hooks/use-sporadic-font-gl
  */
 export interface HeroArtificialTextProps {
   className?: string;
+  /** Headline copy. Defaults to the original “Artificial” line. */
+  text?: string;
   /** Milliseconds before the baffle reveal starts. */
   delay?: number;
   /** Milliseconds to decode into the final text. */
@@ -22,8 +24,6 @@ export interface HeroArtificialTextProps {
   /** Fires once when the baffle reveal finishes (or immediately if reduced motion). */
   onRevealComplete?: () => void;
 }
-
-const TEXT = "Artificial";
 const BAFFLE_CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789▓░█▒•/";
 
@@ -35,6 +35,7 @@ const BAFFLE_CHARACTERS =
  */
 export function HeroArtificialText({
   className,
+  text = "Artificial",
   delay = 420,
   duration = 1500,
   enabled = true,
@@ -68,7 +69,7 @@ export function HeroArtificialText({
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reducedMotion.matches) {
-      element.textContent = TEXT;
+      element.textContent = text;
       setBaffleComplete(true);
       onRevealCompleteRef.current?.();
       return;
@@ -81,7 +82,7 @@ export function HeroArtificialText({
     void import("baffle").then(({ default: baffle }) => {
       if (cancelled) return;
 
-      element.textContent = TEXT;
+      element.textContent = text;
       instance = baffle(element)
         .set({
           characters: BAFFLE_CHARACTERS,
@@ -103,7 +104,7 @@ export function HeroArtificialText({
       instance?.stop();
       if (completeTimer) clearTimeout(completeTimer);
     };
-  }, [delay, duration, enabled]);
+  }, [delay, duration, enabled, text]);
 
   return (
     <span
@@ -120,7 +121,7 @@ export function HeroArtificialText({
           "invisible block leading-none whitespace-nowrap",
         )}
       >
-        {TEXT}
+        {text}
       </span>
 
       <span
@@ -134,7 +135,7 @@ export function HeroArtificialText({
           !enabled && "opacity-0",
         )}
       >
-        {enabled ? TEXT : null}
+        {enabled ? text : null}
       </span>
     </span>
   );

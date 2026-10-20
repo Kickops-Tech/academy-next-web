@@ -1,14 +1,19 @@
 "use client";
 
+import { WireframeGlobeBackdrop } from "@core/components/wireframe-globe-backdrop";
 import { HeroBaffleText } from "@features/hero/components/hero-baffle-text";
 import { HeroBust } from "@features/hero/components/hero-bust";
 import { HERO_SCROLL_CSS } from "@features/hero/constants/hero-scroll-parallax";
 import { useHeroScrollParallax } from "@features/hero/hooks/use-hero-scroll-parallax";
 import { TrainingsHeader } from "@features/trainings/components/trainings-header";
 import type { TrainingCatalog } from "@features/trainings/models/training";
+import {
+  CATALOG_SECTION_ID,
+  scrollToCatalog,
+} from "@features/trainings/utils/scroll-to-catalog";
 import { cn } from "@shadcn/lib/utils";
 import { ArrowDown } from "lucide-react";
-import { useRef, type CSSProperties, type MouseEvent } from "react";
+import { useRef, type CSSProperties } from "react";
 
 type TrainingsHeroProps = {
   catalog: TrainingCatalog["catalog"];
@@ -34,48 +39,6 @@ const COPY_LAYER_STYLE = layerStyle(
   HERO_SCROLL_CSS.copyOpacity,
 );
 
-const CATALOG_SCROLL_MS = 380;
-
-function easeOutCubic(progress: number): number {
-  return 1 - (1 - progress) ** 3;
-}
-
-function scrollToCatalog(event: MouseEvent<HTMLAnchorElement>) {
-  const target = document.getElementById("catalogo");
-  if (!target) {
-    return;
-  }
-
-  event.preventDefault();
-
-  const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-  const destination = Math.max(0, target.getBoundingClientRect().top + window.scrollY - margin);
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (reducedMotion) {
-    window.scrollTo(0, destination);
-    history.pushState(null, "", "#catalogo");
-    return;
-  }
-
-  const start = window.scrollY;
-  const distance = destination - start;
-  const startTime = performance.now();
-
-  function step(now: number) {
-    const progress = Math.min(1, (now - startTime) / CATALOG_SCROLL_MS);
-    window.scrollTo(0, start + distance * easeOutCubic(progress));
-    if (progress < 1) {
-      requestAnimationFrame(step);
-      return;
-    }
-
-    history.pushState(null, "", "#catalogo");
-  }
-
-  requestAnimationFrame(step);
-}
-
 export function TrainingsHero({ catalog }: TrainingsHeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   useHeroScrollParallax(sectionRef);
@@ -93,7 +56,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
     >
       <TrainingsHeader current="catalog" className="shrink-0" />
 
-      <div aria-hidden="true" className="trainings-hero-grid absolute inset-0 z-0" />
+      <WireframeGlobeBackdrop />
 
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
@@ -158,7 +121,7 @@ export function TrainingsHero({ catalog }: TrainingsHeroProps) {
             <span className="text-white/70">{catalog.description}</span>
           </p>
           <a
-            href="#catalogo"
+            href={`#${CATALOG_SECTION_ID}`}
             aria-label="Ir para o catálogo de treinamentos"
             onClick={scrollToCatalog}
             className="mt-5 flex size-11 items-center justify-center border border-white/35 text-white transition-colors hover:border-kickops-yellow hover:bg-kickops-yellow hover:text-kickops-gray md:mt-6 md:size-12"

@@ -1,4 +1,5 @@
 import trainingCatalogData from "@assets/data/trainings.json";
+import { CATALOG_ORDER } from "@features/trainings/constants/catalog-order";
 import type {
   Training,
   TrainingCatalog,
@@ -8,6 +9,35 @@ export const TRAINING_CATALOG = trainingCatalogData as TrainingCatalog;
 
 export function getTrainingBySlug(slug: string): Training | undefined {
   return TRAINING_CATALOG.trainings.find((training) => training.slug === slug);
+}
+
+/** Home grid only. Slugs missing from `CATALOG_ORDER` append in JSON order. */
+export function getOrderedCatalogTrainings(
+  trainings: readonly Training[] = TRAINING_CATALOG.trainings,
+): Training[] {
+  const remaining = new Map(
+    trainings.map((training) => [training.slug, training]),
+  );
+  const ordered: Training[] = [];
+
+  for (const slug of CATALOG_ORDER) {
+    const training = remaining.get(slug);
+    if (!training) {
+      continue;
+    }
+    ordered.push(training);
+    remaining.delete(slug);
+  }
+
+  for (const training of remaining.values()) {
+    ordered.push(training);
+  }
+
+  return ordered;
+}
+
+export function getCatalogHref(): string {
+  return "/";
 }
 
 export function getTrainingHref(slug: string): string {

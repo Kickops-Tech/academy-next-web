@@ -25,7 +25,7 @@ export function ContentsHeading({ variant }: ContentsHeadingProps) {
           )}
           style={SECTION_HEADING_LEAD_STYLE}
         >
-          VAMOS
+          COMO
         </span>
         <span
           className={cn(
@@ -37,7 +37,7 @@ export function ContentsHeading({ variant }: ContentsHeadingProps) {
             ...SECTION_HEADING_TRAIL_STYLE,
           }}
         >
-          ABORDAR
+          FUNCIONA
         </span>
       </h2>
     );
@@ -56,7 +56,7 @@ export function ContentsHeading({ variant }: ContentsHeadingProps) {
           )}
           style={SECTION_HEADING_LEAD_STYLE}
         >
-          VAMOS
+          COMO
         </span>
         <span
           className={cn(
@@ -68,7 +68,7 @@ export function ContentsHeading({ variant }: ContentsHeadingProps) {
             ...SECTION_HEADING_TRAIL_STYLE,
           }}
         >
-          ABORDAR
+          FUNCIONA
         </span>
       </h2>
     </div>
