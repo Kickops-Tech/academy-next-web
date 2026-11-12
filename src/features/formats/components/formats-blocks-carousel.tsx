@@ -18,7 +18,7 @@ export function FormatsBlocksCarousel({
       className={className}
       tone="light"
       gap={FORMATS_MOBILE_BLOCK_GAP}
-      aria-label="Formatos da introspecção"
+      aria-label="Formato, conteúdo e investimento do treinamento"
     >
       {FORMATS_BLOCKS.map((block, index) => (
         <FormatsBlockCard

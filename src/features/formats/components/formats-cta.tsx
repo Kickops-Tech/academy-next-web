@@ -1,3 +1,4 @@
+import { COMPANY_CONTACT_HREF } from "@features/contact/constants/company-contact";
 import { cn } from "@shadcn/lib/utils";
 import { ArrowRight } from "lucide-react";
 import type { CSSProperties } from "react";
@@ -7,7 +8,7 @@ import type { CSSProperties } from "react";
  * wiring `onClick` from FormatsSection again.
  */
 const FORMATS_CTA_WHATSAPP_HREF =
-  "https://wa.me/5511987717572?text=Olá! Vim pelo website da *Kickops Academy* e gostaria de saber mais detalhes sobre a *Introspecção: Inteligência Artificial*.";
+  COMPANY_CONTACT_HREF;
 
 type FormatsCtaProps = {
   className?: string;
@@ -48,7 +49,7 @@ export function FormatsCta({
           "text-white group-hover:text-kickops-gray group-focus-visible:text-kickops-gray",
         )}
       >
-        Fale com a{" "}
+        Vamos falar do{" "}
         <span
           className={cn(
             "transition-colors duration-300 ease-out",
@@ -56,7 +57,7 @@ export function FormatsCta({
             "group-hover:text-kickops-gray group-focus-visible:text-kickops-gray",
           )}
         >
-          nossa equipe
+          seu time
         </span>
       </span>
       <span

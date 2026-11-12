@@ -1,4 +1,5 @@
 import { KickopsLogo } from "@core/components/kickops-logo";
+import { COMPANY_CONTACT_HREF } from "@features/contact/constants/company-contact";
 import { TrainingsNavCatalogLink } from "@features/trainings/components/trainings-nav-catalog-link";
 import {
   getCatalogContactHref,
@@ -19,7 +20,12 @@ export function TrainingsHeader({
 }: TrainingsHeaderProps) {
   return (
     <header className={cn("relative z-20 w-full text-white", className)}>
-      <div className="mx-auto flex h-24 w-full max-w-[120rem] items-center justify-between gap-3 px-5 md:h-28 md:px-10 xl:px-16">
+      <div
+        className={cn(
+          "mx-auto flex h-24 w-full max-w-[120rem] items-center justify-between gap-3 px-5 md:h-28 md:px-10 xl:px-16",
+          current === "empresas" && "h-auto min-h-24 flex-wrap gap-y-5 py-5 sm:h-24 sm:flex-nowrap sm:py-0 md:h-28",
+        )}
+      >
         <Link
           href={getCatalogHref()}
           aria-label="Kickops Academy — início"
@@ -33,7 +39,10 @@ export function TrainingsHeader({
 
         <nav
           aria-label="Navegação principal"
-          className="flex items-center gap-4 md:gap-8"
+          className={cn(
+            "flex items-center gap-4 md:gap-8",
+            current === "empresas" && "w-full justify-between sm:w-auto",
+          )}
         >
           <Link
             href="/para-empresas"
@@ -49,7 +58,7 @@ export function TrainingsHeader({
           </Link>
           <TrainingsNavCatalogLink current={current} />
           <a
-            href={getCatalogContactHref()}
+            href={current === "empresas" ? COMPANY_CONTACT_HREF : getCatalogContactHref()}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-1.5 font-dm-mono text-xs tracking-[0.14em] text-white uppercase transition-colors hover:text-kickops-yellow sm:flex md:text-sm"

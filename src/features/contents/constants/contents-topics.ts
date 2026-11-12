@@ -11,34 +11,34 @@ export type ContentsTopic = {
 export const CONTENTS_TOPICS: readonly ContentsTopic[] = [
   {
     id: "past",
-    label: "O SEU NEGÓCIO",
-    title: "Entendemos primeiro",
+    label: "01 · CONTEXTO",
+    title: "O desafio vem primeiro",
     description:
-      "Qual é o desafio de verdade? A gente senta, escuta e entende o negócio — reuniões para chegar no contexto, não no pacote pronto.",
+      "Conversamos sobre os objetivos, os processos e a familiaridade do time com IA. Esse entendimento orienta o treinamento.",
     iconSrc: "/img/contents/icon-past.svg",
   },
   {
     id: "inflection",
-    label: "SOB MEDIDA",
-    title: "Feito no seu contexto",
+    label: "02 · PREPARAÇÃO",
+    title: "Conteúdo do seu negócio",
     description:
-      "A partir do que ouvimos, criamos o treinamento no idioma do seu time: casos, processos e restrições de vocês.",
+      "Selecionamos os temas e adaptamos os exemplos à realidade da empresa. O conteúdo considera as prioridades e as restrições de vocês.",
     iconSrc: "/img/contents/icon-inflection.svg",
   },
   {
     id: "now",
-    label: "O ENCONTRO",
-    title: "Presencial ou online",
+    label: "03 · TREINAMENTO",
+    title: "Aprender e discutir juntos",
     description:
-      "Realizamos o treinamento onde o time estiver. Na sala ou na tela — o importante é estar no mesmo lugar.",
+      "Presencial ou online, conectamos os conceitos de IA aos desafios do time, com espaço para perguntas e discussão de aplicações.",
     iconSrc: "/img/contents/icon-now.svg",
   },
   {
     id: "future",
-    label: "ACOMPANHAMENTO",
-    title: "Faz sentido?",
+    label: "04 · ACOMPANHAMENTO",
+    title: "Retomar a aplicação",
     description:
-      "Depois, voltamos para uma sessão: o que fizemos juntos está fazendo sentido no dia a dia?",
+      "Voltamos para uma sessão de acompanhamento: esclarecer dúvidas, discutir a aplicação no dia a dia e revisar os próximos passos.",
     iconSrc: "/img/contents/icon-future.svg",
   },
 ] as const;

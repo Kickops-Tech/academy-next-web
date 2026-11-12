@@ -5,14 +5,14 @@ Landings públicas de marketing e conversão da Kickops Academy, o braço educac
 Há cinco superfícies:
 
 - **Home** (`/`) — catálogo de treinamentos da Kickops Academy, com a dobra Mentes pensantes ao final. Com origem `/sebrae`, a primeira dobra leva um botão da FE26. `/treinamentos` redireciona para cá.
-- **Para empresas** (`/para-empresas`) — landing B2B (Hero, Contents, Moments, Formats e People), sem a dobra Target.
+- **Para empresas** (`/para-empresas`) — landing B2B de capacitação em IA para lideranças, com oferta, capacidades a desenvolver, Contents, Moments, Formats, People e contato com FAQ. Detalhes em [Para empresas](para-empresas.md).
 - **Treinamentos** (`/treinamentos/[slug]`) — detalhe de um treinamento, público e sem usuário ou senha.
 - **Sebrae** (`/sebrae` e `/treinamentos/como-empreender-na-era-da-ia`) — porteiro da feira e landing da oferta FE26, sem usuário ou senha e sem indexação.
 - **Checkout** (`/checkout/...`) — páginas externas de obrigado da Hotmart. Públicas, para o comprador chegar depois do pagamento.
 
 Há ainda duas páginas legais, públicas: política de privacidade e termos de uso.
 
-A primeira visita de uma aba mostra a Lottie da marca em tela cheia (exceto checkout e o porteiro `/sebrae`). A sessão da aba guarda que já tocou.
+A primeira visita de uma aba mostra a Lottie da marca em tela cheia (exceto checkout, o porteiro `/sebrae` e `/para-empresas`). A sessão da aba guarda que já tocou. A B2B apresenta a oferta imediatamente.
 
 Quatro endpoints:
 

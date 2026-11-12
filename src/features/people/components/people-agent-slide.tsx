@@ -74,7 +74,7 @@ export function PeopleAgentSlide({
         <div
           className={cn(
             "flex flex-col gap-4 text-white",
-            isDesktop ? "text-[0.93cqw]" : "text-[14px]",
+            isDesktop ? "text-[max(0.875rem,0.93cqw)]" : "text-[14px]",
           )}
         >
           {agent.paragraphs.map((paragraph) => (
