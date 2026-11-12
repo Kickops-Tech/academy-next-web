@@ -56,7 +56,7 @@ export function ContentsTopicCard({
         <p
           className={cn(
             "font-sans font-bold leading-[1.4] text-kickops-gray",
-            fluid ? "mt-[1.85cqw] text-[0.7cqw]" : "mt-4 text-[12px]",
+            fluid ? "mt-[1.85cqw] text-[max(0.75rem,0.7cqw)]" : "mt-4 text-[12px]",
           )}
         >
           {topic.label}
@@ -64,7 +64,7 @@ export function ContentsTopicCard({
         <h3
           className={cn(
             "font-sans font-bold leading-[1.4] text-kickops-gray",
-            fluid ? "text-[1.05cqw]" : "text-[18px]",
+            fluid ? "text-[max(1.125rem,1.05cqw)]" : "text-[18px]",
           )}
         >
           {topic.title}
@@ -72,7 +72,7 @@ export function ContentsTopicCard({
         <p
           className={cn(
             "font-sans font-normal leading-[1.4] text-kickops-gray",
-            fluid ? "mt-[1.06cqw] text-[0.815cqw]" : "mt-4 text-[14px]",
+            fluid ? "mt-[1.06cqw] text-[max(0.875rem,0.815cqw)]" : "mt-4 text-[14px]",
           )}
         >
           {topic.description}

@@ -183,19 +183,19 @@
     "eyebrow": "Experiência de quem constrói",
     "title": "Seu professor",
     "name": "Guilherme Rey",
-    "role": "Empreendedor, CEO da Kickops, professor e pesquisador em tecnologia.",
+    "role": "CEO da Kickops, professor e Mestre em Tecnologia Nuclear pelo IPEN/USP.",
     "imageSrc": "/img/people/guilherme-rey.webp",
     "imageAlt": "Guilherme Rey, professor do treinamento e CEO da Kickops",
     "paragraphs": [
-      "Empreendedor e CEO da Kickops, Guilherme Rey participou da construção e evolução de operações digitais como Glambox, Men's Market e B4A Group, além da trajetória da Spiti, posteriormente incorporada ao ecossistema do Grupo Primo. Por meio da Kickops, atua na estratégia de tecnologia e no desenvolvimento de produtos para negócios como Indê e Plataforma Assaad.",
-      "É essa prática de construir negócios e produtos reais que ele traz para o treinamento: entender o problema antes de escolher a ferramenta e transformar tecnologia em decisões — usando a IA para ampliar a capacidade humana, não substituir o julgamento.",
-      "Formado em Ciência da Computação, com MBA pela FIA Business School e mestre pelo IPEN, Guilherme também é professor de Ciência da Computação."
+      "Empreendedor e CEO da Kickops, Guilherme Rey trabalha na conexão entre negócio e tecnologia. Participou da construção e evolução de operações digitais como Glambox, Men's Market, B4A Group e Spiti. À frente da Kickops, atua na estratégia de tecnologia e no desenvolvimento de produtos para negócios como Indê e Plataforma Assaad.",
+      "No treinamento, essa experiência se traduz em um jeito de trabalhar: entender o problema, questionar as hipóteses e escolher o próximo passo antes de escolher a ferramenta. A IA entra para ampliar sua capacidade de analisar e agir, com você no comando das decisões.",
+      "Mestre em Tecnologia Nuclear pelo IPEN/USP, formado em Ciência da Computação e com MBA pela FIA Business School, Guilherme também é professor de Ciência da Computação no SENAC. Reúne prática empreendedora, formação acadêmica e experiência em sala de aula para tornar conceitos complexos aplicáveis ao seu negócio."
     ],
     "credentials": [
       { "title": "Empreendedor", "description": "CEO da Kickops" },
       { "title": "Formação", "description": "MBA FIA Business School" },
       { "title": "Educador", "description": "Professor de Computação" },
-      { "title": "Pesquisa", "description": "Mestre pelo IPEN" }
+      { "title": "Mestrado", "description": "Tecnologia Nuclear · IPEN/USP" }
     ],
     "experienceLabel": "Experiência em negócios e projetos como",
     "companies": ["Glambox", "B4A Group", "iFood", "XP", "Grupo Primo"]

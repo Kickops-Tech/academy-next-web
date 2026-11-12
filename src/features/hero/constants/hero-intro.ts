@@ -39,8 +39,8 @@ export const SITE_INTRO_STORAGE_KEY = "kickops-intro-seen";
 /** Injected style id that hides the SSR curtain (do not mutate `<html>` class). */
 export const SITE_INTRO_SEEN_STYLE_ID = "site-intro-seen";
 
-/** Exact paths that never play the brand intro (gate / redirect). */
-export const SITE_INTRO_SKIP_PATHS = ["/sebrae"] as const;
+/** Exact paths with immediate access to content or a redirect. */
+export const SITE_INTRO_SKIP_PATHS = ["/sebrae", "/para-empresas"] as const;
 
 /** Path prefixes that never play the brand intro (post-purchase). */
 export const SITE_INTRO_SKIP_PREFIXES = ["/checkout"] as const;

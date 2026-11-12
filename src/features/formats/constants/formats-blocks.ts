@@ -17,16 +17,16 @@ export const FORMATS_BLOCKS: FormatsBlock[] = [
   {
     id: "formato",
     eyebrow: "FORMATO",
-    title: "Presencial ou Online",
+    title: "Presencial ou online",
     paragraphs: [
       {
-        text: "Para explorarmos ao máximo essa introspecção em conjunto, o encontro presencial pode ser ótimo.",
+        text: "Reúna sua liderança no formato que funciona para a empresa: presencial ou online.",
       },
       {
-        text: "Sabemos que pode não ser viável, por isso o formato online também está disponível.",
+        text: "A duração e a dinâmica são alinhadas aos objetivos e à disponibilidade do time.",
       },
       {
-        text: "Se precisar de um local, nossa equipe pode cuidar disso para você!",
+        text: "Precisa de um local? Converse com a nossa equipe.",
         accent: true,
       },
     ],
@@ -34,26 +34,26 @@ export const FORMATS_BLOCKS: FormatsBlock[] = [
   {
     id: "conteudo",
     eyebrow: "CONTEÚDO",
-    title: "Personalizado",
+    title: "O contexto é de vocês",
     paragraphs: [
       {
-        text: "A partir de um conteúdo adaptado e personalizado para o seu negócio, conseguimos criar interações únicas e ricas.",
+        text: "Os exemplos e as discussões partem dos processos, desafios e prioridades da empresa.",
       },
       {
-        text: "O propósito desta introspecção é entrar nos seus processos e entender como esse novo mundo os impacta.",
+        text: "A profundidade do conteúdo acompanha a familiaridade do grupo com IA e as decisões que precisa tomar.",
       },
     ],
   },
   {
     id: "investimento",
     eyebrow: "INVESTIMENTO",
-    title: "Contato",
+    title: "Proposta sob medida",
     paragraphs: [
       {
-        text: "A experiência é desenhada para o seu negócio, estruturada a partir de sua liderança e processos.",
+        text: "O investimento considera o escopo, o número de participantes e o formato do treinamento.",
       },
       {
-        text: "Entre em contato conosco para realizarmos essa personalização!",
+        text: "Conte seu desafio. Alinhamos os objetivos e apresentamos uma proposta para o seu time.",
       },
     ],
   },

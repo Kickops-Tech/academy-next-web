@@ -30,7 +30,7 @@ export function FormatsBlockCard({
         <p
           className={cn(
             "font-bold text-kickops-yellow",
-            fluid ? "text-[0.794cqw]" : "text-[12px]",
+            fluid ? "text-[max(0.75rem,0.794cqw)]" : "text-[12px]",
           )}
         >
           {block.eyebrow}
@@ -38,7 +38,7 @@ export function FormatsBlockCard({
         <h3
           className={cn(
             "font-bold text-white",
-            fluid ? "mt-[0.794cqw] text-[1.19cqw]" : "mt-[12px] text-[18px]",
+            fluid ? "mt-[0.794cqw] text-[max(1.125rem,1.19cqw)]" : "mt-[12px] text-[18px]",
           )}
         >
           {block.title}
@@ -53,7 +53,7 @@ export function FormatsBlockCard({
             <p
               key={paragraph.text}
               className={cn(
-                fluid ? "text-[0.926cqw]" : "text-[14px]",
+                fluid ? "text-[max(0.875rem,0.926cqw)]" : "text-[14px]",
                 paragraph.accent ? "text-kickops-yellow" : "text-white",
               )}
             >

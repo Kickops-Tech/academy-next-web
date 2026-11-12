@@ -8,7 +8,7 @@
 - Componentes e interações: `src/features/sebrae`.
 - Data: 12/11/2026, das 10h às 16h, com 5 horas de conteúdo e intervalos.
 - Plataforma: Kickops Academy, com acesso enviado perto da data.
-- Professor: Guilherme Rey. A biografia abre com a experiência empreendedora e a aplicação no treinamento; a formação acadêmica vem depois.
+- Professor: Guilherme Rey, CEO da Kickops, professor de Ciência da Computação no SENAC e Mestre em Tecnologia Nuclear pelo IPEN/USP. A biografia conecta a experiência em operações digitais e produtos à aplicação no treinamento; a formação também inclui Ciência da Computação e MBA pela FIA Business School. A titulação aparece no resumo, na biografia e nas credenciais.
 - Oferta: R$ 89,90. O CTA diz “GARANTIR MEU LUGAR”. No Golden Ticket, o R$ 89,90 aparece riscado e o preço passa a Cortesia.
 - Checkout pago: `NEXT_PUBLIC_CHECKOUT_URL` ou `offer.checkoutUrl`. Sem URL válida, os CTAs levam à oferta e o botão de compra fica desabilitado.
 - Golden Ticket: `?from=kickops-golden-ticket` troca o checkout por um formulário no card da oferta (nome, e-mail, celular). Os outros CTAs rolam até `#oferta`. A origem fica na aba e o `from` sai da URL atual. O envio grava `academy_contact_training_interest` com `training_slug = sebrae-golden-ticket` e enfileira a confirmação ao visitante mais o aviso interno. No sucesso, um confete dourado denso cobre a tela e some; quem prefere menos movimento não o vê.

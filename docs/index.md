@@ -1,6 +1,6 @@
 ---
 title: Registro
-updated: 2026-10-20
+updated: 2026-11-12
 ---
 
 # Registro
@@ -11,6 +11,7 @@ O estado atual do sistema está na [wiki](../wiki/index.md).
 
 | Data | Nota |
 |---|---|
+| 2026-11-12 | [Copy para leads corporativos e bio de Guilherme Rey](20261112-para-empresas-copy.md) |
 | 2026-10-20 | [Selo FE26 na primeira dobra da home](20261020-home-selo-fe26.md) |
 | 2026-10-20 | [Mentes pensantes no final da home](20261020-home-mentes-pensantes.md) |
 | 2026-10-20 | [Motion dos cards na home](20261020-catalog-card-motion.md) |
